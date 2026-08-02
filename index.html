@@ -167,6 +167,7 @@
     text-decoration:none;font-weight:700;font-size:.95rem;
     padding:13px 24px;border-radius:12px;
     border:none;cursor:pointer;
+    white-space:nowrap;
     transition:transform .15s, box-shadow .15s, background .15s, border-color .15s;
   }
   .btn:focus-visible,.nav-links a:focus-visible,.logo:focus-visible{
@@ -209,6 +210,14 @@
     header.menu-open .icon-open{display:none}
     header.menu-open .icon-close{display:block}
   }
+  @media (max-width:520px){
+    .logo-text{display:none}
+    .logo-mark{width:74px;height:31px}
+    .nav .btn-sm{padding:9px 14px;font-size:.82rem}
+    .wrap{padding:0 20px}
+    section{padding:64px 0}
+    .sec-head{margin-bottom:36px}
+  }
 
   /* ---------- hero ---------- */
   .hero{
@@ -226,7 +235,7 @@
   }
   .eyebrow{color:var(--water);margin-bottom:18px}
   h1{
-    font-size:clamp(2.4rem,5.4vw,4.1rem);
+    font-size:clamp(1.9rem,6.4vw + .3rem,4.1rem);
     line-height:1.0;
     font-weight:850;
     font-variation-settings:"wdth" 116;
@@ -285,8 +294,11 @@
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
   @media (max-width:940px){
-    .hero-grid{grid-template-columns:1fr;padding:56px 0 64px;gap:40px}
+    .hero-grid{grid-template-columns:1fr;padding:48px 0 56px;gap:40px}
     .hero-media{width:min(300px,86%)}
+    .hero p.lead{font-size:1.02rem}
+    .hero-specs{gap:12px 22px;margin-top:30px;padding-top:20px}
+    .hero-ctas .btn{flex:1 1 auto}
   }
 
   /* onda da marca como divisor */
@@ -312,6 +324,10 @@
   }
   @media (max-width:860px){
     .telemetry .wrap{grid-template-columns:repeat(2,1fr);gap:26px}
+  }
+  @media (max-width:520px){
+    .telemetry{padding:32px 0}
+    .telemetry .wrap{grid-template-columns:1fr;gap:22px}
   }
 
   /* ---------- seções ---------- */
@@ -534,7 +550,7 @@
   <div class="wrap nav">
     <a class="logo" href="#" aria-label="Hidro Drone — início">
       <span class="logo-mark" role="img" aria-hidden="true"></span>
-      Hidro&nbsp;<em>Drone</em>
+      <span class="logo-text">Hidro&nbsp;<em>Drone</em></span>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#servicos">Serviços</a></li>
