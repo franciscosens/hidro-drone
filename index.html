@@ -231,7 +231,7 @@
   .hero-grid{
     display:grid;grid-template-columns:1.15fr .85fr;gap:56px;
     align-items:center;
-    padding:84px 0 96px;
+    padding-block:84px 96px;
   }
   .eyebrow{color:var(--water);margin-bottom:18px}
   h1{
@@ -294,7 +294,7 @@
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
   @media (max-width:940px){
-    .hero-grid{grid-template-columns:1fr;padding:48px 0 56px;gap:40px}
+    .hero-grid{grid-template-columns:1fr;padding-block:48px 56px;gap:40px}
     .hero-media{width:min(300px,86%)}
     .hero p.lead{font-size:1.02rem}
     .hero-specs{gap:12px 22px;margin-top:30px;padding-top:20px}
@@ -451,6 +451,43 @@
   td.drone-col{background:rgba(53,190,220,.08);font-weight:600}
   td .no{color:var(--ink-2)}
   .check{color:var(--water);font-weight:700}
+  @media (max-width:700px){
+    /* tabela vira cartões empilhados: um por critério */
+    table{min-width:0}
+    thead{display:none}
+    tbody tr{display:block;padding:20px 18px 12px}
+    tbody tr+tr{border-top:1px solid var(--line)}
+    tbody tr+tr td{border-top:none}
+    td{
+      display:flex;align-items:baseline;justify-content:space-between;gap:18px;
+      padding:7px 0;
+      text-align:right;
+      font-size:.92rem;
+    }
+    td::before{
+      content:attr(data-label);
+      font-family:"IBM Plex Mono",monospace;
+      font-size:.66rem;font-weight:500;
+      letter-spacing:.1em;text-transform:uppercase;
+      color:var(--ink-2);
+      text-align:left;
+      flex-shrink:0;
+      padding-top:.2em;
+    }
+    td:first-child{
+      display:block;
+      text-align:left;
+      font-weight:700;font-size:1.02rem;
+      padding:0 0 10px;
+    }
+    td:first-child::before{content:none}
+    td.drone-col{
+      background:rgba(53,190,220,.08);
+      border-radius:8px;
+      padding:10px 12px;
+      margin:2px 0;
+    }
+  }
 
   /* FAQ */
   .faq{max-width:780px;display:flex;flex-direction:column;gap:12px}
@@ -754,33 +791,33 @@
         <tbody>
           <tr>
             <td>Pessoas trabalhando em altura</td>
-            <td class="drone-col"><span class="check">Nenhuma</span></td>
-            <td>Sim</td>
-            <td>Sim</td>
+            <td class="drone-col" data-label="Hidro Drone"><span class="check">Nenhuma</span></td>
+            <td data-label="Rapel">Sim</td>
+            <td data-label="Andaime / balancim">Sim</td>
           </tr>
           <tr>
             <td>Montagem de estrutura</td>
-            <td class="drone-col"><span class="check">Não precisa</span></td>
-            <td><span class="no">Ancoragens no telhado</span></td>
-            <td><span class="no">Dias de montagem</span></td>
+            <td class="drone-col" data-label="Hidro Drone"><span class="check">Não precisa</span></td>
+            <td data-label="Rapel"><span class="no">Ancoragens no telhado</span></td>
+            <td data-label="Andaime / balancim"><span class="no">Dias de montagem</span></td>
           </tr>
           <tr>
             <td>Tempo de execução</td>
-            <td class="drone-col"><span class="check">Horas a poucos dias</span></td>
-            <td><span class="no">Semanas</span></td>
-            <td><span class="no">Semanas</span></td>
+            <td class="drone-col" data-label="Hidro Drone"><span class="check">Horas a poucos dias</span></td>
+            <td data-label="Rapel"><span class="no">Semanas</span></td>
+            <td data-label="Andaime / balancim"><span class="no">Semanas</span></td>
           </tr>
           <tr>
             <td>Interferência na rotina do local</td>
-            <td class="drone-col"><span class="check">Mínima</span></td>
-            <td><span class="no">Média</span></td>
-            <td><span class="no">Alta</span></td>
+            <td class="drone-col" data-label="Hidro Drone"><span class="check">Mínima</span></td>
+            <td data-label="Rapel"><span class="no">Média</span></td>
+            <td data-label="Andaime / balancim"><span class="no">Alta</span></td>
           </tr>
           <tr>
             <td>Registro do serviço</td>
-            <td class="drone-col"><span class="check">Foto e vídeo aéreos inclusos</span></td>
-            <td><span class="no">Não</span></td>
-            <td><span class="no">Não</span></td>
+            <td class="drone-col" data-label="Hidro Drone"><span class="check">Foto e vídeo aéreos inclusos</span></td>
+            <td data-label="Rapel"><span class="no">Não</span></td>
+            <td data-label="Andaime / balancim"><span class="no">Não</span></td>
           </tr>
         </tbody>
       </table>
