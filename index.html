@@ -83,6 +83,19 @@
   }
   .swatches{display:flex;gap:6px;margin-top:2px}
   .swatches i{width:22px;height:10px;border-radius:3px;border:1px solid rgba(255,255,255,.18)}
+  a.refs{
+    display:block;margin-top:18px;width:100%;max-width:720px;
+    text-align:center;
+    background:transparent;
+    border:1px dashed var(--line-strong);
+    border-radius:16px;
+    padding:16px 20px;
+    text-decoration:none;color:var(--ink-2);
+    transition:border-color .18s, color .18s;
+  }
+  a.refs:hover{border-color:var(--water);color:var(--ink)}
+  a.refs:focus-visible{outline:3px solid var(--water);outline-offset:3px}
+  a.refs strong{color:var(--water)}
   footer{margin-top:44px;color:var(--ink-2)}
   @media (max-width:640px){.grid{grid-template-columns:1fr;max-width:400px}}
 </style>
@@ -144,6 +157,10 @@
     <span class="go">Abrir →</span>
   </a>
 </div>
+
+<a class="refs" href="referencias/index.html">
+  <strong>Pesquisa de referências</strong> — 17 sites de lavação com drone (Brasil, EUA, Europa) com cópias locais e notas de design →
+</a>
 
 <footer class="mono">Hidro Drone · comparativo interno — não publicar esta página</footer>
 

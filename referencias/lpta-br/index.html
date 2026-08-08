@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5V2PRHWC');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GDST2MRWHP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GDST2MRWHP');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPTA | Locação de Plataformas Elevatórias Sobre Caminhão em São Paulo</title>
+    <link rel="icon" href="img/LogoLPTA.png" type="image/x-icon">
+    <!-- Link's -->
+    <link rel="stylesheet" href="Inicio/index.css">
+    <link rel="stylesheet" href="navbar.css">
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5V2PRHWC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+            <header class="header">
+        <nav class="nav reveal">
+            <div class="logo-header">
+                <img src="img/Logo Vetorizado.svg" alt="Logo LPTA">
+            </div>
+
+            <nav class="menu" id="menu">
+                <a href="index.html">HOME</a>
+                <a href="Sobre/index.html">SOBRE</a>
+
+                <div class="dropdown">
+                    <button class="dropdown-toggle">
+                        LOCAÇÃO ▾
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <a href="servico-plataforma/plataforma-cesto-aereo-10m.html">Plataforma Cesto Aéreo 10M</a>
+                        <a href="servico-plataforma/plataforma-cesto-aereo-14m.html">Plataforma Cesto Aéreo 14M</a>
+                        <a href="servico-plataforma/plataforma-cesto-aereo-18m.html">Plataforma Cesto Aéreo 18M</a>
+                        <a href="servico-plataforma/plataforma-cesto-aereo-20m.html">Plataforma Cesto Aéreo 20M</a>
+                        <a href="servico-plataforma/plataforma-cesto-aereo-24m.html">Plataforma Cesto Aéreo 24M</a>
+                        <a href="servico-plataforma/plataforma-cesto-aereo-28m.html">Plataforma Cesto Aéreo 28M</a>
+                        <a href="servico-plataforma/plataforma-cesto-aereo-32m.html">Plataforma Cesto Aéreo 32M</a>
+                        <a href="servico-plataforma/index.html">Ver Todas</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropdown-toggle">
+                        SERVIÇOS EM ALTURA ▾
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <a href="servico-geral/limpeza-drone.html">Limpeza com Drone</a>
+                        <a href="servico-geral/alpinismo.html">Alpinismo</a>
+                        <a href="servico-geral/painel-solar.html">Lavagem de Painel Solar</a>
+                        <a href="servico-geral/revitalizacao-fachadas.html">Revitalização de Fachadas</a>
+                        <a href="servico-geral/lavagem-vidros.html">Lavagem de Vidros</a>
+                        <a href="servico-geral/troca-lampadas.html">Troca de Lampadas e Refletores</a>
+                        <a href="servico-geral/controle-pragas.html">Controle de Pragas</a>
+                        <a href="servico-geral/poda-arvores.html">Poda de Árvores</a>
+                        <a href="servico-geral/pintura-tanques.html">Pintura e Retoque de Tanques</a>
+                        <a href="servico-geral/limpeza-fachadas.html">Limpeza de Fachadas em Altura</a>
+                        <a href="servico-geral/index.html">Ver todos</a>
+                    </div>
+
+                </div>
+
+                <a href="servico-geral/limpeza-drone.html">LIMPEZA COM DRONE</a>
+                <a href="manutencao-plataforma/index.html">MANUTENÇÃO DE PLATAFORMAS</a>
+                <a href="Blog/index.php">BLOG</a>
+                <a href="Contato/index.html" class="btn-contato"><img src="whatsapp.png" alt="Icone Whatsapp">CONTATO</a>
+            </nav>
+
+            <div class="menu-toggle" id="menu-toggle">
+                ☰
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        // abrir/fechar dropdown
+        const dropdowns = document.querySelectorAll(".dropdown");
+
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector(".dropdown-toggle");
+
+            toggle.addEventListener("click", (e) => {
+                e.stopPropagation();
+
+                // fecha outros dropdowns
+                dropdowns.forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove("active");
+                    }
+                });
+
+                dropdown.classList.toggle("active");
+            });
+        });
+
+        // fechar ao clicar fora
+        document.addEventListener("click", () => {
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove("active");
+            });
+        });
+    </script>
+
+    <section class="hero">
+
+        <!-- CARROSSEL -->
+        <div class="hero-carousel">
+            <div class="slides">
+                <img src="img/capa home.png" class="slide active" data-slide="0">
+                <img src="img/slide drone.png" class="slide" data-slide="1">
+                <img src="img/slide 2.png" class="slide" data-slide="2">
+                <img src="img/slide alpinismo.png" class="slide" data-slide="3">
+                <img src="img/slide 3.png" class="slide" data-slide="4">
+                <img src="img/slide spyder.png" class="slide" data-slide="5">
+                <img src="img/slide 4.png" class="slide" data-slide="6">
+                <img src="img/slide 6.png" class="slide" data-slide="7">
+            </div>
+            <button class="hero-nav hero-nav-prev" id="hero-prev" aria-label="Slide anterior">&#8249;</button>
+            <button class="hero-nav hero-nav-next" id="hero-next" aria-label="Próximo slide">&#8250;</button>
+            <div class="hero-dots" id="hero-dots"></div>
+        </div>
+
+        <div class="hero-content reveal reveal-left">
+
+            <div class="hero-text">
+                <span class="span-hero1" id="hero-label">LOCAÇÃO DE CAMINHÃO</span>
+                <span class="span-hero2" id="hero-title1">PLATAFORMA</span>
+                <span class="span-hero3" id="hero-title2">ELEVATÓRIA</span>
+                <span class="span-hero4" id="hero-subtitle">PARA TRABALHOS EM ALTURA</span>
+                <p id="hero-desc">Solução rápida, segura e eficiente para manutenção, limpeza, instalação e acesso em altura sem
+                    necessidade de andaimes.</p>
+            </div>
+
+            <div class="hero-icons" id="hero-icons">
+
+                <div class="hero-icons-item">
+                    <img id="hero-icon1-img" src="img/reboque-de-caminhao.png" alt="Ícone 1">
+                    <div>
+                        <h5 id="hero-icon1-title">FROTA PRÓPRIA</h5>
+                        <p id="hero-icon1-desc">Equipamentos revisados e prontos para uso</p>
+                    </div>
+                </div>
+
+                <div class="hero-icons-item">
+                    <img id="hero-icon2-img" src="img/fita-metrica.png" alt="Ícone 2">
+                    <div>
+                        <h5 id="hero-icon2-title">ALTURA DE 10M A 32M</h5>
+                        <p id="hero-icon2-desc">Diversos modelos para cada necessidade</p>
+                    </div>
+                </div>
+
+                <div class="hero-icons-item">
+                    <img id="hero-icon3-img" src="img/fone-de-ouvido.png" alt="Ícone 3">
+                    <div>
+                        <h5 id="hero-icon3-title">ATENDIMENTO RÁPIDO</h5>
+                        <p id="hero-icon3-desc">Mais agilidade para sua operação não parar</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="buttons reveal">
+                <a id="hero-btn-primary" href="https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!"
+                    target="_blank" class="btn primary reveal">SOLICITAR ORÇAMENTO <img src="whatsapp.png"
+                        alt="Icone WhatsApp"></a>
+
+                <a id="hero-btn-secondary" href="servico-plataforma/index.html" class="btn secondary reveal">VER EQUIPAMENTOS DISPONÍVEIS</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SERVIÇOS EM ALTURA — seção destaque
+    ════════════════════════════════════════════════ -->
+    <section class="servicos-altura">
+
+        <div class="sa-header reveal">
+            <span class="sa-eyebrow">ALÉM DA LOCAÇÃO</span>
+            <h2>Serviços especializados<br><em>em altura</em></h2>
+            <p>Equipe técnica qualificada, equipamentos certificados e execução segura — do projeto à entrega.</p>
+        </div>
+
+        <div class="sa-grid">
+
+            <!-- Card 1 — grande, ocupa 2 linhas -->
+            <a href="servico-geral/limpeza-drone.html" class="sa-card sa-card--wide reveal">
+                <img src="img/LimpezaDrone.jpg" alt="Limpeza com Drone">
+                <div class="sa-card-overlay">
+                    <span class="sa-card-tag">TECNOLOGIA</span>
+                    <h3>Limpeza com Drone</h3>
+                    <p>Fachadas e painéis solares sem risco e com máxima precisão.</p>
+                    <span class="sa-card-cta">Ver serviço →</span>
+                </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="servico-geral/alpinismo.html" class="sa-card reveal">
+                <img src="img/Alpinismo.png" alt="Alpinismo Industrial">
+                <div class="sa-card-overlay">
+                    <span class="sa-card-tag">ALTURA</span>
+                    <h3>Alpinismo</h3>
+                    <p>Acesso a locais de difícil alcance com segurança total.</p>
+                    <span class="sa-card-cta">Ver serviço →</span>
+                </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="servico-geral/painel-solar.html" class="sa-card reveal">
+                <img src="img/PainelSolar.jpg" alt="Lavagem de Painel Solar">
+                <div class="sa-card-overlay">
+                    <span class="sa-card-tag">ENERGIA</span>
+                    <h3>Painel Solar</h3>
+                    <p>Mais eficiência e retorno do seu investimento em energia.</p>
+                    <span class="sa-card-cta">Ver serviço →</span>
+                </div>
+            </a>
+
+            <!-- Card 4 — wide, ocupa 2 colunas -->
+            <a href="servico-geral/revitalizacao-fachadas.html" class="sa-card sa-card--wide reveal">
+                <img src="img/RevitalizaçãoFachadas.jpeg" alt="Revitalização de Fachadas">
+                <div class="sa-card-overlay">
+                    <span class="sa-card-tag">FACHADAS</span>
+                    <h3>Revitalização de Fachadas</h3>
+                    <p>Recuperação e valorização do imóvel com acabamento profissional.</p>
+                    <span class="sa-card-cta">Ver serviço →</span>
+                </div>
+            </a>
+
+            <!-- Card 5 -->
+            <a href="servico-geral/poda-arvores.html" class="sa-card reveal">
+                <img src="img/PodaArvores.png" alt="Poda de Árvores">
+                <div class="sa-card-overlay">
+                    <span class="sa-card-tag">ARBORIZAÇÃO</span>
+                    <h3>Poda de Árvores</h3>
+                    <p>Poda técnica e segura com plataforma elevatória.</p>
+                    <span class="sa-card-cta">Ver serviço →</span>
+                </div>
+            </a>
+
+            <!-- Card 6 -->
+            <a href="servico-geral/lavagem-vidros.html" class="sa-card reveal">
+                <img src="img/LimpezaVidros.png" alt="Lavagem de Vidros">
+                <div class="sa-card-overlay">
+                    <span class="sa-card-tag">LIMPEZA</span>
+                    <h3>Lavagem de Vidros</h3>
+                    <p>Resultado impecável em vidros e esquadrias em altura.</p>
+                    <span class="sa-card-cta">Ver serviço →</span>
+                </div>
+            </a>
+
+            <!-- Card 7 -->
+            <a href="servico-geral/troca-lampadas.html" class="sa-card reveal">
+                <img src="img/TrocaLampadas.png" alt="Troca de Lâmpadas">
+                <div class="sa-card-overlay">
+                    <span class="sa-card-tag">ELÉTRICA</span>
+                    <h3>Troca de Lâmpadas</h3>
+                    <p>Refletores e luminárias em qualquer altura com segurança.</p>
+                    <span class="sa-card-cta">Ver serviço →</span>
+                </div>
+            </a>
+
+            <!-- Card 8 -->
+            <a href="servico-geral/controle-pragas.html" class="sa-card reveal">
+                <img src="img/ControlePragas.png" alt="Controle de Pragas">
+                <div class="sa-card-overlay">
+                    <span class="sa-card-tag">SANITIZAÇÃO</span>
+                    <h3>Controle de Pragas</h3>
+                    <p>Dedetização em altura com máxima eficiência e segurança.</p>
+                    <span class="sa-card-cta">Ver serviço →</span>
+                </div>
+            </a>
+
+            <!-- Card 9 — wide, ocupa 2 colunas -->
+            <a href="servico-geral/limpeza-fachadas.html" class="sa-card sa-card--wide reveal">
+                <img src="img/Fachadas.png" alt="Limpeza de Fachadas">
+                <div class="sa-card-overlay">
+                    <span class="sa-card-tag">FACHADAS</span>
+                    <h3>Limpeza de Fachadas em Altura</h3>
+                    <p>Remoção de sujidades, fungos e eflorescências com resultado duradouro.</p>
+                    <span class="sa-card-cta">Ver serviço →</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="sa-footer reveal">
+            <p>Quer saber mais sobre algum serviço?</p>
+            <div class="sa-footer-btns">
+                <a href="servico-geral/index.html" class="btn secondary">VER TODOS OS SERVIÇOS</a>
+                <a href="https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!" target="_blank" class="btn primary">PEDIR ORÇAMENTO</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- A locação -->
+    <section class="locacao">
+        <!-- Tittle -->
+        <div class="locacao-tittle reveal">
+            <h1>A locação que facilita o seu trabalho em altura</h1>
+            <p>Solução prática que elimina a necessidade de andaimes e reduz o tempo de execução.</p>
+        </div>
+
+        <!-- Cards -->
+        <div class="locacao-content">
+
+            <!-- Item 1 -->
+            <div class="locacao-card reveal">
+                <img src="img/verificacao-de-escudo.png" alt="Icone Escudo">
+                <h4>MAIS SEGURANÇA</h4>
+                <p>Equipamentos certificados e equipe treinada</p>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="locacao-card reveal">
+                <img src="img/tempo-rapido.png" alt="Icone Tempo Rápido">
+                <h4>MAIS AGILIDADE</h4>
+                <p>Chegamos rápido e sua operação não para</p>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="locacao-card reveal">
+                <img src="img/circulo-usd.png" alt="Icone Circulo USD">
+                <h4>MELHOR CUSTO</h4>
+                <p>Redução de custos com a locação de plataformas</p>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="locacao-card reveal">
+                <img src="img/predio.png" alt="Icone Predio">
+                <h4>VERSATILIDADE</h4>
+                <p>Diferentes alturas e modelos para cada desafio</p>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="locacao-card reveal">
+                <img src="img/rede-social.png" alt="Icone Like">
+                <h4>PRONTO PARA USO</h4>
+                <p>Frota própia equipada e revisada constantemente</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Destaque PTA -->
+    <section class="destaque-pta">
+
+        <div class="destaque-content reveal">
+
+            <!-- Imagem Left-->
+            <img src="img/DestaquePTA.png" alt="Destaque PTA">
+
+            <!-- Conteúdo Right -->
+            <div class="destaque-right">
+                <h1 class="reveal reveal-left">PRECISOU DE PLATAFORMA ELEVATÓRIA?</h1>
+                <P class="reveal reveal-left">A solução certa para acessar lugares altos com segurança e eficiência.</P>
+
+                <!-- Topicos-->
+                <div class="destaque-topicos">
+                    <div class="destaque-item reveal">
+                        <img src="img/alternativa-de-orcamento.png" alt="Orçamento Alternativo">
+                        <p>Orçamento rápido <br>e sem compromisso</p>
+                    </div>
+
+                    <div class="destaque-item reveal">
+                        <img src="img/atendimento-ao-cliente.png" alt="Atendimento ao Cliente">
+                        <p>Atendimento <br>especializado</p>
+                    </div>
+
+                    <div class="destaque-item reveal">
+                        <img src="img/personalizar-edicao.png" alt="Personalizar">
+                        <p>Solução personalizada <br>para sua nescessidade</p>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="destaque-buttons">
+                    <a href="https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!"
+                        target="_blank" class="btn-destaque1 reveal">FALAR NO WHATSAPP</a>
+
+                    <a href="Contato/index.html" class="btn-destaque2 reveal">SOLICITAR ORÇAMENTO</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Ideal -->
+    <section class="ideal">
+
+        <!-- Tittle -->
+        <div class="locacao-tittle reveal">
+            <h1>Ideal para diversos tipos de trabalho</h1>
+            <p>Acesso seguro e eficiente para diferentes necessidades.</p>
+        </div>
+
+        <!-- Cards -->
+        <div class="ideal-content">
+
+            <!-- Item 1 -->
+            <div class="ideal-card reveal">
+                <img src="img/predio.png" alt="Icone Predio">
+                <h4>Manutenção predial</h4>
+            </div>
+
+            <div class="divisor"> </div>
+
+            <div class="ideal-card reveal">
+                <img src="img/varrer.png" alt="Icone varrer">
+                <h4>Limpeza de fachadas</h4>
+            </div>
+
+            <div class="divisor"> </div>
+
+            <div class="ideal-card reveal">
+                <img src="img/rolo-de-pintura.png" alt="Icone rolo de pintura">
+                <h4>Pintura em altura</h4>
+            </div>
+
+            <div class="divisor"> </div>
+
+            <div class="ideal-card reveal">
+                <img src="img/parafuso (1).png" alt="Icone parafuso">
+                <h4>Instalações elétricas</h4>
+            </div>
+
+            <div class="divisor"> </div>
+
+            <div class="ideal-card reveal">
+                <img src="img/arvore-de-folha-caduca.png" alt="Icone arvore">
+                <h4>Poda técnica</h4>
+            </div>
+
+            <div class="divisor"> </div>
+
+            <div class="ideal-card reveal">
+                <img src="img/verificacao-da-lista-da-area-de-transferencia.png" alt="Icone inspeção">
+                <h4>Inspeções e vistorias</h4>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CARROSSEL -->
+    <section class="carrossel">
+
+        <button class="button-carousel prev">‹</button>
+
+        <div class="carrossel-container">
+            <div class="carrossel-track">
+
+                <!-- CARD -->
+
+                <div class="card">
+                    <img src="img/PTA32.jpeg" alt="">
+                    <div class="card-content">
+                        <h3>CESTO AÉREO 32M</h3>
+                        <p>Altura de trabalho: 32 metros</p>
+                        <p>Alcance lateral: 18 metros</p>
+                        <p>Capacidade: 280 kg</p>
+                        <button><a href="servico-plataforma/plataforma-caminhao-32m.html">SAIBA MAIS</a></button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="img/PTA28.jpeg" alt="">
+                    <div class="card-content">
+                        <h3>CESTO AÉREO 28M</h3>
+                        <p>Altura de trabalho: 28 metros</p>
+                        <p>Alcance lateral: 16 metros</p>
+                        <p>Capacidade: 225 kg</p>
+                        <button><a href="servico-plataforma/plataforma-caminhao-28m.html">SAIBA MAIS</a></button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="img/PTA24.jpeg" alt="">
+                    <div class="card-content">
+                        <h3>CESTO AÉREO 24M</h3>
+                        <p>Altura de trabalho: 24 metros</p>
+                        <p>Alcance lateral: 11 metros</p>
+                        <p>Capacidade: 225 kg</p>
+                        <button><a href="servico-plataforma/plataforma-caminhonete-24m.html">SAIBA MAIS</a></button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="img/PTA20.jpeg" alt="">
+                    <div class="card-content">
+                        <h3>CESTO AÉREO 20M</h3>
+                        <p>Altura de trabalho: 20 metros</p>
+                        <p>Alcance lateral: 9,5 metros</p>
+                        <p>Capacidade: 225 kg</p>
+                        <button><a href="servico-plataforma/plataforma-caminhao-20m.html">SAIBA MAIS</a></button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="img/Spyder.jpg" alt="">
+                    <div class="card-content">
+                        <h3>CESTO AÉREO SPYDER 18M</h3>
+                        <p>Altura de trabalho: 18 metros</p>
+                        <p>Alcance lateral: 11,5 metros</p>
+                        <p>Capacidade: 200 kg</p>
+                        <button><a href="servico-plataforma/plataforma-spyder-18m.html">SAIBA MAIS</a></button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="img/PTA14.jpeg" alt="">
+                    <div class="card-content">
+                        <h3>CESTO AÉREO 14M</h3>
+                        <p>Altura de trabalho: 14 metros</p>
+                        <p>Alcance lateral: 9,5 metros</p>
+                        <p>Capacidade: 225 kg</p>
+                        <button><a href="servico-plataforma/plataforma-caminhonete-14m.html">SAIBA MAIS</a></button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="servico-plataforma/PTA10.jpeg" alt="">
+                    <div class="card-content">
+                        <h3>CESTO AÉREO 10M</h3>
+                        <p>Altura de trabalho: 10 metros</p>
+                        <p>Alcance lateral: 6,2 metros</p>
+                        <p>Capacidade: 120 kg</p>
+                        <button><a href="servico-plataforma/plataforma-picape-10m.html">SAIBA MAIS</a></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <button class="button-carousel next">›</button>
+
+    </section>
+
+    <!-- MOTIVO -->
+    <section class="motivo">
+
+        <!-- Tittle -->
+        <div class="locacao-tittle reveal">
+            <p>POR QUE ESCOLHER A LPTA</p>
+            <h1>Experiência, responsabilidade e foco em resultados</h1>
+        </div>
+
+        <!-- Cards -->
+        <div class="ideal-content">
+
+            <!-- Item 1 -->
+            <div class="ideal-card reveal">
+                <img src="img/verificacao-do-caminhao.png" alt="Icone verificação do caminhão">
+                <h4>EQUIPAMENTOS CERTIFICADOS</h4>
+                <p>Todos os equipamentos com laudos e seguros em dia.</p>
+            </div>
+
+            <div class="divisor"> </div>
+
+            <div class="ideal-card reveal">
+                <img src="img/seguranca-do-capacete-do-usuario (1).png" alt="Icone segurança do capacete do usuário">
+                <h4>PROFISSIONAIS QUALIFICADOS</h4>
+                <p>Operadores treinados e capacitados para cada tipo de serviço.</p>
+            </div>
+
+            <div class="divisor"> </div>
+
+            <div class="ideal-card reveal">
+                <img src="img/sugestao.png" alt="Icone sugestão">
+                <h4>ATENDIMENTO PERSONALIZADO</h4>
+                <p>Entendemos sua necessidade e indicamos a melhor solução.</p>
+            </div>
+
+            <div class="divisor"> </div>
+
+            <div class="ideal-card reveal">
+                <img src="img/capacete-de-construcao.png" alt="Icone capacete de construção">
+                <h4>SEGURANÇA EM PRIMEIRO LUGAR</h4>
+                <p>Operação conforme NR-35 e normas de segurança de trabalho.</p>
+            </div>
+
+            <div class="divisor"> </div>
+
+            <div class="ideal-card reveal">
+                <img src="img/confianca-de-aperto-de-mao.png" alt="Icone confiança de aperto de mão">
+                <h4>CONFIANÇA QUE GERA PARCERIAS</h4>
+                <p>Empresas e indústrias que confiam e recomendam.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CLIENTES -->
+    <section class="clientes">
+
+        <!-- Tittle -->
+        <div class="locacao-tittle reveal">
+            <p>QUEM CONFIA NA LPTA</p>
+            <h1>Empresas que já contaram com nossas soluções</h1>
+        </div>
+
+        <div class="clients-logos">
+            <div class="logos-track">
+
+                <div class="logo"><img src="img/clientes/cliente-messer.png" alt="Messer"></div>
+                <div class="logo"><img src="img/clientes/cliente-obramax.png" alt="Obramax"></div>
+                <div class="logo"><img src="img/clientes/cliente-mahle.png" alt="Mahle"></div>
+                <div class="logo"><img src="img/clientes/cliente-mcdonalds.png" alt="McDonald's"></div>
+                <div class="logo"><img src="img/clientes/cliente-porsche.png" alt="Porsche"></div>
+                <div class="logo"><img src="img/clientes/cliente-06.png" alt="Cliente LPTA"></div>
+                <div class="logo"><img src="img/clientes/cliente-byd.png" alt="BYD"></div>
+                <div class="logo"><img src="img/clientes/cliente-besni.png" alt="Besni"></div>
+                <div class="logo"><img src="img/clientes/cliente-colgate.png" alt="Colgate"></div>
+                <div class="logo"><img src="img/clientes/cliente-weg.png" alt="WEG"></div>
+                <div class="logo"><img src="img/clientes/cliente-prologis.png" alt="Prologis"></div>
+                <div class="logo"><img src="img/clientes/cliente-sodexo.png" alt="Sodexo"></div>
+                <div class="logo"><img src="img/clientes/cliente-acciona.png" alt="Acciona"></div>
+                <div class="logo"><img src="img/clientes/cliente-bmw.png" alt="BMW"></div>
+                <div class="logo"><img src="img/clientes/cliente-air-liquide.png" alt="Air Liquide"></div>
+                <div class="logo"><img src="img/clientes/cliente-air-products.png" alt="Air Products"></div>
+                <div class="logo"><img src="img/clientes/cliente-prevent-senior.png" alt="Prevent Senior"></div>
+                <div class="logo"><img src="img/clientes/cliente-smartfit.png" alt="Smartfit"></div>
+                <div class="logo"><img src="img/clientes/cliente-anglo-american.png" alt="Anglo American"></div>
+                <div class="logo"><img src="img/clientes/cliente-netflix.png" alt="Netflix"></div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- OBSERVAÇÃO -->
+    <section class="observacao">
+
+        <div class="observacao-content">
+
+            <img src="img/informacoes.png" alt="Icone informação">
+            <p>Nosso aluguel é exclusivamente de plataforma elevatória sobre caminhão, não locamos outros modelos como
+                tesoura ou similar. <br>
+
+                Locamos em todo o território nacional. <span>Nossa base fica em São Paulo</span>, para locações em
+                outros estados o prazo mínimo de locação pode variar de 3 ou mais meses devido provesso logistico.
+                <span>Entre em contato para mais informações e consultas para a sua locação.</span>
+            </p>
+        </div>
+
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="servicos">
+
+        <!-- Tittle -->
+        <div class="locacao-tittle reveal">
+            <h1>Além de locação, a LPTA realiza serviços em altura. Conheça!</h1>
+            <p>Oferecemos soluções completas em serviços em altura, atendendo desde limpeza e manutenção de fachadas até inspeções técnicas, revitalizações e suporte a infraestrutura predial. Atuamos com tecnologia, equipamentos modernos e equipe especializada para garantir execução segura, ágil e eficiente em qualquer tipo de projeto.</p>
+        </div>
+
+        <!-- Carrossel -->
+        <section class="servicos-carrossel">
+
+            <button class="servicos-btn prev">‹</button>
+
+            <div class="servicos-container">
+                <div class="servicos-track">
+
+                    <div class="servico-card">
+                        <img src="img/LimpezaDrone.jpg" alt="Limpeza com Drone">
+                        <p>Limpeza com Drone</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <img src="img/Alpinismo.png" alt="Alpinismo">
+                        <p>Alpinismo</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <img src="img/PainelSolar.jpg" alt="Lavagem de Painel Solar">
+                        <p>Lavagem de Painel Solar</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <img src="img/RevitalizaçãoFachadas.jpeg" alt="Revitalização de fachadas">
+                        <p>Revitalização de fachadas</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <img src="img/LimpezaVidros.png" alt="Limpeza de Vidros">
+                        <p>Limpeza de Vidros</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <img src="img/TrocaLampadas.png"
+                            alt="Troca de lâmpadas e refletores">
+                        <p>Troca de lâmpadas e refletores</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <img src="img/ControlePragas.png"
+                            alt="Controle de pragas">
+                        <p>Controle de Pragas</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <img src="img/PodaArvores.png"
+                            alt="Poda de árvores">
+                        <p>Poda de árvores</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <img src="servico-geral/Tanque.png" alt="Manutenção de Tanques">
+                        <p>Pintura de Tanques</p>
+                    </div>
+
+                    <div class="servico-card">
+                        <img src="img/Fachadas.png" alt="Limpeza de Fachadas em Altura">
+                        <p>Limpeza de Fachadas em Altura</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <button class="servicos-btn next">›</button>
+
+        </section>
+
+        <div class="buttons-servicos">
+            <a href="servico-geral/index.html" class="btn primary">CONHECER SERVIÇOS</a>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <!-- COLUNA 1 -->
+            <div class="footer-col">
+                <h4>Atendimento</h4>
+                <ul>
+                    <li>Seg. a qui, das 8h às 18h</li>
+                    <li>Sex. das 8h às 17h</li>
+                </ul>
+            </div>
+
+            <!-- COLUNA 2 -->
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p>📍 São Paulo - sp</p>
+                <p>📞 (11) 94221-0546</p>
+                <p>📞 (11) 4780-7979</p>
+                <p><br></p>
+                <p>📍 Filial Campinas:</p>
+                <p>📞 (19) 99904-7433</p>
+                <p>📞 (19) 2042-2381</p>
+                <p>✉️ comercial@lpta.com.br</p>
+            </div>
+
+            <!-- COLUNA 3 -->
+            <div class="footer-col">
+                <h4>Endereço</h4>
+                <p>📍 Tv. Cláudio Armando, 170 - Assunção, São Bernardo do Campo - SP, 09861-730</p>
+                <p><br></p>
+                <p>📍 R. Comendador Tórlogo Dauntre, 74 - Sala 1207 - Cambuí, Campinas - SP, 13025-270</p>
+            </div>
+
+            <!-- COLUNA 4 -->
+            <div class="footer-col">
+                <h4>Redes sociais</h4>
+                <div class="socials">
+                    <a href="https://www.instagram.com/lptaengenharia/?__pwa=1"><img src="instagram.png"
+                            alt="Logo Instagram">Instagram</a>
+                    <a href="https://www.facebook.com/lptalocacao/"><img src="facebook.png"
+                            alt="Logo Facebook">Facebook</a>
+                    <a href="https://www.youtube.com/channel/UC1-EsHtcARbLD5MAQ4ehVAQ"><img src="youtube.png"
+                            alt="Logo YouTube">YouTube</a>
+                    <a href="https://www.tiktok.com/@lptaengenharia?is_from_webapp=1&sender_device=pc"><img
+                            src="tiktok-circle.png" alt="Logo TikTok">TikTok</a>
+                    <a href="https://br.linkedin.com/company/loca%C3%A7%C3%A3o-de-plataformas-a%C3%A9reas-e-guindastes"><img
+                            src="linkedin.png" alt="Logo LinkedIn">LinkedIn</a>
+                    <a
+                        href="https://wa.me/5511942210546?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20visita%20t%C3%A9cnica!"><img
+                            src="whatsapp.png" alt="Logo WhatsApp">WhatsApp</a>
+                </div>
+
+            </div>
+
+            <!-- COLUNA 5 -->
+                <div class="footer-col logo-footer">
+                    <img src="img/logo branca (1).png" alt="">
+                </div>
+
+        </div>
+
+        <!-- COPYRIGHT -->
+        <div class="footer-bottom">
+            <p>
+                © 2026 Todos os direitos reservados |
+                <a href="https://instagram.com/visz.dev" target="_blank">
+                    Desenvolvido por Visz.dev
+                </a>
+            </p>
+        </div>
+
+    </footer>
+
+    <button id="btnTopo">↑</button>
+
+    <!-- Chat -->
+    <script src="//code.jivosite.com/widget/T3pHoPx0Z6" async></script>
+
+    <script>
+        // MENU MOBILE
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("active");
+        });
+
+        // ANIMAÇÃO SCROLL
+        const reveals = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+            const windowHeight = window.innerHeight;
+
+            reveals.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add("active");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+
+        // CARROSSEL PTA
+        const track = document.querySelector('.carrossel-track');
+        const next = document.querySelector('.next');
+        const prev = document.querySelector('.prev');
+
+        let position = 0;
+
+        function getCardWidth() {
+            const card = document.querySelector('.card');
+            const gap = 20;
+            return card.offsetWidth + gap;
+        }
+
+        function getMaxScroll() {
+            const container = document.querySelector('.carrossel-container');
+            return track.scrollWidth - container.offsetWidth;
+        }
+
+        next.addEventListener('click', () => {
+            const move = getCardWidth();
+            const maxScroll = getMaxScroll();
+
+            position -= move;
+
+            // 🔥 trava no final
+            if (Math.abs(position) > maxScroll) {
+                position = -maxScroll;
+            }
+
+            track.style.transform = `translateX(${position}px)`;
+        });
+
+        prev.addEventListener('click', () => {
+            const move = getCardWidth();
+
+            position += move;
+
+            // 🔥 trava no início
+            if (position > 0) {
+                position = 0;
+            }
+
+            track.style.transform = `translateX(${position}px)`;
+        });
+
+        // CARROSSEL SERVIÇOS
+        const servTrack = document.querySelector('.servicos-track');
+        const servNext = document.querySelector('.servicos-btn.next');
+        const servPrev = document.querySelector('.servicos-btn.prev');
+
+        let servPosition = 0;
+
+        function getServCardWidth() {
+            const card = document.querySelector('.servico-card');
+            const gap = 20;
+            return card.offsetWidth + gap;
+        }
+
+        function getServMaxScroll() {
+            const container = document.querySelector('.servicos-container');
+            return servTrack.scrollWidth - container.offsetWidth;
+        }
+
+        servNext.addEventListener('click', () => {
+            const move = getServCardWidth();
+            const maxScroll = getServMaxScroll();
+
+            servPosition -= move;
+
+            if (Math.abs(servPosition) > maxScroll) {
+                servPosition = -maxScroll;
+            }
+
+            servTrack.style.transform = `translateX(${servPosition}px)`;
+        });
+
+        servPrev.addEventListener('click', () => {
+            const move = getServCardWidth();
+
+            servPosition += move;
+
+            if (servPosition > 0) {
+                servPosition = 0;
+            }
+
+            servTrack.style.transform = `translateX(${servPosition}px)`;
+        });
+
+        // HERO CAROUSEL — conteúdo dinâmico por slide
+        const slides = document.querySelectorAll('.slide');
+        let current = 0;
+
+        // Dados de cada slide: índice corresponde ao data-slide da imagem
+        const slideData = [
+            {
+                // Slide 0 — capa home (plataforma elevatória)
+                label:      'LOCAÇÃO DE CAMINHÃO',
+                title1:     'PLATAFORMA',
+                title2:     'ELEVATÓRIA',
+                subtitle:   'PARA TRABALHOS EM ALTURA',
+                desc:       'Solução rápida, segura e eficiente para manutenção, limpeza, instalação e acesso em altura sem necessidade de andaimes.',
+                icon1: { img: 'img/reboque-de-caminhao.png', title: 'FROTA PRÓPRIA',        desc: 'Equipamentos revisados e prontos para uso' },
+                icon2: { img: 'img/fita-metrica.png',        title: 'ALTURA DE 10M A 32M',  desc: 'Diversos modelos para cada necessidade' },
+                icon3: { img: 'img/fone-de-ouvido.png',      title: 'ATENDIMENTO RÁPIDO',   desc: 'Mais agilidade para sua operação não parar' },
+                btnPrimary:   { text: 'SOLICITAR ORÇAMENTO', href: 'https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!', target: '_blank', icon: 'whatsapp.png' },
+                btnSecondary: { text: 'VER EQUIPAMENTOS DISPONÍVEIS', href: 'servico-plataforma/index.html' }
+            },
+            {
+                // Slide 1 — slide drone
+                label:      'SERVIÇO ESPECIALIZADO',
+                title1:     'LIMPEZA COM',
+                title2:     'DRONE',
+                subtitle:   'TECNOLOGIA DE PONTA EM ALTURA',
+                desc:       'Limpeza de fachadas, painéis solares e estruturas de difícil acesso com drones de alta performance — sem riscos, com máxima eficiência.',
+                icon1: { img: 'img/frente-do-drone.png',              title: 'SEM ANDAIMES',          desc: 'Acesso a qualquer superfície sem estruturas auxiliares' },
+                icon2: { img: 'img/rapido.png',                 title: 'RÁPIDO E PRECISO',      desc: 'Execução ágil com controle total da operação' },
+                icon3: { img: 'img/check-circle (2).png',  title: 'OPERAÇÃO SEGURA',        desc: 'Equipe certificada e drones homologados' },
+                btnPrimary:   { text: 'SOLICITAR ORÇAMENTO', href: 'https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!', target: '_blank', icon: 'whatsapp.png' },
+                btnSecondary: { text: 'SAIBA MAIS SOBRE DRONE', href: 'servico-geral/limpeza-drone.html' }
+            },
+            {
+                // Slide 2 — slide 2 (plataforma genérica)
+                label:      'LOCAÇÃO DE CAMINHÃO',
+                title1:     'PLATAFORMA',
+                title2:     'ELEVATÓRIA',
+                subtitle:   'PARA TRABALHOS EM ALTURA',
+                desc:       'Solução rápida, segura e eficiente para manutenção, limpeza, instalação e acesso em altura sem necessidade de andaimes.',
+                icon1: { img: 'img/reboque-de-caminhao.png', title: 'FROTA PRÓPRIA',        desc: 'Equipamentos revisados e prontos para uso' },
+                icon2: { img: 'img/fita-metrica.png',        title: 'ALTURA DE 10M A 32M',  desc: 'Diversos modelos para cada necessidade' },
+                icon3: { img: 'img/fone-de-ouvido.png',      title: 'ATENDIMENTO RÁPIDO',   desc: 'Mais agilidade para sua operação não parar' },
+                btnPrimary:   { text: 'SOLICITAR ORÇAMENTO', href: 'https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!', target: '_blank', icon: 'whatsapp.png' },
+                btnSecondary: { text: 'VER EQUIPAMENTOS DISPONÍVEIS', href: 'servico-plataforma/index.html' }
+            },
+            {
+                // Slide 3 — slide alpinismo
+                label:      'SERVIÇO ESPECIALIZADO',
+                title1:     'ALPINISMO',
+                title2:     'INDUSTRIAL',
+                subtitle:   'ACESSO EM LOCAIS DE DIFÍCIL ALCANCE',
+                desc:       'Serviços em altura com técnicas de alpinismo industrial — acesso a fachadas, estruturas e locais impossíveis para equipamentos convencionais.',
+                icon1: { img: 'img/experiencia-do-usuario.png',    title: 'EQUIPE CERTIFICADA',    desc: 'Alpinistas treinados e com NR-35' },
+                icon2: { img: 'img/shield-check.png',      title: 'TOTAL SEGURANÇA',       desc: 'Equipamentos de proteção homologados' },
+                icon3: { img: 'img/cidade.png',                     title: 'QUALQUER ESTRUTURA',    desc: 'Torres, fachadas, galpões e mais' },
+                btnPrimary:   { text: 'SOLICITAR ORÇAMENTO', href: 'https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!', target: '_blank', icon: 'whatsapp.png' },
+                btnSecondary: { text: 'SAIBA MAIS SOBRE ALPINISMO', href: 'servico-geral/alpinismo.html' }
+            },
+            {
+                // Slide 4 — slide 3 (plataforma genérica)
+                label:      'LOCAÇÃO DE CAMINHÃO',
+                title1:     'PLATAFORMA',
+                title2:     'ELEVATÓRIA',
+                subtitle:   'PARA TRABALHOS EM ALTURA',
+                desc:       'Solução rápida, segura e eficiente para manutenção, limpeza, instalação e acesso em altura sem necessidade de andaimes.',
+                icon1: { img: 'img/reboque-de-caminhao.png', title: 'FROTA PRÓPRIA',        desc: 'Equipamentos revisados e prontos para uso' },
+                icon2: { img: 'img/fita-metrica.png',        title: 'ALTURA DE 10M A 32M',  desc: 'Diversos modelos para cada necessidade' },
+                icon3: { img: 'img/fone-de-ouvido.png',      title: 'ATENDIMENTO RÁPIDO',   desc: 'Mais agilidade para sua operação não parar' },
+                btnPrimary:   { text: 'SOLICITAR ORÇAMENTO', href: 'https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!', target: '_blank', icon: 'whatsapp.png' },
+                btnSecondary: { text: 'VER EQUIPAMENTOS DISPONÍVEIS', href: 'servico-plataforma/index.html' }
+            },
+            {
+                // Slide 5 — slide spyder
+                label:      'PLATAFORMA ESPECIAL',
+                title1:     'SPYDER',
+                title2:     '18 METROS',
+                subtitle:   'ALCANCE ONDE OUTROS NÃO CHEGAM',
+                desc:       'A Plataforma Spyder oferece 18m de altura de trabalho e 11,5m de alcance lateral, ideal para locais de acesso restrito e terrenos irregulares.',
+                icon1: { img: 'img/fita-metrica.png',           title: 'ALTURA: 18 METROS',     desc: 'Alcance lateral de 11,5 metros' },
+                icon2: { img: 'img/caminhao-plataforma.png',    title: 'ACESSO RESTRITO',        desc: 'Entra em espaços onde caminhões não conseguem' },
+                icon3: { img: 'img/shield-check.png',  title: 'SEGURANÇA TOTAL',        desc: 'Capacidade de 200kg com total estabilidade' },
+                btnPrimary:   { text: 'SOLICITAR ORÇAMENTO', href: 'https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!', target: '_blank', icon: 'whatsapp.png' },
+                btnSecondary: { text: 'VER PLATAFORMA SPYDER', href: 'servico-plataforma/plataforma-spyder-18m.html' }
+            },
+            {
+                // Slide 6 — slide 4 (plataforma genérica)
+                label:      'LOCAÇÃO DE CAMINHÃO',
+                title1:     'PLATAFORMA',
+                title2:     'ELEVATÓRIA',
+                subtitle:   'PARA TRABALHOS EM ALTURA',
+                desc:       'Solução rápida, segura e eficiente para manutenção, limpeza, instalação e acesso em altura sem necessidade de andaimes.',
+                icon1: { img: 'img/reboque-de-caminhao.png', title: 'FROTA PRÓPRIA',        desc: 'Equipamentos revisados e prontos para uso' },
+                icon2: { img: 'img/fita-metrica.png',        title: 'ALTURA DE 10M A 32M',  desc: 'Diversos modelos para cada necessidade' },
+                icon3: { img: 'img/fone-de-ouvido.png',      title: 'ATENDIMENTO RÁPIDO',   desc: 'Mais agilidade para sua operação não parar' },
+                btnPrimary:   { text: 'SOLICITAR ORÇAMENTO', href: 'https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!', target: '_blank', icon: 'whatsapp.png' },
+                btnSecondary: { text: 'VER EQUIPAMENTOS DISPONÍVEIS', href: 'servico-plataforma/index.html' }
+            },
+            {
+                // Slide 7 — slide 6 (plataforma genérica)
+                label:      'LOCAÇÃO DE CAMINHÃO',
+                title1:     'PLATAFORMA',
+                title2:     'ELEVATÓRIA',
+                subtitle:   'PARA TRABALHOS EM ALTURA',
+                desc:       'Solução rápida, segura e eficiente para manutenção, limpeza, instalação e acesso em altura sem necessidade de andaimes.',
+                icon1: { img: 'img/reboque-de-caminhao.png', title: 'FROTA PRÓPRIA',        desc: 'Equipamentos revisados e prontos para uso' },
+                icon2: { img: 'img/fita-metrica.png',        title: 'ALTURA DE 10M A 32M',  desc: 'Diversos modelos para cada necessidade' },
+                icon3: { img: 'img/fone-de-ouvido.png',      title: 'ATENDIMENTO RÁPIDO',   desc: 'Mais agilidade para sua operação não parar' },
+                btnPrimary:   { text: 'SOLICITAR ORÇAMENTO', href: 'https://wa.me/5511942210546?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!', target: '_blank', icon: 'whatsapp.png' },
+                btnSecondary: { text: 'VER EQUIPAMENTOS DISPONÍVEIS', href: 'servico-plataforma/index.html' }
+            }
+        ];
+
+        function atualizarConteudoHero(index) {
+            const d = slideData[index];
+            if (!d) return;
+
+            const heroContent = document.querySelector('.hero-content');
+
+            // Fade out
+            heroContent.style.transition = 'opacity 0.4s ease';
+            heroContent.style.opacity = '0';
+
+            setTimeout(() => {
+                // Textos
+                document.getElementById('hero-label').textContent    = d.label;
+                document.getElementById('hero-title1').textContent   = d.title1;
+                document.getElementById('hero-title2').textContent   = d.title2;
+                document.getElementById('hero-subtitle').textContent = d.subtitle;
+                document.getElementById('hero-desc').textContent     = d.desc;
+
+                // Ícones
+                document.getElementById('hero-icon1-img').src         = d.icon1.img;
+                document.getElementById('hero-icon1-img').alt         = d.icon1.title;
+                document.getElementById('hero-icon1-title').textContent = d.icon1.title;
+                document.getElementById('hero-icon1-desc').textContent  = d.icon1.desc;
+
+                document.getElementById('hero-icon2-img').src         = d.icon2.img;
+                document.getElementById('hero-icon2-img').alt         = d.icon2.title;
+                document.getElementById('hero-icon2-title').textContent = d.icon2.title;
+                document.getElementById('hero-icon2-desc').textContent  = d.icon2.desc;
+
+                document.getElementById('hero-icon3-img').src         = d.icon3.img;
+                document.getElementById('hero-icon3-img').alt         = d.icon3.title;
+                document.getElementById('hero-icon3-title').textContent = d.icon3.title;
+                document.getElementById('hero-icon3-desc').textContent  = d.icon3.desc;
+
+                // Botões
+                const btnP = document.getElementById('hero-btn-primary');
+                btnP.href = d.btnPrimary.href;
+                if (d.btnPrimary.target) btnP.target = d.btnPrimary.target;
+                btnP.innerHTML = d.btnPrimary.text + (d.btnPrimary.icon ? ` <img src="${d.btnPrimary.icon}" alt="Icone">` : '');
+
+                const btnS = document.getElementById('hero-btn-secondary');
+                btnS.href = d.btnSecondary.href;
+                btnS.textContent = d.btnSecondary.text;
+
+                // Fade in
+                heroContent.style.opacity = '1';
+            }, 400);
+        }
+
+        // Dots
+        const dotsContainer = document.getElementById('hero-dots');
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Slide ${i + 1}`);
+            dot.addEventListener('click', () => irParaSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+
+        function atualizarDots(index) {
+            document.querySelectorAll('.hero-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
+        }
+
+        function irParaSlide(index) {
+            slides[current].classList.remove('active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            atualizarConteudoHero(current);
+            atualizarDots(current);
+            reiniciarAutoplay();
+        }
+
+        function trocarSlide(direcao = 1) {
+            slides[current].classList.remove('active');
+            current = (current + direcao + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            atualizarConteudoHero(current);
+            atualizarDots(current);
+        }
+
+        let heroInterval = setInterval(() => trocarSlide(1), 5000);
+
+        function reiniciarAutoplay() {
+            clearInterval(heroInterval);
+            heroInterval = setInterval(() => trocarSlide(1), 5000);
+        }
+
+        document.getElementById('hero-next').addEventListener('click', () => {
+            trocarSlide(1);
+            reiniciarAutoplay();
+        });
+        document.getElementById('hero-prev').addEventListener('click', () => {
+            trocarSlide(-1);
+            reiniciarAutoplay();
+        });
+
+        // Swipe touch no hero (mobile)
+        let touchStartX = 0;
+        const heroCarousel = document.querySelector('.hero-carousel');
+        heroCarousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+        heroCarousel.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                trocarSlide(diff > 0 ? 1 : -1);
+                reiniciarAutoplay();
+            }
+        }, { passive: true });
+
+        // BOTÃO TOPO
+        const btnTopo = document.getElementById("btnTopo");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                btnTopo.style.display = "block";
+            } else {
+                btnTopo.style.display = "none";
+            }
+        });
+
+        btnTopo.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // CARROSSEL DE CLIENTES — duplica logos para loop infinito
+        (function () {
+            const track = document.querySelector('.logos-track');
+            if (!track) return;
+            const logos = Array.from(track.querySelectorAll('.logo'));
+            logos.forEach(logo => {
+                const clone = logo.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                track.appendChild(clone);
+            });
+        })();
+    </script>
+
+<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/bafe5a44-9e71-42bb-8bd6-720f41a06435-loader.js" ></script>
+</body>
+
+</html>

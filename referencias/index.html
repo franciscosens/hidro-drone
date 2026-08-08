@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hidro Drone — Referências de sites de lavação com drone</title>
+<meta name="description" content="Índice das referências coletadas: sites de limpeza com drone no Brasil, EUA e Europa, com cópias locais e notas de design.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#06141C;
+    --panel:#0D2733;
+    --line:rgba(127,184,212,.18);
+    --line-strong:rgba(127,184,212,.35);
+    --ink:#EAF4F8;
+    --ink-2:#8FB0BF;
+    --water:#35BEDC;
+    --ok:#4ADE80;
+    --fail:#F87171;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:"Archivo",system-ui,sans-serif;
+    background:
+      radial-gradient(900px 500px at 15% -10%, rgba(53,190,220,.14), transparent 60%),
+      radial-gradient(700px 400px at 95% 110%, rgba(27,127,158,.12), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    min-height:100vh;
+    padding:56px 24px 72px;
+    line-height:1.5;
+  }
+  .wrap{max-width:1060px;margin:0 auto}
+  .mono{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;
+  }
+  header{text-align:center;margin-bottom:14px}
+  .logo{width:110px;height:auto;filter:brightness(0) invert(1);margin-bottom:22px}
+  h1{
+    font-size:clamp(1.5rem,3.6vw,2.2rem);
+    font-weight:800;
+    font-variation-settings:"wdth" 114;
+    text-transform:uppercase;
+    line-height:1.1;
+  }
+  p.sub{color:var(--ink-2);margin:10px auto 0;max-width:44em}
+  p.sub a{color:var(--water)}
+  h2{
+    font-size:1.05rem;font-weight:700;
+    font-variation-settings:"wdth" 110;
+    text-transform:uppercase;letter-spacing:.06em;
+    margin:44px 0 6px;
+    display:flex;align-items:center;gap:12px;
+  }
+  h2 .count{color:var(--ink-2);font-weight:500;font-size:.8rem;letter-spacing:0}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;
+    margin-top:16px;
+  }
+  .card{
+    display:flex;flex-direction:column;gap:8px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 20px 18px;
+  }
+  .card.dead{opacity:.55}
+  .card .top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .card h3{font-size:1.02rem;font-weight:700;font-variation-settings:"wdth" 106}
+  .card .flag{font-size:.85rem}
+  .card p.note{color:var(--ink-2);font-size:.86rem;flex:1}
+  .card p.head{
+    color:var(--ink);font-size:.86rem;font-style:italic;
+    border-left:2px solid var(--water);padding-left:10px;
+  }
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .links a{
+    text-decoration:none;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+    padding:7px 12px;border-radius:8px;
+    border:1px solid var(--line-strong);
+    color:var(--ink);
+    transition:border-color .15s, background .15s;
+  }
+  .links a.local{background:rgba(53,190,220,.12);color:var(--water);border-color:rgba(53,190,220,.4)}
+  .links a:hover{border-color:var(--water);background:rgba(53,190,220,.18)}
+  .links a:focus-visible{outline:3px solid var(--water);outline-offset:2px}
+  .badge{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:3px 8px;border-radius:999px;white-space:nowrap;
+  }
+  .badge.ok{color:var(--ok);border:1px solid rgba(74,222,128,.35)}
+  .badge.fail{color:var(--fail);border:1px solid rgba(248,113,113,.35)}
+  .badge.partial{color:#FBBF24;border:1px solid rgba(251,191,36,.35)}
+  footer{margin-top:56px;text-align:center;color:var(--ink-2)}
+  footer a{color:var(--water)}
+  @media (max-width:640px){body{padding:40px 16px 56px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <img class="logo" src="../assets/logo.png" alt="Hidro Drone">
+  <h1>Referências — lavação com drone</h1>
+  <p class="sub">17 sites coletados em 08/08/2026 nos mercados Brasil, EUA e Europa/UK. Cada card tem o link do site original e da cópia local (HTML salvo; imagens e CSS carregam da internet). Notas completas no <a href="REFERENCIAS.md">REFERENCIAS.md</a>.</p>
+</header>
+
+<h2>Brasil <span class="count">4 sites</span></h2>
+<div class="grid">
+  <div class="card">
+    <div class="top"><h3>🥇 Dronn Clean</h3><span class="badge ok">ok</span></div>
+    <p class="head">"A limpeza em altura evoluiu. Sem riscos. Sem desperdício."</p>
+    <p class="note">Concorrente direto, de Curitiba. A referência BR mais forte: dark/tech com vídeo de fundo, grade rápido/seguro/eficiente/econômico, CTA WhatsApp 3×.</p>
+    <div class="links"><a class="local" href="dronnclean-br/index.html">Cópia local</a><a href="https://dronnclean.com.br/" target="_blank" rel="noopener">dronnclean.com.br ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>Predial Engenharia</h3><span class="badge ok">ok</span></div>
+    <p class="head">"Lavagem de fachadas com drone"</p>
+    <p class="note">Design fraco; útil pelos argumentos: substitui balancim/cadeirinha, remove fuligem e maresia, ideal para vidro e pastilha.</p>
+    <div class="links"><a class="local" href="predial-eng-br/index.html">Cópia local</a><a href="https://predial.eng.br/drone" target="_blank" rel="noopener">predial.eng.br ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>LPTA</h3><span class="badge partial">parcial</span></div>
+    <p class="head">Página do drone virou redirect para a home (locação de plataforma)</p>
+    <p class="note">Trio de provas sob o hero (frota própria / 10–32 m / atendimento rápido) e WhatsApp com mensagem pré-preenchida para rastrear origem do lead.</p>
+    <div class="links"><a class="local" href="lpta-br/index.html">Cópia local</a><a href="https://lpta.com.br/lavagem-de-fachada-com-drone/" target="_blank" rel="noopener">lpta.com.br ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>Dronewash Brasil</h3><span class="badge ok">ok</span></div>
+    <p class="head">"A maior fabricante de kits de limpeza para drones do Brasil"</p>
+    <p class="note">Fabricante. Números concretos ("até 70% do tempo vs rapel"), casos de uso por superfície (vidro, concreto, telha, pá eólica, tanque), logos de clientes.</p>
+    <div class="links"><a class="local" href="dronewash-br/index.html">Cópia local</a><a href="https://dronewash.com.br/" target="_blank" rel="noopener">dronewash.com.br ↗</a></div>
+  </div>
+</div>
+
+<h2>Estados Unidos <span class="count">8 de 9 sites</span></h2>
+<div class="grid">
+  <div class="card">
+    <div class="top"><h3>🥇 DroneShine</h3><span class="badge ok">ok</span></div>
+    <p class="head">"Your building, spotless. No one leaves the ground."</p>
+    <p class="note">Melhor copy do lote ("All of the shine, none of the climb"), slider antes/depois arrastável, processo em 4 passos, site custom leve.</p>
+    <div class="links"><a class="local" href="droneshine-us/index.html">Cópia local</a><a href="https://droneshinecleaning.com/" target="_blank" rel="noopener">droneshinecleaning.com ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>🥇 Lucid Bots</h3><span class="badge ok">ok</span></div>
+    <p class="head">"Commercial Drones for Exterior Cleaning"</p>
+    <p class="note">Fabricante, acabamento premium: promessa quantificada ("1.5–2.5× productivity"), naming de produto (Sherpa®), calculadora de estimativa como CTA.</p>
+    <div class="links"><a class="local" href="lucidbots-us/index.html">Cópia local</a><a href="https://www.lucidbots.com/" target="_blank" rel="noopener">lucidbots.com ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>Drone Clean USA</h3><span class="badge ok">ok</span></div>
+    <p class="head">"Give your Property a Better Clean — Without the Risk"</p>
+    <p class="note">Empilha selos de confiança (FAA Licensed, Veteran Owned) e cita o fabricante do drone como prova de credibilidade.</p>
+    <div class="links"><a class="local" href="droneclean-usa/index.html">Cópia local</a><a href="https://dronecleanusa.com/" target="_blank" rel="noopener">dronecleanusa.com ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>DroneWash+</h3><span class="badge ok">ok</span></div>
+    <p class="head">"A Smarter, Faster Way to Maintain Your Building"</p>
+    <p class="note">CTAs em camadas por temperatura do lead: orçamento (quente), call (morno), e-book grátis (frio).</p>
+    <div class="links"><a class="local" href="dronewash-plus-us/index.html">Cópia local</a><a href="https://www.trydronewash.com/drone-building-cleaning" target="_blank" rel="noopener">trydronewash.com ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>DronePowered</h3><span class="badge ok">ok</span></div>
+    <p class="head">"The Future of Safety and Efficiency"</p>
+    <p class="note">LP local-service (Miami/New Orleans): CTA duplo telefone+form repetido, cidades atendidas, 30 vídeos YouTube.</p>
+    <div class="links"><a class="local" href="dronepowered-us/index.html">Cópia local</a><a href="https://www.dronepowered.us/" target="_blank" rel="noopener">dronepowered.us ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>FlyWash</h3><span class="badge ok">ok</span></div>
+    <p class="head">"Elevate Your Property's Appeal."</p>
+    <p class="note">FAQ extensa como quebra de objeção, depoimentos de clientes, orçamento gratuito + telefone 1-877.</p>
+    <div class="links"><a class="local" href="flywash-us/index.html">Cópia local</a><a href="https://flywashdrone.com/" target="_blank" rel="noopener">flywashdrone.com ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>VSI Aerial</h3><span class="badge ok">ok</span></div>
+    <p class="head">"Drone Exterior Cleaning Services"</p>
+    <p class="note">Organização por serviço (fachada/telhado/solar/calha), 6+ sliders antes/depois, blog atacando a objeção de preço.</p>
+    <div class="links"><a class="local" href="vsi-aerial-us/index.html">Cópia local</a><a href="https://www.vsiaerial.com/drone-cleaning-services" target="_blank" rel="noopener">vsiaerial.com ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>SkyWash Drones</h3><span class="badge ok">ok</span></div>
+    <p class="head">"The Future of Exterior Building Cleaning is Here"</p>
+    <p class="note">Processo em passos ("How we work together"). Exemplo do clichê a evitar no headline. Telefones +44 — na prática é UK.</p>
+    <div class="links"><a class="local" href="skywash-us/index.html">Cópia local</a><a href="https://skywashdrones.com/" target="_blank" rel="noopener">skywashdrones.com ↗</a></div>
+  </div>
+  <div class="card dead">
+    <div class="top"><h3>Wash Drones</h3><span class="badge fail">falhou</span></div>
+    <p class="note">Bloqueado por Cloudflare — sem cópia local.</p>
+    <div class="links"><a href="https://washdrones.com/" target="_blank" rel="noopener">washdrones.com ↗</a></div>
+  </div>
+</div>
+
+<h2>Europa / Reino Unido / Austrália <span class="count">5 de 6 sites</span></h2>
+<div class="grid">
+  <div class="card">
+    <div class="top"><h3>🥇 KTV Working Drone <span class="flag">🇳🇴</span></h3><span class="badge ok">ok</span></div>
+    <p class="head">"Faster, safer and sustainable"</p>
+    <p class="note">Fabricante norueguês. Números gigantes como autoridade: 60 milhões de m²/ano, 68 países; hero com vídeo e contadores animados.</p>
+    <div class="links"><a class="local" href="ktv-norway/index.html">Cópia local</a><a href="https://ktvworkingdrone.com/" target="_blank" rel="noopener">ktvworkingdrone.com ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>🥇 Drone Exterior Solutions <span class="flag">🇬🇧</span></h3><span class="badge partial">parcial</span></div>
+    <p class="head">"The Drone Replaces Scaffolding, Cherry Pickers & Abseiling Teams"</p>
+    <p class="note">Melhor enquadramento de substituição da categoria; split comercial × residencial já no hero. A URL /services/ original virou 404 — salva a home + página comercial.</p>
+    <div class="links"><a class="local" href="drone-exterior-uk/index.html">Cópia local</a><a class="local" href="drone-exterior-uk/services.html">Pág. comercial</a><a href="https://droneexteriorsolutions.co.uk/" target="_blank" rel="noopener">droneexteriorsolutions.co.uk ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>Drone Cleaning UK <span class="flag">🇬🇧</span></h3><span class="badge ok">ok</span></div>
+    <p class="head">"Professional drone-based cleaning… hard-to-reach areas"</p>
+    <p class="note">Página inteira estruturada como FAQ SEO (custo, segurança, licenças, superfícies) + rodapé com links por região para SEO local.</p>
+    <div class="links"><a class="local" href="dronecleaning-uk/index.html">Cópia local</a><a href="https://dronecleaning.org.uk/" target="_blank" rel="noopener">dronecleaning.org.uk ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>Drone Clean UK <span class="flag">🇬🇧</span></h3><span class="badge ok">ok</span></div>
+    <p class="head">"Revolutionising Aerial Cleaning"</p>
+    <p class="note">Gancho emocional de segurança (queda de altura como maior causa de morte na limpeza), 400 m²/h, verticais: estádios, hotéis, patrimônio.</p>
+    <div class="links"><a class="local" href="droneclean-uk/index.html">Cópia local</a><a href="https://www.droneclean.uk/" target="_blank" rel="noopener">droneclean.uk ↗</a></div>
+  </div>
+  <div class="card">
+    <div class="top"><h3>Drone Volt <span class="flag">🇫🇷</span></h3><span class="badge ok">ok</span></div>
+    <p class="head">"Drone Cleaning Service — specialising in overhead spraying"</p>
+    <p class="note">Fabricante francês, posicionamento Drone-as-a-Service. CTA dupla fixa quente/frio: "Call our experts" + "Request a quote".</p>
+    <div class="links"><a class="local" href="dronevolt-fr/index.html">Cópia local</a><a href="https://www.dronevolt.com/en/drone-as-a-service/drone-cleaning-service/" target="_blank" rel="noopener">dronevolt.com ↗</a></div>
+  </div>
+  <div class="card dead">
+    <div class="top"><h3>Apex Drone Wash <span class="flag">🇦🇺</span></h3><span class="badge fail">falhou</span></div>
+    <p class="note">Domínio fora do ar (NXDOMAIN) — sem cópia local.</p>
+    <div class="links"><a href="https://www.apexdronewash.com.au/facade-cleaning/" target="_blank" rel="noopener">apexdronewash.com.au ↗</a></div>
+  </div>
+</div>
+
+<footer>
+  <p class="mono">Hidro Drone · material interno de pesquisa — não publicar</p>
+  <p style="margin-top:8px;font-size:.9rem"><a href="../index.html">← Voltar ao seletor de versões da LP</a> · <a href="REFERENCIAS.md">Notas completas (REFERENCIAS.md)</a></p>
+</footer>
+
+</div>
+</body>
+</html>
