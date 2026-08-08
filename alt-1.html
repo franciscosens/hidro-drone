@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hidro Drone — Ficha técnica: lavagem de fachadas e limpeza industrial com drones</title>
+<meta name="description" content="Ficha técnica de operação da Hidro Drone: lavagem de fachadas de prédios e limpeza industrial com drones de jato de alta pressão. Jato até 250 bar, alcance +100 m, zero pessoas em altura.">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F8FAFB;
+    --panel:#FFFFFF;
+    --ink:#0D1A24;
+    --ink-2:#51626F;
+    --line:#D8E0E6;
+    --line-2:#AFBEC8;
+    --blue:#1655C4;
+    --blue-deep:#0E3E93;
+    --blue-soft:#EAF0FA;
+    --grid:rgba(22,85,196,.055);
+    --grid-2:rgba(22,85,196,.10);
+    --accent:#EE5A1D;
+    --accent-deep:#CE4A12;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --sans:"Space Grotesk",system-ui,sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none !important;transition:none !important}
+  }
+
+  body{
+    font-family:var(--sans);
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(to right, var(--grid-2) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-2) 1px, transparent 1px),
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  ::selection{background:var(--blue);color:#fff}
+  a{color:inherit}
+  img,svg,video{max-width:100%;display:block}
+
+  .mono{
+    font-family:var(--mono);
+    font-size:.7rem;
+    font-weight:500;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* folha de desenho: hairlines laterais */
+  .sheet{
+    max-width:1180px;margin:0 auto;
+    border-inline:1px solid var(--line);
+    background:rgba(248,250,251,.55);
+  }
+  .sheet .wrap{max-width:none;padding:0 40px}
+  @media (max-width:760px){
+    .sheet{border-inline:none}
+    .sheet .wrap{padding:0 20px}
+  }
+
+  /* ---------- botões ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    text-decoration:none;cursor:pointer;border:none;
+    font-family:var(--sans);font-weight:700;font-size:.95rem;
+    padding:14px 24px;
+    white-space:nowrap;
+    transition:background .15s,border-color .15s,color .15s,transform .15s;
+  }
+  .btn svg{width:18px;height:18px;flex-shrink:0}
+  .btn-primary{
+    background:var(--accent);color:#fff;
+    box-shadow:4px 4px 0 rgba(13,26,36,.16);
+  }
+  .btn-primary:hover{background:var(--accent-deep);transform:translate(-1px,-1px)}
+  .btn-ghost{
+    background:transparent;color:var(--ink);
+    border:1px solid var(--line-2);
+  }
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+  .btn-sm{padding:10px 16px;font-size:.85rem}
+  .btn:focus-visible,a:focus-visible,summary:focus-visible,button:focus-visible{
+    outline:3px solid var(--blue);outline-offset:3px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:60;
+    background:rgba(248,250,251,.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo img{width:58px;height:auto}
+  .logo b{
+    font-size:1rem;font-weight:700;letter-spacing:.02em;line-height:1.1;
+    text-transform:uppercase;
+  }
+  .logo .mono{display:block;color:var(--ink-2);font-size:.56rem;letter-spacing:.18em;margin-top:2px}
+  .nav-links{display:flex;gap:4px;list-style:none}
+  .nav-links a{
+    text-decoration:none;
+    font-family:var(--mono);font-size:.68rem;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-2);
+    padding:8px 10px;
+    transition:color .15s;
+  }
+  .nav-links a:hover{color:var(--blue)}
+  .nav-right{display:flex;align-items:center;gap:8px}
+  .menu-btn{
+    display:none;
+    background:none;border:1px solid var(--line-2);cursor:pointer;
+    width:42px;height:42px;place-items:center;color:var(--ink);
+  }
+  .menu-btn svg{width:22px;height:22px}
+  .menu-btn .icon-close{display:none}
+  @media (max-width:960px){
+    .menu-btn{display:grid}
+    .nav-links{
+      display:none;
+      position:absolute;top:66px;left:0;right:0;
+      flex-direction:column;gap:0;
+      background:var(--panel);
+      border-bottom:1px solid var(--line-2);
+      box-shadow:0 24px 40px rgba(13,26,36,.12);
+      padding:6px 0;
+    }
+    .nav-links a{display:block;padding:14px 24px;font-size:.78rem}
+    header.menu-open .nav-links{display:flex}
+    header.menu-open .icon-open{display:none}
+    header.menu-open .icon-close{display:block}
+  }
+  @media (max-width:560px){
+    .logo b span{display:none}
+    .nav .btn-sm{padding:9px 12px;font-size:.78rem}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{border-bottom:1px solid var(--line)}
+  .hero-grid{
+    display:grid;grid-template-columns:1.12fr .88fr;gap:56px;
+    align-items:center;
+    padding-block:72px 64px;
+  }
+  .doc-tag{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:.66rem;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--blue);
+    border:1px solid var(--line-2);
+    background:var(--panel);
+    padding:7px 12px;
+    margin-bottom:26px;
+  }
+  .doc-tag::before{content:"";width:8px;height:8px;background:var(--accent)}
+  h1{
+    font-size:clamp(2rem,5.6vw + .4rem,3.9rem);
+    line-height:1.02;
+    font-weight:700;
+    letter-spacing:-.02em;
+  }
+  h1 .zero{
+    color:var(--blue);
+    border-bottom:3px dotted var(--accent);
+  }
+  .hero p.lead{
+    margin:24px 0 30px;
+    font-size:1.08rem;color:var(--ink-2);
+    max-width:32em;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-note{
+    margin-top:30px;padding-top:18px;
+    border-top:1px solid var(--line);
+    display:flex;gap:10px 26px;flex-wrap:wrap;
+    color:var(--ink-2);
+  }
+  .hero-note span b{color:var(--ink);font-weight:700}
+
+  .hero-media{
+    position:relative;
+    justify-self:center;
+    width:min(320px,100%);
+    padding-right:36px; /* espaço da cota vertical */
+  }
+  .hero-media .frame{position:relative}
+  .hero-media video{
+    width:100%;
+    aspect-ratio:9/16;
+    object-fit:cover;
+    border:1px solid var(--line-2);
+    background:var(--blue-soft);
+  }
+  .hero-media figcaption{
+    margin-top:10px;
+    font-family:var(--mono);font-size:.64rem;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-2);
+    display:flex;gap:10px;
+  }
+  .hero-media figcaption b{color:var(--blue);font-weight:700;flex-shrink:0;white-space:nowrap}
+  .hero-media .frame .vcota{right:-32px}
+
+  /* marcas de corte nos cantos */
+  .crops{position:absolute;inset:-8px;pointer-events:none;
+    background:
+      linear-gradient(var(--ink) 0 0) 0 0/14px 1.5px,
+      linear-gradient(var(--ink) 0 0) 0 0/1.5px 14px,
+      linear-gradient(var(--ink) 0 0) 100% 0/14px 1.5px,
+      linear-gradient(var(--ink) 0 0) 100% 0/1.5px 14px,
+      linear-gradient(var(--ink) 0 0) 0 100%/14px 1.5px,
+      linear-gradient(var(--ink) 0 0) 0 100%/1.5px 14px,
+      linear-gradient(var(--ink) 0 0) 100% 100%/14px 1.5px,
+      linear-gradient(var(--ink) 0 0) 100% 100%/1.5px 14px;
+    background-repeat:no-repeat;
+  }
+
+  /* cota vertical */
+  .vcota{
+    position:absolute;top:0;bottom:0;right:0;
+    width:24px;
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    color:var(--accent);
+  }
+  .vcota i{flex:1;width:9px;border-right:1px solid currentColor;position:relative}
+  .vcota i::before{content:"";position:absolute;right:-5px;width:9px;height:1px;background:currentColor}
+  .vcota i:first-child::before{top:0}
+  .vcota i:last-child::before{bottom:0}
+  .vcota span{
+    writing-mode:vertical-rl;
+    font-family:var(--mono);font-size:.6rem;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;
+    white-space:nowrap;
+  }
+
+  /* cota horizontal */
+  .cota{
+    display:flex;align-items:flex-end;gap:10px;
+    font-family:var(--mono);font-size:.6rem;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-2);
+    margin-top:14px;
+  }
+  .cota i{flex:1;height:9px;border-bottom:1px solid currentColor;position:relative;min-width:16px}
+  .cota i::before{content:"";position:absolute;bottom:-4px;width:1px;height:9px;background:currentColor}
+  .cota i:first-child::before{left:0}
+  .cota i:last-child::before{right:0}
+  .cota span{transform:translateY(4px)}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;padding-block:44px 52px;gap:44px}
+    .hero-media{width:min(300px,88%)}
+    .hero-ctas .btn{flex:1 1 auto}
+  }
+
+  /* ---------- carimbo (title block) ---------- */
+  .carimbo{border-bottom:1px solid var(--line);background:var(--panel)}
+  .carimbo-grid{
+    display:grid;grid-template-columns:repeat(6,1fr);
+  }
+  .carimbo-cell{
+    padding:16px 18px 14px;
+    border-left:1px solid var(--line);
+    min-width:0;
+  }
+  .carimbo-cell:first-child{border-left:none}
+  .carimbo-cell .mono{color:var(--ink-2);font-size:.58rem;display:block;margin-bottom:4px}
+  .carimbo-cell strong{font-size:.86rem;font-weight:700;line-height:1.3;display:block}
+  @media (max-width:960px){
+    .carimbo-grid{grid-template-columns:repeat(3,1fr)}
+    .carimbo-cell:nth-child(4){border-left:none}
+    .carimbo-cell:nth-child(n+4){border-top:1px solid var(--line)}
+  }
+  @media (max-width:560px){
+    .carimbo-grid{grid-template-columns:repeat(2,1fr)}
+    .carimbo-cell{border-left:none;border-top:1px solid var(--line)}
+    .carimbo-cell:nth-child(-n+2){border-top:none}
+    .carimbo-cell:nth-child(even){border-left:1px solid var(--line)}
+  }
+
+  /* ---------- seções ---------- */
+  section{padding:84px 0;border-bottom:1px solid var(--line)}
+  .sec-head{
+    display:flex;align-items:flex-start;gap:24px;
+    margin-bottom:48px;
+  }
+  .sec-num{
+    font-family:var(--mono);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;
+    color:var(--blue);
+    line-height:1;
+    padding:4px 0 8px;
+    border-bottom:3px solid var(--blue);
+    flex-shrink:0;
+  }
+  .sec-title{flex:1;min-width:0}
+  .sec-title .kicker{
+    font-family:var(--mono);font-size:.66rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-2);
+    display:block;margin-bottom:8px;
+  }
+  h2{
+    font-size:clamp(1.5rem,3vw,2.2rem);
+    line-height:1.1;font-weight:700;letter-spacing:-.015em;
+  }
+  .sec-title p{margin-top:12px;color:var(--ink-2);max-width:44em}
+  .sec-ref{
+    font-family:var(--mono);font-size:.6rem;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--line-2);
+    flex-shrink:0;
+    padding-top:8px;
+    text-align:right;
+  }
+  @media (max-width:640px){
+    section{padding:60px 0}
+    .sec-head{flex-wrap:wrap;gap:14px;margin-bottom:36px}
+    .sec-ref{display:none}
+  }
+
+  /* ---------- 01.0 especificações ---------- */
+  .specs{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--line-2);
+    background:var(--panel);
+  }
+  .spec{
+    padding:26px 24px 22px;
+    border-left:1px solid var(--line);
+    min-width:0;
+  }
+  .spec:first-child{border-left:none}
+  .spec .mono{color:var(--ink-2);font-size:.62rem;display:block;margin-bottom:10px}
+  .spec strong{
+    font-size:clamp(2rem,3.4vw,2.8rem);
+    font-weight:700;line-height:1;letter-spacing:-.02em;
+    display:block;
+  }
+  .spec strong small{
+    font-size:.9rem;font-weight:500;color:var(--ink-2);letter-spacing:0;
+    margin-left:4px;
+  }
+  .spec.alert strong{color:var(--accent)}
+  .spec .sub{
+    margin-top:8px;
+    font-family:var(--mono);font-size:.6rem;color:var(--ink-2);
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  .spec-note{
+    margin-top:14px;
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;
+    color:var(--ink-2);
+    display:flex;gap:8px;align-items:baseline;
+  }
+  .spec-note::before{content:"※";color:var(--accent);flex-shrink:0}
+  @media (max-width:880px){
+    .specs{grid-template-columns:repeat(2,1fr)}
+    .spec:nth-child(3){border-left:none}
+    .spec:nth-child(n+3){border-top:1px solid var(--line)}
+  }
+  @media (max-width:400px){
+    .spec{padding:20px 16px 18px}
+  }
+
+  /* ---------- figuras ---------- */
+  figure.fig{position:relative}
+  .fig-media{
+    position:relative;display:block;
+    border:1px solid var(--line-2);
+    overflow:hidden;
+    text-decoration:none;
+  }
+  .fig-media img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  a.fig-media:hover img{transform:scale(1.04)}
+  .fig-id{
+    position:absolute;top:0;left:0;z-index:2;
+    background:var(--ink);color:#fff;
+    font-family:var(--mono);font-size:.6rem;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;
+    padding:5px 9px;
+  }
+  figure.fig figcaption{
+    margin-top:10px;
+    display:flex;align-items:baseline;gap:10px;
+    font-family:var(--mono);font-size:.64rem;font-weight:500;
+    letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-2);
+  }
+  figure.fig figcaption .lnk{
+    margin-left:auto;flex-shrink:0;
+    color:var(--blue);text-decoration:none;font-weight:700;
+  }
+  figure.fig figcaption .lnk:hover{text-decoration:underline}
+
+  /* ---------- 02.0 serviços ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line-2);
+    display:flex;flex-direction:column;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .card:hover{border-color:var(--blue);box-shadow:6px 6px 0 rgba(22,85,196,.12)}
+  .card .fig-media{border:none;border-bottom:1px solid var(--line);aspect-ratio:16/10}
+  .card-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+  .card-body>p{color:var(--ink-2);font-size:.93rem}
+  .card ul{
+    list-style:none;margin-top:auto;padding-top:14px;
+    border-top:1px dashed var(--line-2);
+    font-family:var(--mono);font-size:.68rem;font-weight:500;
+    letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-2);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .card ul li{display:flex;gap:8px}
+  .card ul li::before{content:"▸";color:var(--blue)}
+  @media (max-width:920px){.cards{grid-template-columns:1fr;max-width:560px}}
+
+  /* ---------- 03.0 diagrama ---------- */
+  .diagram{
+    display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:44px;
+    align-items:start;
+  }
+  .diagram-fig{position:relative;padding-left:34px}
+  .diagram-fig .vcota{left:0;right:auto}
+  .diagram-fig .vcota i{border-right:none;border-left:1px solid currentColor}
+  .diagram-fig .vcota i::before{right:auto;left:-5px}
+  .diagram-media{position:relative;border:1px solid var(--line-2);overflow:hidden}
+  .diagram-media img{width:100%;height:auto;display:block}
+  .pin{
+    position:absolute;z-index:3;
+    width:26px;height:26px;border-radius:50%;
+    background:#fff;
+    border:1.5px solid var(--accent);
+    color:var(--accent);
+    font-family:var(--mono);font-size:.68rem;font-weight:700;
+    display:grid;place-items:center;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 0 3px rgba(255,255,255,.55), 0 2px 8px rgba(13,26,36,.3);
+  }
+  .pin::after{
+    content:"";position:absolute;top:100%;left:50%;
+    width:1px;height:16px;background:var(--accent);
+  }
+  .legend{display:flex;flex-direction:column}
+  .legend-head{
+    font-family:var(--mono);font-size:.64rem;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-2);
+    padding-bottom:12px;border-bottom:2px solid var(--ink);
+  }
+  .legend-item{
+    display:flex;gap:16px;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .legend-item .key{
+    width:26px;height:26px;border-radius:50%;flex-shrink:0;
+    border:1.5px solid var(--accent);color:var(--accent);
+    font-family:var(--mono);font-size:.68rem;font-weight:700;
+    display:grid;place-items:center;
+    background:#fff;
+  }
+  .legend-item h3{font-size:.98rem;font-weight:700}
+  .legend-item p{color:var(--ink-2);font-size:.9rem;margin-top:2px}
+  .legend-item .data{
+    display:block;margin-top:6px;
+    font-family:var(--mono);font-size:.62rem;font-weight:500;
+    letter-spacing:.08em;text-transform:uppercase;
+    color:var(--blue);
+  }
+  .safety-note{
+    margin-top:22px;
+    border:1px solid var(--line-2);
+    border-left:4px solid var(--accent);
+    background:var(--panel);
+    padding:16px 18px;
+    font-size:.9rem;color:var(--ink-2);
+  }
+  .safety-note b{
+    display:block;
+    font-family:var(--mono);font-size:.62rem;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:6px;
+  }
+  @media (max-width:880px){
+    .diagram{grid-template-columns:1fr;gap:32px}
+    .diagram-fig{max-width:420px}
+  }
+
+  /* ---------- 04.0 procedimento ---------- */
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border:1px solid var(--line-2);
+    background:var(--panel);
+    counter-reset:etapa;
+  }
+  .step{
+    position:relative;
+    padding:26px 24px 30px;
+    border-left:1px solid var(--line);
+    min-width:0;
+  }
+  .step:first-child{border-left:none}
+  .step .num{
+    font-family:var(--mono);font-size:.62rem;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--blue);
+    display:flex;align-items:center;gap:8px;
+    margin-bottom:14px;
+  }
+  .step .num::after{content:"";flex:1;height:1px;background:var(--line)}
+  .step h3{font-size:1.02rem;font-weight:700;margin-bottom:8px}
+  .step p{color:var(--ink-2);font-size:.9rem}
+  @media (max-width:880px){
+    .steps{grid-template-columns:1fr 1fr}
+    .step:nth-child(3){border-left:none}
+    .step:nth-child(n+3){border-top:1px solid var(--line)}
+  }
+  @media (max-width:520px){
+    .steps{grid-template-columns:1fr}
+    .step{border-left:none}
+    .step:nth-child(n+2){border-top:1px solid var(--line)}
+  }
+
+  /* ---------- 05.0 registros ---------- */
+  .works{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 22px}
+  .works .fig-media{aspect-ratio:4/5}
+  .works-foot{
+    margin-top:30px;display:flex;justify-content:center;
+  }
+  @media (max-width:920px){.works{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.works{grid-template-columns:1fr}}
+
+  /* ---------- 06.0 comparativo ---------- */
+  .table-scroll{
+    overflow-x:auto;
+    border:1px solid var(--line-2);
+    background:var(--panel);
+  }
+  table{width:100%;border-collapse:collapse;min-width:660px}
+  caption{
+    text-align:left;
+    font-family:var(--mono);font-size:.62rem;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-2);
+    padding:12px 18px;
+    border-bottom:2px solid var(--ink);
+  }
+  th,td{padding:14px 18px;text-align:left;font-size:.92rem;vertical-align:top}
+  thead th{
+    font-family:var(--mono);font-size:.62rem;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-2);
+    border-bottom:1px solid var(--line-2);
+  }
+  thead th.hd-col{color:var(--blue)}
+  tbody th{
+    font-weight:500;font-size:.9rem;color:var(--ink-2);
+    border-top:1px solid var(--line);
+  }
+  tbody td{border-top:1px solid var(--line)}
+  td.hd-col{
+    background:var(--blue-soft);
+    font-weight:700;color:var(--blue-deep);
+    border-inline:1px solid var(--line);
+  }
+  .scroll-hint{display:none;margin-top:10px;color:var(--ink-2)}
+  @media (max-width:700px){.scroll-hint{display:block}}
+
+  /* ---------- 07.0 notas técnicas / FAQ ---------- */
+  .faq{max-width:820px;display:flex;flex-direction:column;border-top:2px solid var(--ink)}
+  .faq details{border-bottom:1px solid var(--line-2);background:transparent}
+  .faq details[open]{background:var(--panel)}
+  .faq summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:baseline;gap:16px;
+    padding:18px 14px 18px 4px;
+    font-weight:700;font-size:1rem;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .nt{
+    font-family:var(--mono);font-size:.66rem;font-weight:700;
+    letter-spacing:.1em;color:var(--blue);
+    flex-shrink:0;
+    padding-top:.2em;
+  }
+  .faq summary .ind{
+    margin-left:auto;flex-shrink:0;
+    font-family:var(--mono);font-weight:500;color:var(--accent);
+    transition:transform .2s;
+  }
+  .faq details[open] .ind{transform:rotate(45deg)}
+  .faq details p{
+    padding:0 40px 20px 44px;
+    color:var(--ink-2);font-size:.94rem;max-width:60em;
+  }
+  @media (max-width:560px){
+    .faq details p{padding:0 12px 18px 4px}
+  }
+
+  /* ---------- 08.0 orçamento ---------- */
+  .cta-sec{border-bottom:none}
+  .cta-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:start}
+  .cta-copy p.lead{color:var(--ink-2);margin-top:14px;max-width:34em}
+  .cta-checks{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:12px}
+  .cta-checks li{
+    display:flex;gap:12px;align-items:baseline;
+    font-size:.95rem;
+  }
+  .cta-checks li::before{
+    content:"[✓]";
+    font-family:var(--mono);font-size:.75rem;font-weight:700;
+    color:var(--blue);flex-shrink:0;
+  }
+  .cta-box{
+    background:var(--panel);
+    border:1px solid var(--ink);
+    box-shadow:8px 8px 0 rgba(22,85,196,.14);
+    padding:28px;
+    display:flex;flex-direction:column;gap:16px;
+  }
+  .cta-box .mono{color:var(--ink-2)}
+  .cta-box .btn-primary{width:100%}
+  .contact-line{
+    display:flex;align-items:center;gap:10px;
+    font-size:.95rem;color:var(--ink);text-decoration:none;
+  }
+  a.contact-line:hover{color:var(--blue)}
+  .contact-line svg{width:17px;height:17px;color:var(--blue);flex-shrink:0}
+  .socials{display:flex;gap:8px;flex-wrap:wrap}
+  .socials a{
+    width:40px;height:40px;
+    display:grid;place-items:center;
+    color:var(--ink-2);
+    border:1px solid var(--line-2);
+    transition:border-color .15s,color .15s;
+  }
+  .socials a:hover{border-color:var(--blue);color:var(--blue)}
+  .socials svg{width:19px;height:19px}
+  .cta-box .socials{padding-top:14px;border-top:1px dashed var(--line-2)}
+  @media (max-width:880px){.cta-grid{grid-template-columns:1fr;gap:36px}}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line-2);background:var(--panel)}
+  .foot{
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    padding:26px 0;
+    color:var(--ink-2);font-size:.84rem;
+  }
+  .foot .mono{font-size:.6rem;color:var(--line-2)}
+
+  /* ---------- FAB WhatsApp ---------- */
+  .fab{
+    position:fixed;right:18px;bottom:18px;z-index:70;
+    width:54px;height:54px;border-radius:50%;
+    background:var(--accent);color:#fff;
+    display:grid;place-items:center;
+    box-shadow:0 8px 24px rgba(206,74,18,.45);
+    transition:transform .15s,background .15s;
+  }
+  .fab:hover{transform:translateY(-2px);background:var(--accent-deep)}
+  .fab svg{width:26px;height:26px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Hidro Drone — início">
+      <img src="assets/logo.png" alt="" width="58" height="24">
+      <b><span>Hidro Drone</span><span class="mono">Ficha técnica · HD-LP/ALT-1</span></b>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#escopo">02.0 Serviços</a></li>
+      <li><a href="#diagrama">03.0 Diagrama</a></li>
+      <li><a href="#procedimento">04.0 Procedimento</a></li>
+      <li><a href="#registros">05.0 Registros</a></li>
+      <li><a href="#comparativo">06.0 Comparativo</a></li>
+      <li><a href="#notas">07.0 Notas</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5541996620072?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20realizar%20um%20or%C3%A7amento!" target="_blank" rel="noopener">Orçamento</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="doc-tag">Doc. HD-LP/ALT-1 · Rev. <span id="docYear">2026</span> · Ficha técnica de operação</p>
+      <h1>Fachada limpa por drone.<br>Pessoas em altura: <span class="zero">zero</span>.</h1>
+      <p class="lead">Drones com jato de até 250 bar lavam fachadas de prédios e estruturas industriais, abastecidos por bomba de alta pressão no solo. Sem andaime, sem balancim, sem rapel — e sem interromper a rotina do prédio ou da planta.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/5541996620072?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20realizar%20um%20or%C3%A7amento!" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5L9.6 8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.7a11 11 0 0 0 4.6 4.1c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0 0-.2-.1-.6-.3Z"/></svg>
+          Pedir orçamento no WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#diagrama">Ver diagrama de operação</a>
+      </div>
+      <div class="hero-note mono">
+        <span>Visita técnica <b>gratuita</b></span>
+        <span>Relatório aéreo <b>incluso</b></span>
+        <span>Base <b>Curitiba – PR</b></span>
+      </div>
+    </div>
+
+    <figure class="hero-media fig">
+      <div class="frame">
+        <span class="crops" aria-hidden="true"></span>
+        <video autoplay muted loop playsinline id="heroVideo"
+               poster="assets/instagram/DbWgHEkveuL_video.jpg"
+               aria-label="Drone da Hidro Drone lavando uma estrutura em altura">
+          <source src="assets/instagram/videos/DbWgHEkveuL.mp4" type="video/mp4">
+        </video>
+        <div class="vcota" aria-hidden="true"><i></i><span>Alcance vertical +100 m</span><i></i></div>
+      </div>
+      <figcaption><b>Fig. 00</b> Registro de operação real · sem edição</figcaption>
+      <div class="cota" aria-hidden="true"><i></i><span>captura aérea 9:16</span><i></i></div>
+    </figure>
+  </div>
+</div>
+
+<div class="carimbo" aria-label="Quadro de identificação">
+  <div class="wrap">
+    <div class="carimbo-grid">
+      <div class="carimbo-cell"><span class="mono">Documento</span><strong>Ficha técnica de operação</strong></div>
+      <div class="carimbo-cell"><span class="mono">Empresa</span><strong>Hidro Drone</strong></div>
+      <div class="carimbo-cell"><span class="mono">Base</span><strong>Curitiba – PR</strong></div>
+      <div class="carimbo-cell"><span class="mono">Abrangência</span><strong>Todo o Brasil</strong></div>
+      <div class="carimbo-cell"><span class="mono">Conformidade</span><strong>ANAC · DECEA</strong></div>
+      <div class="carimbo-cell"><span class="mono">Seguro</span><strong>RC incluso</strong></div>
+    </div>
+  </div>
+</div>
+
+<section id="especificacoes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01.0</span>
+      <div class="sec-title">
+        <span class="kicker">Especificações do sistema</span>
+        <h2>Números de operação</h2>
+      </div>
+      <span class="sec-ref">Ref. HD-SPEC</span>
+    </div>
+    <div class="specs reveal">
+      <div class="spec"><span class="mono">Pressão de jato</span><strong>250<small>bar</small></strong><span class="sub">máx. de trabalho</span></div>
+      <div class="spec"><span class="mono">Alcance vertical</span><strong>+100<small>m</small></strong><span class="sub">alimentado do solo</span></div>
+      <div class="spec"><span class="mono">Velocidade de execução</span><strong>5×<small>+ rápido</small></strong><span class="sub">vs. métodos tradicionais</span></div>
+      <div class="spec alert"><span class="mono">Pessoas suspensas</span><strong>0</strong><span class="sub">ninguém em altura</span></div>
+    </div>
+    <p class="spec-note">Consumo de água por m² inferior ao da lavagem convencional. Pilotos certificados; operação regulamentada ANAC/DECEA; seguro de responsabilidade civil.</p>
+  </div>
+</section>
+
+<section id="escopo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02.0</span>
+      <div class="sec-title">
+        <span class="kicker">Escopo de serviços</span>
+        <h2>Onde o drone chega, a sujeira sai</h2>
+        <p>Jato de alta pressão aplicado por drone, com pré-tratamento químico quando o revestimento exige. Do térreo à cobertura, sem tocar na estrutura.</p>
+      </div>
+      <span class="sec-ref">Ref. HD-SRV</span>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <span class="fig-media"><span class="fig-id">Fig. 01</span><img src="assets/instagram/DUY-6OFj39r_video.jpg" alt="Drone lavando a fachada de um prédio corporativo" loading="lazy"></span>
+        <div class="card-body">
+          <h3>Fachadas prediais</h3>
+          <p>Lavagem completa de prédios residenciais e comerciais, sem obra e sem transtorno para moradores e ocupantes.</p>
+          <ul>
+            <li>Vidro e pele de vidro</li>
+            <li>ACM e metálicos</li>
+            <li>Pastilha e concreto</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card reveal">
+        <span class="fig-media"><span class="fig-id">Fig. 02</span><img src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="Drone limpando galpão industrial de telha metálica" loading="lazy"></span>
+        <div class="card-body">
+          <h3>Limpeza industrial</h3>
+          <p>Higienização de estruturas de grande porte em plantas industriais, com planejamento para não parar a produção.</p>
+          <ul>
+            <li>Galpões, silos e tanques</li>
+            <li>Estruturas metálicas</li>
+            <li>Telhados industriais</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card reveal">
+        <span class="fig-media"><span class="fig-id">Fig. 03</span><img src="assets/instagram/DYSY9k-yZJg_video.jpg" alt="Drone lavando reservatório elevado" loading="lazy"></span>
+        <div class="card-body">
+          <h3>Difícil acesso</h3>
+          <p>Pontos onde montar estrutura é caro, lento ou inviável — o drone chega voando.</p>
+          <ul>
+            <li>Caixas d'água e reservatórios</li>
+            <li>Painéis solares e claraboias</li>
+            <li>Monumentos e torres</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diagrama">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03.0</span>
+      <div class="sec-title">
+        <span class="kicker">Diagrama de operação</span>
+        <h2>Anatomia de uma lavagem por drone</h2>
+        <p>Registro real de campo, anotado: galpão de telha metálica em limpeza. A linha entre o sujo e o limpo aparece na própria foto.</p>
+      </div>
+      <span class="sec-ref">Ref. HD-DIA</span>
+    </div>
+    <div class="diagram">
+      <figure class="fig diagram-fig reveal">
+        <div class="vcota" aria-hidden="true"><i></i><span>Alt. de trabalho até +100 m</span><i></i></div>
+        <div class="diagram-media">
+          <img src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="Drone com lança de jato lavando galpão metálico, com marcadores numerados sobre a aeronave, a lança, a mangueira e a faixa lavada">
+          <span class="pin" style="left:37%;top:19%">1</span>
+          <span class="pin" style="left:44%;top:30%">2</span>
+          <span class="pin" style="left:26%;top:55%">3</span>
+          <span class="pin" style="left:60%;top:68%">4</span>
+        </div>
+        <figcaption><span>Fig. 04 · Galpão metálico em limpeza</span><a class="lnk" href="https://www.instagram.com/p/DMGvmAMvFcD/" target="_blank" rel="noopener">Ver post ↗</a></figcaption>
+      </figure>
+      <div class="reveal">
+        <div class="legend">
+          <p class="legend-head">Legenda de componentes</p>
+          <div class="legend-item">
+            <span class="key" aria-hidden="true">1</span>
+            <div>
+              <h3>Aeronave de limpeza</h3>
+              <p>Drone de carga pilotado do solo por operador certificado, com posicionamento pano a pano sobre a superfície.</p>
+              <span class="data">Pilotos certificados · Operação ANAC / DECEA</span>
+            </div>
+          </div>
+          <div class="legend-item">
+            <span class="key" aria-hidden="true">2</span>
+            <div>
+              <h3>Lança de jato</h3>
+              <p>Bico direcionado de alta pressão. A distância e o ângulo são ajustados ao revestimento — vidro, ACM, pastilha ou telha.</p>
+              <span class="data">Pressão de trabalho até 250 bar</span>
+            </div>
+          </div>
+          <div class="legend-item">
+            <span class="key" aria-hidden="true">3</span>
+            <div>
+              <h3>Umbilical de alimentação</h3>
+              <p>Mangueira que leva água pressurizada da bomba no solo até o drone. Nenhum reservatório embarcado, nenhuma recarga em voo.</p>
+              <span class="data">Alcance vertical +100 m · Menos água por m²</span>
+            </div>
+          </div>
+          <div class="legend-item">
+            <span class="key" aria-hidden="true">4</span>
+            <div>
+              <h3>Superfície em tratamento</h3>
+              <p>Faixa lavada visível ao lado da área ainda suja. Cada serviço gera relatório com foto e vídeo aéreos do antes e depois.</p>
+              <span class="data">Relatório fotográfico incluso</span>
+            </div>
+          </div>
+        </div>
+        <div class="safety-note">
+          <b>Nota de segurança</b>
+          Área de solo isolada durante toda a operação, pontos sensíveis protegidos e seguro de responsabilidade civil ativo. Ninguém trabalha suspenso em altura.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="procedimento">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04.0</span>
+      <div class="sec-title">
+        <span class="kicker">Procedimento operacional</span>
+        <h2>Da visita ao relatório em 4 etapas</h2>
+      </div>
+      <span class="sec-ref">Ref. HD-PRO</span>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <span class="num">Etapa 01/04</span>
+        <h3>Visita técnica</h3>
+        <p>Avaliamos a estrutura, o tipo de sujidade e o entorno, e definimos método e orçamento. Sem custo.</p>
+      </div>
+      <div class="step">
+        <span class="num">Etapa 02/04</span>
+        <h3>Plano de voo e proteção</h3>
+        <p>Planejamos rotas, isolamos a área no solo e protegemos esquadrias e pontos sensíveis.</p>
+      </div>
+      <div class="step">
+        <span class="num">Etapa 03/04</span>
+        <h3>Execução da lavagem</h3>
+        <p>O drone aplica o jato de alta pressão pano a pano, abastecido por mangueira desde a bomba no solo.</p>
+      </div>
+      <div class="step">
+        <span class="num">Etapa 04/04</span>
+        <h3>Relatório com imagens</h3>
+        <p>Você recebe o registro em foto e vídeo do antes e depois, feito pelo próprio drone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="registros">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05.0</span>
+      <div class="sec-title">
+        <span class="kicker">Registros de campo</span>
+        <h2>Operações documentadas</h2>
+        <p>Amostra direto do nosso Instagram — cada figura abre o post original com o vídeo completo.</p>
+      </div>
+      <span class="sec-ref">Ref. HD-REG</span>
+    </div>
+    <div class="works">
+      <figure class="fig reveal">
+        <a class="fig-media" href="https://www.instagram.com/p/DUY-6OFj39r/" target="_blank" rel="noopener"><span class="fig-id">Fig. 05</span><img src="assets/instagram/DUY-6OFj39r_video.jpg" alt="Lavagem da fachada de prédio corporativo" loading="lazy"></a>
+        <figcaption><span>Fachada corporativa · Vídeo</span><a class="lnk" href="https://www.instagram.com/p/DUY-6OFj39r/" target="_blank" rel="noopener">Ver post ↗</a></figcaption>
+      </figure>
+      <figure class="fig reveal">
+        <a class="fig-media" href="https://www.instagram.com/p/DYSY9k-yZJg/" target="_blank" rel="noopener"><span class="fig-id">Fig. 06</span><img src="assets/instagram/DYSY9k-yZJg_video.jpg" alt="Limpeza de reservatório industrial elevado" loading="lazy"></a>
+        <figcaption><span>Reservatório industrial · Vídeo</span><a class="lnk" href="https://www.instagram.com/p/DYSY9k-yZJg/" target="_blank" rel="noopener">Ver post ↗</a></figcaption>
+      </figure>
+      <figure class="fig reveal">
+        <a class="fig-media" href="https://www.instagram.com/p/DbZDqLLviPU/" target="_blank" rel="noopener"><span class="fig-id">Fig. 07</span><img src="assets/instagram/DbZDqLLviPU_video.jpg" alt="Limpeza de fachada histórica" loading="lazy"></a>
+        <figcaption><span>Patrimônio histórico · Vídeo</span><a class="lnk" href="https://www.instagram.com/p/DbZDqLLviPU/" target="_blank" rel="noopener">Ver post ↗</a></figcaption>
+      </figure>
+      <figure class="fig reveal">
+        <a class="fig-media" href="https://www.instagram.com/p/Da29HqEEZkF/" target="_blank" rel="noopener"><span class="fig-id">Fig. 08</span><img src="assets/instagram/Da29HqEEZkF_carrossel.jpg" alt="Limpeza de lonas no Estádio Durival Britto, em Curitiba" loading="lazy"></a>
+        <figcaption><span>Lonas de estádio · Curitiba</span><a class="lnk" href="https://www.instagram.com/p/Da29HqEEZkF/" target="_blank" rel="noopener">Ver post ↗</a></figcaption>
+      </figure>
+      <figure class="fig reveal">
+        <a class="fig-media" href="https://www.instagram.com/p/DbMNEuIvHS7/" target="_blank" rel="noopener"><span class="fig-id">Fig. 09</span><img src="assets/instagram/DbMNEuIvHS7_video.jpg" alt="Limpeza de pele de vidro" loading="lazy"></a>
+        <figcaption><span>Pele de vidro · Vídeo</span><a class="lnk" href="https://www.instagram.com/p/DbMNEuIvHS7/" target="_blank" rel="noopener">Ver post ↗</a></figcaption>
+      </figure>
+      <figure class="fig reveal">
+        <a class="fig-media" href="https://www.instagram.com/p/DbJpT-_vIAN/" target="_blank" rel="noopener"><span class="fig-id">Fig. 10</span><img src="assets/instagram/DbJpT-_vIAN_foto.jpg" alt="Piloto com capacete e EPI observando o drone em operação" loading="lazy"></a>
+        <figcaption><span>Piloto em operação · EPI</span><a class="lnk" href="https://www.instagram.com/p/DbJpT-_vIAN/" target="_blank" rel="noopener">Ver post ↗</a></figcaption>
+      </figure>
+    </div>
+    <div class="works-foot reveal">
+      <a class="btn btn-ghost" href="https://www.instagram.com/hidrodronebrasil" target="_blank" rel="noopener">Seguir @hidrodronebrasil ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="comparativo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06.0</span>
+      <div class="sec-title">
+        <span class="kicker">Comparativo técnico</span>
+        <h2>Drone × métodos tradicionais</h2>
+        <p>Sem estrutura para montar e sem gente suspensa, o serviço fica mais rápido, mais seguro e menos invasivo.</p>
+      </div>
+      <span class="sec-ref">Ref. HD-CMP</span>
+    </div>
+    <div class="table-scroll reveal">
+      <table>
+        <caption>Quadro 01 — Especificações comparadas por método de acesso</caption>
+        <thead>
+          <tr>
+            <th scope="col">Parâmetro</th>
+            <th scope="col" class="hd-col">Drone Hidro Drone</th>
+            <th scope="col">Rapel</th>
+            <th scope="col">Andaime / balancim</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Pessoas trabalhando em altura</th>
+            <td class="hd-col">Nenhuma</td>
+            <td>Sim</td>
+            <td>Sim</td>
+          </tr>
+          <tr>
+            <th scope="row">Montagem de estrutura</th>
+            <td class="hd-col">Não precisa</td>
+            <td>Ancoragens no telhado</td>
+            <td>Dias de montagem</td>
+          </tr>
+          <tr>
+            <th scope="row">Tempo de execução</th>
+            <td class="hd-col">Horas a poucos dias</td>
+            <td>Semanas</td>
+            <td>Semanas</td>
+          </tr>
+          <tr>
+            <th scope="row">Interferência na rotina do local</th>
+            <td class="hd-col">Mínima</td>
+            <td>Média</td>
+            <td>Alta</td>
+          </tr>
+          <tr>
+            <th scope="row">Registro do serviço</th>
+            <td class="hd-col">Foto e vídeo aéreos inclusos</td>
+            <td>Não</td>
+            <td>Não</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="scroll-hint mono">← deslize a tabela para comparar →</p>
+  </div>
+</section>
+
+<section id="notas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07.0</span>
+      <div class="sec-title">
+        <span class="kicker">Notas técnicas</span>
+        <h2>Dúvidas frequentes</h2>
+      </div>
+      <span class="sec-ref">Ref. HD-FAQ</span>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary><span class="nt">NT-01</span>A água respinga nos carros, vizinhos ou pedestres?<span class="ind" aria-hidden="true">+</span></summary>
+        <p>Não. Antes da lavagem isolamos a área no solo, protegemos pontos sensíveis e trabalhamos com jato direcionado. Quando necessário, agendamos horários de menor movimento.</p>
+      </details>
+      <details>
+        <summary><span class="nt">NT-02</span>Preciso desocupar o prédio ou fechar a rua?<span class="ind" aria-hidden="true">+</span></summary>
+        <p>Na grande maioria dos casos, não. A operação é toda externa e a interferência na rotina do prédio ou da planta é mínima — essa é uma das principais vantagens sobre andaimes e balancins.</p>
+      </details>
+      <details>
+        <summary><span class="nt">NT-03</span>O serviço funciona com chuva ou vento?<span class="ind" aria-hidden="true">+</span></summary>
+        <p>A operação depende de condições de voo seguras. Com vento forte ou chuva, remarcamos a execução sem custo adicional.</p>
+      </details>
+      <details>
+        <summary><span class="nt">NT-04</span>Que produtos são usados na limpeza?<span class="ind" aria-hidden="true">+</span></summary>
+        <p>O principal agente é a água em alta pressão. Quando a sujidade exige, aplicamos pré-tratamento com produtos adequados ao tipo de revestimento.</p>
+      </details>
+      <details>
+        <summary><span class="nt">NT-05</span>É seguro? O que acontece se o drone falhar?<span class="ind" aria-hidden="true">+</span></summary>
+        <p>A operação segue plano de voo com área isolada no solo, pilotos certificados, operação regulamentada ANAC/DECEA e seguro de responsabilidade civil. Ninguém trabalha suspenso em altura.</p>
+      </details>
+      <details>
+        <summary><span class="nt">NT-06</span>Vocês vendem drones?<span class="ind" aria-hidden="true">+</span></summary>
+        <p>Não. A Hidro Drone é uma empresa de serviços de limpeza — não vendemos, alugamos ou damos manutenção em drones.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec" id="orcamento">
+  <div class="wrap cta-grid">
+    <div class="cta-copy reveal">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="sec-num">08.0</span>
+        <div class="sec-title">
+          <span class="kicker">Solicitação de orçamento</span>
+          <h2>Quanto custa limpar a sua fachada?</h2>
+          <p>Mande uma foto do prédio ou da estrutura pelo WhatsApp e receba uma estimativa sem compromisso. Pioneiros na limpeza de alta pressão com drones no Paraná — base em Curitiba, atendemos todo o Brasil.</p>
+          <ul class="cta-checks">
+            <li>Visita técnica gratuita</li>
+            <li>Relatório com foto e vídeo aéreos incluso</li>
+            <li>Pilotos certificados · operação ANAC/DECEA</li>
+            <li>Seguro de responsabilidade civil</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="cta-box reveal">
+      <span class="mono">Canal direto · resposta rápida</span>
+      <a class="btn btn-primary" href="https://wa.me/5541996620072?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20realizar%20um%20or%C3%A7amento!" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5L9.6 8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.7a11 11 0 0 0 4.6 4.1c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0 0-.2-.1-.6-.3Z"/></svg>
+        Chamar no WhatsApp
+      </a>
+      <a class="contact-line" href="tel:+5541996620072">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.2Z"/></svg>
+        (41) 99662-0072
+      </a>
+      <span class="contact-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Curitiba – PR · atendemos todo o Brasil
+      </span>
+      <div class="socials">
+        <a href="https://www.instagram.com/hidrodronebrasil" target="_blank" rel="noopener" aria-label="Instagram da Hidro Drone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@hidrodrone" target="_blank" rel="noopener" aria-label="TikTok da Hidro Drone">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/hidro-drone/" target="_blank" rel="noopener" aria-label="LinkedIn da Hidro Drone">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
+        </a>
+        <a href="https://wa.me/+5541996620072" target="_blank" rel="noopener" aria-label="WhatsApp da Hidro Drone">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5L9.6 8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.7a11 11 0 0 0 4.6 4.1c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0 0-.2-.1-.6-.3Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year">2026</span> Hidro Drone — Lavagem de fachadas e limpeza industrial com drones · Curitiba – PR</span>
+    <div class="socials">
+      <a href="https://www.instagram.com/hidrodronebrasil" target="_blank" rel="noopener" aria-label="Instagram da Hidro Drone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@hidrodrone" target="_blank" rel="noopener" aria-label="TikTok da Hidro Drone">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07Z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/hidro-drone/" target="_blank" rel="noopener" aria-label="LinkedIn da Hidro Drone">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
+      </a>
+      <a href="https://wa.me/+5541996620072" target="_blank" rel="noopener" aria-label="WhatsApp da Hidro Drone">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5L9.6 8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.7a11 11 0 0 0 4.6 4.1c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0 0-.2-.1-.6-.3Z"/></svg>
+      </a>
+    </div>
+    <span class="mono">HD-LP/ALT-1 · Fim do documento</span>
+  </div>
+</footer>
+
+</div><!-- /sheet -->
+
+<a class="fab" href="https://wa.me/5541996620072?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20realizar%20um%20or%C3%A7amento!" target="_blank" rel="noopener" aria-label="Pedir orçamento no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5L9.6 8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.7a11 11 0 0 0 4.6 4.1c1.7.8 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0 0-.2-.1-.6-.3Z"/></svg>
+</a>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var video = document.getElementById('heroVideo');
+  if(reduced && video){ video.removeAttribute('autoplay'); video.pause(); }
+
+  var header = document.querySelector('header');
+  var menuBtn = document.getElementById('menuBtn');
+  menuBtn.addEventListener('click', function(){
+    var open = header.classList.toggle('menu-open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      header.classList.remove('menu-open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  var y = new Date().getFullYear();
+  document.getElementById('year').textContent = y;
+  document.getElementById('docYear').textContent = y;
+
+  if('IntersectionObserver' in window && !reduced){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+
+</body>
+</html>
