@@ -1664,6 +1664,8 @@
       ty = Math.max(box.t + 6, Math.min(box.b - 4, y));
       var maxX = opts.maxX ? opts.maxX(W) : W - 66;
       pointerX = Math.max(Math.min(66, W / 2), Math.min(maxX, x));
+      /* só joga água quando o ponteiro está sobre o texto (com folga) */
+      return x >= box.l - 30 && x <= box.r + 30 && y >= box.t - 30 && y <= box.b + 30;
     }
     if (mode === "manual"){
       /* mouse: escuta numa área maior (opts.track, ex.: o hero inteiro) para o drone poder ir além do texto;
@@ -1677,13 +1679,13 @@
         if (e.pointerType !== "mouse") return;
         if (inBand(e)){
           if (!pointerIn){ pointerIn = true; interacted = true; intro = null; }
-          targetFromEvent(e); spraying = true; start();
+          spraying = targetFromEvent(e); start();
         } else if (pointerIn){ pointerIn = false; if (!down) spraying = false; }
       });
       track.addEventListener("pointerleave", function(e){ if (e.pointerType !== "mouse") return; pointerIn = false; if (!down) spraying = false; });
-      root.addEventListener("pointermove", function(e){ if (down){ targetFromEvent(e); spraying = true; start(); } });
+      root.addEventListener("pointermove", function(e){ if (down){ spraying = targetFromEvent(e); start(); } });
       root.addEventListener("pointerdown", function(e){
-        interacted = true; intro = null; down = true; spraying = true; targetFromEvent(e); start();
+        interacted = true; intro = null; down = true; spraying = targetFromEvent(e); start();
         try { root.setPointerCapture(e.pointerId); } catch(_){}
         if (e.pointerType !== "mouse") updateStatus();
       });
