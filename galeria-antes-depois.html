@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antes e depois — Hidro Drone</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E3A8A;--navy-deep:#16295E;--blue:#1D4ED8;--ink:#0F1B33;--ink-2:#46566F;--line:#DDE5F0;--paper-2:#F5F8FC;--wa:#16A34A}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper-2);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  .header{position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+  .header-in{max-width:1160px;margin:0 auto;padding:0 20px;height:68px;display:flex;align-items:center;gap:20px}
+  .header img{height:40px}
+  .back{margin-left:auto;color:var(--navy);font-weight:700;text-decoration:none;font-size:.95rem}
+  .back:hover{text-decoration:underline}
+  .wrap{max-width:1160px;margin:0 auto;padding:56px 20px 80px}
+  .eyebrow{display:inline-block;font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+  h1{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;line-height:1.15;margin-bottom:10px}
+  .sub{color:var(--ink-2);max-width:60ch;margin-bottom:36px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+  .pair{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(15,27,51,.08)}
+  .pair .imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+  .pair .imgs figure{position:relative;margin:0;aspect-ratio:4/3;background:var(--navy-deep)}
+  .pair .imgs img{width:100%;height:100%;object-fit:cover}
+  .pair .imgs figcaption{position:absolute;top:10px;left:10px;background:rgba(13,26,64,.7);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:5px 10px}
+  .pair .imgs .before img{filter:sepia(.45) saturate(.5) brightness(.7) contrast(1.05)}
+  .pair .body{padding:16px 18px}
+  .pair h3{font-size:1rem;font-weight:800}
+  .pair p{font-size:.88rem;color:var(--ink-2)}
+  .placeholder{border:2px dashed #B7C8E8;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;color:var(--ink-2);font-weight:600;min-height:260px;background:#fff}
+  .cta{margin-top:48px;text-align:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;font-weight:700;text-decoration:none;padding:14px 26px;border-radius:999px}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-in">
+    <a href="alt-10.html"><img src="assets/logo.png" alt="Hidro Drone"></a>
+    <a class="back" href="alt-10.html#antes-depois">← Voltar ao site</a>
+  </div>
+</header>
+<main class="wrap">
+  <span class="eyebrow">Antes e depois</span>
+  <h1>Resultados reais, registrados pelo próprio drone</h1>
+  <p class="sub">Cada par abaixo é de um serviço executado pela nossa equipe. <!-- TODO: substituir pelos pares de fotos do Drive enviados pelo Lucas --></p>
+  <div class="grid">
+    <article class="pair">
+      <div class="imgs">
+        <figure class="before"><img src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="Galpão metálico antes da lavagem"><figcaption>Antes</figcaption></figure>
+        <figure><img src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="Galpão metálico depois da lavagem"><figcaption>Depois</figcaption></figure>
+      </div>
+      <div class="body"><h3>Galpão industrial — fachada metálica</h3><p>Efeito “antes” simulado sobre a mesma imagem (provisório).</p></div>
+    </article>
+    <article class="pair">
+      <div class="imgs">
+        <figure><img src="assets/fotos/igreja-antes.jpg" alt="Telhado de igreja antes da lavagem"><figcaption>Antes</figcaption></figure>
+        <figure><img src="assets/fotos/igreja-depois.jpg" alt="Telhado de igreja depois da lavagem"><figcaption>Depois</figcaption></figure>
+      </div>
+      <div class="body"><h3>Igreja — telhado cerâmico</h3><p>Frames reais da operação.</p></div>
+    </article>
+    <div class="placeholder">Mais pares de fotos<br>(fotos do Drive — a inserir)</div>
+    <div class="placeholder">Mais pares de fotos<br>(fotos do Drive — a inserir)</div>
+  </div>
+  <div class="cta">
+    <a class="btn" href="https://wa.me/5541996620072?text=Ol%C3%A1!%20Quero%20agendar%20uma%20visita%20t%C3%A9cnica%20para%20or%C3%A7amento." target="_blank" rel="noopener">Quero um orçamento pelo WhatsApp</a>
+  </div>
+</main>
+</body>
+</html>
