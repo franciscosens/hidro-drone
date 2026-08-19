@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparativo — 3 opções para o alt-11</title>
+<!-- Protótipo: três direções para a seção "Drone, rapel ou andaime?" do alt-11, empilhadas no mesmo arquivo. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E3A8A;--navy-deep:#16295E;--navy-ink:#0D1A40;--blue:#1D4ED8;--blue-soft:#EFF4FF;--sky:#DBEAFE;
+    --ink:#0F1B33;--ink-2:#46566F;--line:#DDE5F0;--paper:#FFFFFF;--paper-2:#F5F8FC;--wa:#16A34A;--wa-deep:#15803D;
+    --red:#B4231F;--amber:#8A6A12;--radius:14px;--shadow:0 10px 30px rgba(15,27,51,.10);--wrap:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+  .section{padding:76px 0}
+  .section.alt{background:var(--paper-2)}
+  .eyebrow{display:inline-block;font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+  .section h2{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;line-height:1.15;max-width:26ch;margin-bottom:14px}
+  .section .sub{color:var(--ink-2);max-width:62ch;font-size:1.05rem;margin-bottom:42px}
+  @media (max-width:700px){.section{padding:56px 0}.section .sub{margin-bottom:30px}}
+  button{font:inherit;cursor:pointer}
+
+  /* ---- barra do protótipo ---- */
+  .proto{position:sticky;top:0;z-index:50;background:var(--navy-ink);color:#fff;font-size:.85rem}
+  .proto .wrap{display:flex;align-items:center;gap:18px;min-height:48px;flex-wrap:wrap}
+  .proto b{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;letter-spacing:.04em;text-transform:uppercase}
+  .proto a{color:#B9CBF0;text-decoration:none;font-weight:600;padding:6px 10px;border-radius:8px}
+  .proto a:hover{background:rgba(255,255,255,.1);color:#fff}
+  .opt-tag{display:inline-flex;align-items:center;gap:8px;background:var(--navy-ink);color:#fff;border-radius:999px;padding:5px 14px 5px 6px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:28px}
+  .opt-tag i{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--navy-ink);font-family:'Barlow Condensed',sans-serif;font-size:1rem}
+.opt-row{display:block;margin-bottom:0}
+  .divider{border:0;border-top:2px dashed var(--line)}
+
+  /* ===================== OPÇÃO A — Fachada viva ===================== */
+  .fv{display:grid;grid-template-columns:1.25fr .9fr;gap:32px;align-items:stretch}
+  @media (max-width:900px){.fv{grid-template-columns:1fr}}
+  .fv-stage{background:linear-gradient(180deg,#EAF2FF 0%,#F5F8FC 100%);border:1px solid var(--line);border-radius:20px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+  .fv-tabs{display:flex;gap:6px;padding:14px 14px 0}
+  .fv-tab{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:800;font-size:.92rem;color:var(--ink-2);display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+  .fv-tab svg{width:20px;height:20px}
+  .fv-tab[aria-selected="true"]{background:var(--navy-ink);color:#fff;border-color:var(--navy-ink);box-shadow:0 8px 18px rgba(13,26,64,.25)}
+  .fv-tab[aria-selected="true"].is-drone{background:var(--blue);border-color:var(--blue)}
+  .fv-svg{display:block;width:100%;height:auto}
+  .fv-scene{opacity:0;transition:opacity .35s}
+  .fv-scene.on{opacity:1}
+  .fv-time{padding:0 18px 18px}
+  .fv-time .lbl{display:flex;justify-content:space-between;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+  .fv-time .lbl strong{color:var(--ink);font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;letter-spacing:.02em;text-transform:none}
+  .fv-bar{position:relative;height:10px;border-radius:999px;background:#DCE5F2;overflow:hidden}
+  .fv-bar i{position:absolute;inset:0 auto 0 0;width:0;background:var(--blue);border-radius:999px}
+  .fv-bar i.rapel{background:var(--amber)}
+  .fv-bar i.andaime{background:var(--red)}
+  .fv-ticks{display:flex;justify-content:space-between;font-size:.7rem;color:var(--ink-2);margin-top:4px;font-weight:600}
+  .fv-facts{display:flex;flex-direction:column;gap:12px}
+  .fv-fact{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;transition:border-color .25s,transform .25s}
+  .fv-fact .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--blue-soft);color:var(--blue)}
+  .fv-fact .ic svg{width:24px;height:24px}
+  .fv-fact dt{font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  .fv-fact dd{font-weight:700;font-size:1.02rem;margin-top:2px}
+  .fv-fact.good .ic{background:#E6F7EC;color:var(--wa-deep)}
+  .fv-fact.meh .ic{background:#FFF6DB;color:var(--amber)}
+  .fv-fact.bad .ic{background:#FDECEC;color:var(--red)}
+  .fv-fact.good dd{color:var(--wa-deep)}
+  .fv-fact.meh dd{color:var(--amber)}
+  .fv-fact.bad dd{color:var(--red)}
+  .fv-verdict{margin-top:auto;background:var(--navy-ink);color:#fff;border-radius:var(--radius);padding:18px 20px}
+  .fv-verdict p{font-size:.95rem;color:#B9CBF0}
+  .fv-verdict p strong{color:#fff}
+  .fv-verdict .tag{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8FB5FF;margin-bottom:6px}
+  .fv-fact.swap{animation:swap .35s ease}
+  @keyframes swap{from{opacity:.3;transform:translateX(6px)}to{opacity:1;transform:none}}
+
+  /* ===================== OPÇÃO B — Simulador ===================== */
+  .sim{background:var(--navy-ink);color:#fff;border-radius:22px;padding:clamp(1.4rem,3.5vw,2.6rem);box-shadow:0 30px 70px rgba(13,26,64,.35);display:grid;grid-template-columns:.9fr 1.4fr;gap:clamp(1.4rem,4vw,3rem)}
+  @media (max-width:900px){.sim{grid-template-columns:1fr}}
+  .sim h3{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;letter-spacing:.02em;font-weight:800;margin-bottom:6px}
+  .sim .hint{color:#B9CBF0;font-size:.92rem;margin-bottom:22px}
+  .ctl{margin-bottom:22px}
+  .ctl label{display:flex;justify-content:space-between;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8FB5FF;margin-bottom:8px}
+  .ctl output{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;color:#fff;letter-spacing:.02em;text-transform:none}
+  .ctl input[type=range]{width:100%;accent-color:#4ADE80;height:28px}
+  .seg{display:flex;gap:6px}
+  .seg button{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#DCE5F2;border-radius:10px;padding:9px 6px;font-weight:700;font-size:.85rem}
+  .seg button[aria-pressed="true"]{background:#fff;color:var(--navy-ink);border-color:#fff}
+  .sim-headline{font-size:1.05rem;color:#B9CBF0;margin-top:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:16px}
+  .sim-headline strong{color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;letter-spacing:.01em}
+  .sim-note{font-size:.75rem;color:#7F93BD;margin-top:14px}
+  .rows{display:flex;flex-direction:column;gap:22px}
+  .rowh{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;margin-bottom:-8px}
+  .rowh span{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8FB5FF}
+  .metric{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center}
+  .metric .who{font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px}
+  .metric .who svg{width:20px;height:20px;flex:none}
+  .bars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .bar{position:relative;height:38px;border-radius:9px;background:rgba(255,255,255,.07);overflow:hidden}
+  .bar i{position:absolute;inset:0 auto 0 0;width:0;border-radius:9px;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+  .bar b{position:absolute;inset:0;display:flex;align-items:center;padding:0 12px;font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;letter-spacing:.02em;font-weight:800;white-space:nowrap}
+  .m-drone i{background:#4ADE80}.m-drone b{color:#fff}
+  .m-rapel i{background:#F5B53A}.m-rapel b{color:#fff}
+  .m-and i{background:#F0655C}.m-and b{color:#fff}
+  .m-drone.best i{box-shadow:0 0 0 2px #4ADE80 inset}
+  .bars-head{display:grid;grid-template-columns:110px 1fr;gap:14px}
+  .bars-head .bars span{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8FB5FF}
+  @media (max-width:560px){.bars{grid-template-columns:1fr}.bars-head{display:none}.bar b small{display:inline}}
+
+  /* ===================== OPÇÃO C — Tabela ===================== */
+  .tbl-wrap{overflow-x:auto;border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow);background:#fff}
+  table.cmp{width:100%;border-collapse:separate;border-spacing:0;min-width:720px}
+  .cmp th,.cmp td{padding:18px 20px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  .cmp thead th{font-size:1.05rem;font-weight:800;background:var(--paper-2);border-bottom:2px solid var(--line)}
+  .cmp thead th:first-child{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:700;vertical-align:bottom}
+  .cmp tbody th{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);width:190px;background:#fff}
+  .cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
+  .cmp .hl{background:var(--blue-soft);position:relative}
+  .cmp thead .hl{background:var(--blue);color:#fff;border-radius:0}
+  .cmp thead .hl small{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:#C7D9FF;margin-bottom:2px}
+  .cmp tbody .hl{border-left:2px solid var(--blue);border-right:2px solid var(--blue)}
+  .cmp tbody tr:last-child .hl{border-bottom:2px solid var(--blue)}
+  .cell{display:flex;gap:10px;align-items:flex-start;font-weight:600;font-size:.95rem}
+  .cell svg{flex:none;width:22px;height:22px;margin-top:1px}
+  .cell.good{color:var(--wa-deep)}.cell.meh{color:var(--amber)}.cell.bad{color:var(--red)}
+  .cell .sm{display:block;font-size:.8rem;font-weight:500;color:var(--ink-2);margin-top:2px}
+  .score{display:flex;gap:4px;margin-top:6px}
+  .score i{width:22px;height:6px;border-radius:3px;background:var(--line)}
+  .score.s5 i:nth-child(-n+5),.score.s2 i:nth-child(-n+2),.score.s1 i:nth-child(-n+1){background:currentColor}
+  .cmp tfoot td{padding:16px 20px;font-size:.85rem;color:var(--ink-2);background:var(--paper-2)}
+  .cmp tfoot .hl{background:var(--blue-soft);font-weight:700;color:var(--blue)}
+</style>
+</head>
+<body>
+
+<div class="proto"><div class="wrap">
+  <b>Comparativo · 3 opções</b>
+  <a href="#opA">A · Fachada viva</a>
+  <a href="#opB">B · Simulador de prazo</a>
+  <a href="#opC">C · Tabela única</a>
+</div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".15"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3l10 18H2z" fill="currentColor" opacity=".15"/><path d="M12 9v5M12 17.5v.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".15"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="8" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 14.2c2.8.2 5 2.6 5 5.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-struct" viewBox="0 0 24 24"><path d="M5 3v18M19 3v18M5 7h14M5 13h14M5 19h14M5 7l14 6M5 13l14 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-routine" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 2v4M16 2v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 2v5h5M9 13h6M9 17h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-drone" viewBox="0 0 24 24"><path d="M3 6h5M16 6h5M3 18h5M16 18h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="8.5" y="9" width="7" height="6" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5.5 6v3l3 2M18.5 6v3l-3 2M5.5 18v-3l3-2M18.5 18v-3l-3-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-rope" viewBox="0 0 24 24"><path d="M12 2v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="11.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 22l1.5-6h3L15 22M8.5 15.5l3.5 1 3.5-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-scaf" viewBox="0 0 24 24"><path d="M4 2v20M20 2v20M4 8h16M4 15h16M4 22h16M4 8l16 7M20 8L4 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+</svg>
+
+<!-- ===================================================================== -->
+<!-- OPÇÃO A — FACHADA VIVA -->
+<!-- ===================================================================== -->
+<section class="section" id="opA">
+  <div class="wrap">
+    <div class="opt-row"><span class="opt-tag"><i>A</i> Fachada viva · mesma fachada, três cenas</span></div>
+    <span class="eyebrow">Comparativo</span>
+    <h2>Drone, rapel ou andaime?</h2>
+    <p class="sub">A mesma fachada, três jeitos de lavar. Troque o método e veja o que acontece no prédio — e quanto tempo leva.</p>
+
+    <div class="fv">
+      <div class="fv-stage">
+        <div class="fv-tabs" role="tablist" aria-label="Método de limpeza">
+          <button class="fv-tab is-drone" role="tab" aria-selected="true" data-m="drone"><svg><use href="#i-drone"/></svg>Drone</button>
+          <button class="fv-tab" role="tab" aria-selected="false" data-m="rapel"><svg><use href="#i-rope"/></svg>Rapel</button>
+          <button class="fv-tab" role="tab" aria-selected="false" data-m="andaime"><svg><use href="#i-scaf"/></svg>Andaime</button>
+        </div>
+
+        <svg class="fv-svg" id="fvSvg" viewBox="0 0 560 380" aria-label="Animação da fachada sendo lavada pelo método selecionado">
+          <defs>
+            <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EAF2FF"/><stop offset="1" stop-color="#F5F8FC"/></linearGradient>
+            <linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9EC5FF"/><stop offset="1" stop-color="#5B8DEF"/></linearGradient>
+            <clipPath id="cleanClip"><rect id="cleanRect" x="0" y="0" width="560" height="0"/></clipPath>
+            <clipPath id="cleanClipCols">
+              <rect id="col1" x="0" y="0" width="0" height="0"/><rect id="col2" x="0" y="0" width="0" height="0"/>
+            </clipPath>
+            <clipPath id="cleanClipAnd"><rect id="cleanAnd" x="0" y="0" width="560" height="0"/></clipPath>
+            <clipPath id="scafClip"><rect id="scafRect" x="130" y="340" width="300" height="0"/></clipPath>
+            <pattern id="dirt" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.1" fill="#6B5A3E" opacity=".22"/><circle cx="4.5" cy="4" r=".8" fill="#6B5A3E" opacity=".18"/></pattern>
+            <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+          </defs>
+          <rect width="560" height="380" fill="url(#gSky)"/>
+          <!-- chão -->
+          <rect x="0" y="340" width="560" height="40" fill="#D7E1EE"/>
+          <rect x="0" y="340" width="560" height="3" fill="#B9C8DC"/>
+          <!-- prédio (sujo) -->
+          <g id="building">
+            <rect x="150" y="50" width="260" height="290" fill="#8E9AAB"/>
+            <rect x="150" y="50" width="260" height="290" fill="url(#dirt)"/>
+            <g id="winDirty" fill="#5E6E87"></g>
+            <!-- prédio limpo, revelado por clip -->
+            <g id="cleanDrone" clip-path="url(#cleanClip)"><rect x="150" y="50" width="260" height="290" fill="#DCE6F5"/><g id="winClean1" fill="url(#gGlass)"></g></g>
+            <g id="cleanRapel" clip-path="url(#cleanClipCols)"><rect x="150" y="50" width="260" height="290" fill="#DCE6F5"/><g id="winClean2" fill="url(#gGlass)"></g></g>
+            <g id="cleanAndG" clip-path="url(#cleanClipAnd)"><rect x="150" y="50" width="260" height="290" fill="#DCE6F5"/><g id="winClean3" fill="url(#gGlass)"></g></g>
+            <rect x="150" y="50" width="260" height="290" fill="none" stroke="#5E6E87" stroke-width="2"/>
+            <rect x="144" y="44" width="272" height="8" fill="#5E6E87"/>
+          </g>
+
+          <!-- ===== CENA DRONE ===== -->
+          <g class="fv-scene on" id="sceneDrone">
+            <!-- caminhão/unidade no chão -->
+            <g transform="translate(40,300)">
+              <rect x="0" y="10" width="70" height="30" rx="4" fill="#1D4ED8"/>
+              <rect x="6" y="0" width="30" height="14" rx="3" fill="#16295E"/>
+              <circle cx="16" cy="42" r="6" fill="#0D1A40"/><circle cx="56" cy="42" r="6" fill="#0D1A40"/>
+              <text x="35" y="30" font-family="Barlow Condensed" font-weight="800" font-size="10" fill="#fff" text-anchor="middle">HIDRO DRONE</text>
+            </g>
+            <!-- área isolada -->
+            <g stroke="#F59E0B" stroke-width="2" stroke-dasharray="6 4" fill="none"><rect x="22" y="290" width="106" height="50" rx="4"/></g>
+            <path id="hose" d="" fill="none" stroke="#1D4ED8" stroke-width="3" stroke-linecap="round"/>
+            <g id="droneG">
+              <g id="jet" filter="url(#soft)"><polygon points="0,0 46,-12 46,12" fill="#BFE0FF" opacity=".85"/></g>
+              <g id="droneBody">
+                <rect x="-16" y="-6" width="32" height="12" rx="5" fill="#0D1A40"/>
+                <path d="M-16 0h-12M16 0h12" stroke="#0D1A40" stroke-width="3"/>
+                <ellipse id="r1" cx="-28" cy="0" rx="12" ry="2.5" fill="#1D4ED8" opacity=".8"/>
+                <ellipse id="r2" cx="28" cy="0" rx="12" ry="2.5" fill="#1D4ED8" opacity=".8"/>
+                <rect x="-3" y="6" width="6" height="8" fill="#0D1A40"/>
+              </g>
+            </g>
+            <text x="280" y="372" font-size="11" font-weight="700" fill="#46566F" text-anchor="middle">Ninguém na fachada · só a área de pouso isolada</text>
+          </g>
+
+          <!-- ===== CENA RAPEL ===== -->
+          <g class="fv-scene" id="sceneRapel">
+            <!-- ancoragens no topo -->
+            <rect x="190" y="36" width="14" height="8" fill="#B4231F"/><rect x="330" y="36" width="14" height="8" fill="#B4231F"/>
+            <line id="rope1" x1="197" y1="44" x2="197" y2="140" stroke="#F59E0B" stroke-width="2"/>
+            <line id="rope2" x1="337" y1="44" x2="337" y2="170" stroke="#F59E0B" stroke-width="2"/>
+            <g id="worker1"><circle r="6" fill="#F2C9A0"/><rect x="-6" y="6" width="12" height="18" rx="3" fill="#F59E0B"/><path d="M-6 24l-3 12M6 24l3 12" stroke="#0D1A40" stroke-width="3" stroke-linecap="round"/><rect x="-9" y="10" width="18" height="6" fill="#B4231F"/></g>
+            <g id="worker2"><circle r="6" fill="#E0A97E"/><rect x="-6" y="6" width="12" height="18" rx="3" fill="#F59E0B"/><path d="M-6 24l-3 12M6 24l3 12" stroke="#0D1A40" stroke-width="3" stroke-linecap="round"/><rect x="-9" y="10" width="18" height="6" fill="#B4231F"/></g>
+            <!-- janelas com gente olhando (impacto na rotina) -->
+            <g id="peep" font-size="14" text-anchor="middle"><text x="0" y="0">👀</text></g>
+            <text x="280" y="372" font-size="11" font-weight="700" fill="#46566F" text-anchor="middle">Equipe pendurada · depende do clima e de linhas de vida</text>
+            <g id="rain" opacity="0"><g stroke="#5B8DEF" stroke-width="1.5" stroke-linecap="round">
+              <line x1="40" y1="60" x2="34" y2="74"/><line x1="80" y1="120" x2="74" y2="134"/><line x1="60" y1="200" x2="54" y2="214"/><line x1="480" y1="90" x2="474" y2="104"/><line x1="520" y1="180" x2="514" y2="194"/><line x1="450" y1="260" x2="444" y2="274"/><line x1="100" y1="260" x2="94" y2="274"/>
+            </g><text x="60" y="40" font-size="22">🌧️</text></g>
+          </g>
+
+          <!-- ===== CENA ANDAIME ===== -->
+          <g class="fv-scene" id="sceneAndaime">
+            <g clip-path="url(#scafClip)" id="scaf">
+              <g stroke="#7C8799" stroke-width="3" fill="none" id="scafLines"></g>
+              <g id="scafPlat" fill="#A8B2C2"></g>
+            </g>
+            <g id="wA"><circle r="6" fill="#F2C9A0"/><rect x="-6" y="6" width="12" height="18" rx="3" fill="#F59E0B"/><rect x="-9" y="10" width="18" height="6" fill="#B4231F"/></g>
+            <g id="wB"><circle r="6" fill="#E0A97E"/><rect x="-6" y="6" width="12" height="18" rx="3" fill="#F59E0B"/><rect x="-9" y="10" width="18" height="6" fill="#B4231F"/></g>
+            <g id="wC"><circle r="6" fill="#F2C9A0"/><rect x="-6" y="6" width="12" height="18" rx="3" fill="#F59E0B"/><rect x="-9" y="10" width="18" height="6" fill="#B4231F"/></g>
+            <!-- tapume / obra no chão -->
+            <g id="fence"><rect x="120" y="318" width="320" height="22" fill="#F59E0B"/><path d="M120 340l20-22M160 340l20-22M200 340l20-22M240 340l20-22M280 340l20-22M320 340l20-22M360 340l20-22M400 340l20-22" stroke="#0D1A40" stroke-width="4"/></g>
+            <text id="andPhase" x="280" y="372" font-size="11" font-weight="700" fill="#46566F" text-anchor="middle">Montagem do andaime…</text>
+          </g>
+        </svg>
+
+        <div class="fv-time">
+          <div class="lbl"><span>Prazo típico</span><strong id="fvDay">Dia 1 de 3</strong></div>
+          <div class="fv-bar"><i id="fvProg"></i></div>
+          <div class="fv-ticks"><span>início</span><span id="fvScale">3 dias</span></div>
+        </div>
+      </div>
+
+      <dl class="fv-facts" id="fvFacts">
+        <div class="fv-fact good" data-k="pessoas"><span class="ic"><svg><use href="#i-people"/></svg></span><div><dt>Pessoas em altura</dt><dd>Nenhuma</dd></div></div>
+        <div class="fv-fact good" data-k="prazo"><span class="ic"><svg><use href="#i-clock"/></svg></span><div><dt>Prazo típico</dt><dd>Dias — até 5× mais rápido</dd></div></div>
+        <div class="fv-fact good" data-k="estrutura"><span class="ic"><svg><use href="#i-struct"/></svg></span><div><dt>Estrutura montada</dt><dd>Nenhuma — só a área de pouso isolada</dd></div></div>
+        <div class="fv-fact good" data-k="rotina"><span class="ic"><svg><use href="#i-routine"/></svg></span><div><dt>Impacto na rotina</dt><dd>Mínimo, sem obra e sem parada</dd></div></div>
+        <div class="fv-fact good" data-k="registro"><span class="ic"><svg><use href="#i-doc"/></svg></span><div><dt>Registro do serviço</dt><dd>Fotos, vídeos e termo de aceite</dd></div></div>
+        <div class="fv-verdict"><span class="tag">Em resumo</span><p id="fvVerdict"><strong>O drone lava a fachada inteira enquanto o prédio continua funcionando.</strong> Sem ninguém pendurado, sem estrutura, com tudo registrado.</p></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===================================================================== -->
+<!-- OPÇÃO B — SIMULADOR DE PRAZO -->
+<!-- ===================================================================== -->
+<section class="section alt" id="opB">
+  <div class="wrap">
+    <div class="opt-row"><span class="opt-tag"><i>B</i> Simulador · números que reagem à sua fachada</span></div>
+    <span class="eyebrow">Comparativo</span>
+    <h2>Drone, rapel ou andaime?</h2>
+    <p class="sub">Ajuste o tamanho da sua fachada e compare, com números, o que cada método exige. Decida com dados, não com promessa.</p>
+
+    <div class="sim">
+      <div>
+        <h3>Sua fachada</h3>
+        <p class="hint">Estimativas ilustrativas para uma fachada contínua. O orçamento real sai após a vistoria.</p>
+        <div class="ctl">
+          <label for="simArea"><span>Área de fachada</span><output id="simAreaOut">3.000 m²</output></label>
+          <input type="range" id="simArea" min="500" max="12000" step="250" value="3000">
+        </div>
+        <div class="ctl">
+          <label><span>Tipo de edificação</span></label>
+          <div class="seg" id="simType">
+            <button aria-pressed="true" data-t="galpao">Galpão / indústria</button>
+            <button aria-pressed="false" data-t="predio">Prédio / condomínio</button>
+            <button aria-pressed="false" data-t="silo">Silo / tanque</button>
+          </div>
+        </div>
+        <p class="sim-headline" id="simHead">O drone entrega em <strong>3 dias</strong> o que o andaime leva <strong>27 dias</strong> — e sem ninguém em altura.</p>
+        <p class="sim-note">Premissas: drone ≈ 1.200 m²/dia; rapel ≈ 300 m²/dia com 4 pessoas e perdas por clima; andaime inclui montagem e desmontagem. Substituir pelos números reais da operação.</p>
+      </div>
+
+      <div class="rows">
+        <div class="bars-head"><span></span><div class="bars"><span>Prazo total</span><span>Pessoas em altura</span><span>Dias com estrutura na fachada</span></div></div>
+
+        <div class="metric">
+          <div class="who"><svg><use href="#i-drone"/></svg>Drone</div>
+          <div class="bars">
+            <div class="bar m-drone best"><i id="bDroneDays"></i><b id="tDroneDays">3 dias</b></div>
+            <div class="bar m-drone best"><i id="bDronePeople"></i><b>0</b></div>
+            <div class="bar m-drone best"><i id="bDroneStruct"></i><b>0</b></div>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="who"><svg><use href="#i-rope"/></svg>Rapel</div>
+          <div class="bars">
+            <div class="bar m-rapel"><i id="bRapelDays"></i><b id="tRapelDays">12 dias</b></div>
+            <div class="bar m-rapel"><i id="bRapelPeople"></i><b>4</b></div>
+            <div class="bar m-rapel"><i id="bRapelStruct"></i><b id="tRapelStruct">12 dias</b></div>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="who"><svg><use href="#i-scaf"/></svg>Andaime</div>
+          <div class="bars">
+            <div class="bar m-and"><i id="bAndDays"></i><b id="tAndDays">27 dias</b></div>
+            <div class="bar m-and"><i id="bAndPeople"></i><b>6</b></div>
+            <div class="bar m-and"><i id="bAndStruct"></i><b id="tAndStruct">27 dias</b></div>
+          </div>
+        </div>
+
+        <div class="rowh" style="margin-top:6px"><span></span><span style="color:#7F93BD;font-weight:600;letter-spacing:0;text-transform:none;font-size:.8rem">Em todos os métodos, o registro em fotos e vídeo com termo de aceite só vem de série na Hidro Drone.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===================================================================== -->
+<!-- OPÇÃO C — TABELA ÚNICA -->
+<!-- ===================================================================== -->
+<section class="section" id="opC">
+  <div class="wrap">
+    <div class="opt-row"><span class="opt-tag"><i>C</i> Tabela única · leitura linha a linha</span></div>
+    <span class="eyebrow">Comparativo</span>
+    <h2>Drone, rapel ou andaime?</h2>
+    <p class="sub">Comparação honesta entre os três métodos para a mesma fachada, critério por critério.</p>
+
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th class="hl"><small>Hidro Drone</small>Drone de alta pressão</th>
+            <th>Rapel</th>
+            <th>Andaime / balancim</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Pessoas em altura</th>
+            <td class="hl"><div class="cell good"><svg><use href="#i-check"/></svg><span>Nenhuma<span class="sm">Piloto em solo, dentro da área isolada</span></span></div></td>
+            <td><div class="cell bad"><svg><use href="#i-x"/></svg><span>Equipe pendurada na fachada</span></div></td>
+            <td><div class="cell bad"><svg><use href="#i-x"/></svg><span>Equipe sobre estrutura suspensa</span></div></td>
+          </tr>
+          <tr>
+            <th scope="row">Prazo típico</th>
+            <td class="hl"><div class="cell good"><svg><use href="#i-check"/></svg><span>Dias<span class="sm">Até 5× mais rápido</span><span class="score s5"><i></i><i></i><i></i><i></i><i></i></span></span></div></td>
+            <td><div class="cell meh"><svg><use href="#i-warn"/></svg><span>Semanas<span class="sm">Dependente do clima</span><span class="score s2"><i></i><i></i><i></i><i></i><i></i></span></span></div></td>
+            <td><div class="cell bad"><svg><use href="#i-x"/></svg><span>Semanas a meses<span class="sm">Inclui montagem e desmontagem</span><span class="score s1"><i></i><i></i><i></i><i></i><i></i></span></span></div></td>
+          </tr>
+          <tr>
+            <th scope="row">Estrutura montada</th>
+            <td class="hl"><div class="cell good"><svg><use href="#i-check"/></svg><span>Nenhuma<span class="sm">Só a área de pouso isolada</span></span></div></td>
+            <td><div class="cell meh"><svg><use href="#i-warn"/></svg><span>Ancoragens e linhas de vida</span></div></td>
+            <td><div class="cell bad"><svg><use href="#i-x"/></svg><span>Andaime na fachada por todo o período</span></div></td>
+          </tr>
+          <tr>
+            <th scope="row">Impacto na rotina</th>
+            <td class="hl"><div class="cell good"><svg><use href="#i-check"/></svg><span>Mínimo<span class="sm">Sem obra e sem parada de produção</span></span></div></td>
+            <td><div class="cell meh"><svg><use href="#i-warn"/></svg><span>Pessoas passando nas janelas</span></div></td>
+            <td><div class="cell bad"><svg><use href="#i-x"/></svg><span>Obra visível, janelas bloqueadas</span></div></td>
+          </tr>
+          <tr>
+            <th scope="row">Registro do serviço</th>
+            <td class="hl"><div class="cell good"><svg><use href="#i-check"/></svg><span>Fotos e vídeos com termo de aceite</span></div></td>
+            <td><div class="cell bad"><svg><use href="#i-x"/></svg><span>Raramente incluso</span></div></td>
+            <td><div class="cell bad"><svg><use href="#i-x"/></svg><span>Raramente incluso</span></div></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Resumo</td>
+            <td class="hl">5 de 5 critérios a favor</td>
+            <td>0 de 5</td>
+            <td>0 de 5</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ===================== OPÇÃO A ===================== */
+(function(){
+  const svg = document.getElementById('fvSvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  // janelas: 6 colunas x 7 linhas dentro de 150..410 x 50..340
+  const cols=6, rows=7, bx=150, by=50, bw=260, bh=290;
+  const cw=bw/cols, ch=bh/rows;
+  const wins=[];
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+    wins.push({x:bx+c*cw+8, y:by+r*ch+8, w:cw-16, h:ch-16});
+  }
+  function fill(id){
+    const g=document.getElementById(id);
+    wins.forEach(w=>{const e=document.createElementNS(NS,'rect');e.setAttribute('x',w.x);e.setAttribute('y',w.y);e.setAttribute('width',w.w);e.setAttribute('height',w.h);e.setAttribute('rx',2);g.appendChild(e);});
+  }
+  fill('winDirty');fill('winClean1');fill('winClean2');fill('winClean3');
+
+  // andaime: linhas
+  (function(){
+    const L=document.getElementById('scafLines'), P=document.getElementById('scafPlat');
+    const x0=132,x1=428,levels=6;
+    for(let i=0;i<=levels;i++){const y=340-i*48;
+      const h=document.createElementNS(NS,'line');h.setAttribute('x1',x0);h.setAttribute('y1',y);h.setAttribute('x2',x1);h.setAttribute('y2',y);L.appendChild(h);
+      if(i>0){const p=document.createElementNS(NS,'rect');p.setAttribute('x',x0);p.setAttribute('y',y-5);p.setAttribute('width',x1-x0);p.setAttribute('height',5);P.appendChild(p);}
+    }
+    for(let x=x0;x<=x1;x+=74){const v=document.createElementNS(NS,'line');v.setAttribute('x1',x);v.setAttribute('y1',52);v.setAttribute('x2',x);v.setAttribute('y2',340);L.appendChild(v);}
+    for(let i=0;i<levels;i++){for(let x=x0;x<x1;x+=148){const d=document.createElementNS(NS,'line');d.setAttribute('x1',x);d.setAttribute('y1',340-i*48);d.setAttribute('x2',x+74);d.setAttribute('y2',340-(i+1)*48);d.setAttribute('stroke-width',1.5);L.appendChild(d);}}
+  })();
+
+  const FACTS={
+    drone:{cls:['good','good','good','good','good'],txt:['Nenhuma','Dias — até 5× mais rápido','Nenhuma — só a área de pouso isolada','Mínimo, sem obra e sem parada','Fotos, vídeos e termo de aceite'],
+      v:'<strong>O drone lava a fachada inteira enquanto o prédio continua funcionando.</strong> Sem ninguém pendurado, sem estrutura, com tudo registrado.',days:3,unit:'3 dias',dur:7000},
+    rapel:{cls:['bad','meh','meh','meh','bad'],txt:['Equipe pendurada na fachada','Semanas, dependente do clima','Ancoragens e linhas de vida','Pessoas passando nas janelas','Raramente incluso'],
+      v:'<strong>Funciona, mas depende de gente pendurada e de tempo bom.</strong> Cada dia de chuva é um dia a mais com a equipe na fachada.',days:15,unit:'2–3 semanas',dur:11000},
+    andaime:{cls:['bad','bad','bad','bad','bad'],txt:['Equipe sobre estrutura suspensa','Semanas a meses, com montagem','Andaime na fachada por todo o período','Obra visível, janelas bloqueadas','Raramente incluso'],
+      v:'<strong>A fachada vira canteiro de obras.</strong> Montagem, semanas de estrutura à vista, janelas bloqueadas — e desmontagem no fim.',days:30,unit:'1 mês ou mais',dur:14000}
+  };
+  const facts=[...document.querySelectorAll('#fvFacts .fv-fact')];
+  const tabs=[...document.querySelectorAll('.fv-tab')];
+  const scenes={drone:sceneDrone,rapel:sceneRapel,andaime:sceneAndaime};
+  const prog=document.getElementById('fvProg'), dayEl=document.getElementById('fvDay'), scaleEl=document.getElementById('fvScale'), verdict=document.getElementById('fvVerdict');
+  let mode='drone', t0=performance.now();
+
+  function setMode(m){
+    mode=m; t0=performance.now();
+    tabs.forEach(b=>b.setAttribute('aria-selected',b.dataset.m===m));
+    Object.entries(scenes).forEach(([k,g])=>g.classList.toggle('on',k===m));
+    const f=FACTS[m];
+    facts.forEach((el,i)=>{el.className='fv-fact '+f.cls[i]+' swap';el.querySelector('dd').textContent=f.txt[i];el.addEventListener('animationend',()=>el.classList.remove('swap'),{once:true});});
+    verdict.innerHTML=f.v;
+    scaleEl.textContent=f.unit;
+    prog.className=m;
+    // reset clips
+    cleanRect.setAttribute('height',0);col1.setAttribute('height',0);col2.setAttribute('height',0);cleanAnd.setAttribute('height',0);scafRect.setAttribute('height',0);scafRect.setAttribute('y',340);
+  }
+  tabs.forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.m)));
+
+  const droneG=document.getElementById('droneG'), hose=document.getElementById('hose'), jet=document.getElementById('jet');
+  const r1=document.getElementById('r1'), r2=document.getElementById('r2');
+  const w1=document.getElementById('worker1'),w2=document.getElementById('worker2'),rope1=document.getElementById('rope1'),rope2=document.getElementById('rope2'),peep=document.getElementById('peep'),rain=document.getElementById('rain');
+  const wA=document.getElementById('wA'),wB=document.getElementById('wB'),wC=document.getElementById('wC'),andPhase=document.getElementById('andPhase');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function frame(now){
+    const f=FACTS[mode]; const dur=f.dur;
+    let p=((now-t0)%dur)/dur; if(reduce)p=0.65;
+    prog.style.width=(p*100)+'%';
+    dayEl.textContent='Dia '+Math.min(f.days,Math.floor(p*f.days)+1)+' de '+f.days;
+
+    if(mode==='drone'){
+      // serpentina por 7 faixas
+      const lanes=rows, lp=p*lanes, li=Math.min(lanes-1,Math.floor(lp)), lf=lp-li;
+      const y=by+li*ch+ch/2;
+      const dir=li%2===0?1:-1;
+      const x= dir>0 ? bx-40+lf*(bw+80) : bx+bw+40-lf*(bw+80);
+      const bob=Math.sin(now/180)*2;
+      droneG.setAttribute('transform',`translate(${x},${y+bob})`);
+      jet.setAttribute('transform',`translate(${dir>0?18:-18},0) scale(${dir>0?1:-1},1) rotate(0)`);
+      // rotor "giro"
+      const s=1+Math.sin(now/40)*.25; r1.setAttribute('rx',12*s); r2.setAttribute('rx',12/s);
+      hose.setAttribute('d',`M${x},${y+14} C ${x-60},${y+120} 60,260 75,310`);
+      // frente limpa: faixas acima completas + proporção da faixa atual
+      const cleanedH=li*ch + (dir>0 ? Math.max(0,Math.min(1,(x-bx)/bw)) : Math.max(0,Math.min(1,(bx+bw-x)/bw)))*ch;
+      cleanRect.setAttribute('y',by); cleanRect.setAttribute('height',Math.max(0,Math.min(bh,cleanedH)));
+      cleanRect.setAttribute('x',bx); cleanRect.setAttribute('width',bw);
+      // faixa atual parcial: limitar largura — simplificado: limpa linha inteira conforme avança
+    } else if(mode==='rapel'){
+      // dois trabalhadores descem; chuva pausa no meio
+      const rainOn = p>0.42 && p<0.58;
+      rain.setAttribute('opacity',rainOn?1:0);
+      const q = p<0.42 ? p/0.84 : p<0.58 ? 0.5 : 0.5+(p-0.58)/0.84;
+      const y1=by+10+q*(bh-40), y2=by+30+Math.min(1,q*1.05)*(bh-60);
+      const sway1=Math.sin(now/400)*3, sway2=Math.cos(now/460)*3;
+      w1.setAttribute('transform',`translate(${197+sway1},${y1})`); rope1.setAttribute('x2',197+sway1); rope1.setAttribute('y2',y1);
+      w2.setAttribute('transform',`translate(${337+sway2},${y2})`); rope2.setAttribute('x2',337+sway2); rope2.setAttribute('y2',y2);
+      // limpeza em colunas estreitas
+      col1.setAttribute('x',197-cw/2);col1.setAttribute('y',by);col1.setAttribute('width',cw);col1.setAttribute('height',Math.max(0,y1-by+20));
+      col2.setAttribute('x',337-cw/2);col2.setAttribute('y',by);col2.setAttribute('width',cw);col2.setAttribute('height',Math.max(0,y2-by+20));
+      const row=Math.min(rows-1,Math.floor(((y1-by)/bh)*rows));
+      peep.setAttribute('transform',`translate(${bx+2*cw+cw/2},${by+row*ch+ch/2+5})`);
+      peep.setAttribute('opacity', p>0.05?1:0);
+    } else {
+      // fases: montagem 0–.25, limpeza .25–.8, desmontagem .8–1
+      let sh, label;
+      if(p<0.25){sh=(p/0.25)*290;label='Montagem do andaime… a fachada já está bloqueada';}
+      else if(p<0.8){sh=290;label='Limpeza com a estrutura tomando a fachada';}
+      else{sh=(1-(p-0.8)/0.2)*290;label='Desmontagem — e as janelas ainda não estão livres';}
+      scafRect.setAttribute('y',340-sh);scafRect.setAttribute('height',sh);
+      andPhase.textContent=label;
+      const showW = p>=0.25&&p<0.8;
+      const cq=(Math.max(0,Math.min(1,(p-0.25)/0.55)));
+      [wA,wB,wC].forEach((w,i)=>{
+        const lvl=Math.min(5,Math.floor(cq*6)); const y=340-lvl*48-34;
+        const x=170+i*90+Math.sin(now/500+i)*14;
+        w.setAttribute('transform',`translate(${x},${y})`); w.setAttribute('opacity',showW?1:0);
+      });
+      cleanAnd.setAttribute('x',bx);cleanAnd.setAttribute('width',bw);
+      const hclean=cq*bh; cleanAnd.setAttribute('y',by+bh-hclean); cleanAnd.setAttribute('height',hclean);
+    }
+    requestAnimationFrame(frame);
+  }
+  setMode(new URLSearchParams(location.search).get('modo')||'drone');
+  requestAnimationFrame(frame);
+})();
+
+/* ===================== OPÇÃO B ===================== */
+(function(){
+  const area=document.getElementById('simArea'), out=document.getElementById('simAreaOut');
+  const typeBtns=[...document.querySelectorAll('#simType button')];
+  let type='galpao';
+  // fatores por tipo: dificuldade para cada método
+  const F={
+    galpao:{drone:1,rapel:1.15,and:1},      // telhado/laterais: andaime e rapel penam
+    predio:{drone:1.1,rapel:1,and:1.05},
+    silo:{drone:1,rapel:1.4,and:1.3}
+  };
+  const fmt=n=>n.toLocaleString('pt-BR');
+  const days=n=>n===1?'1 dia':fmt(n)+' dias';
+  function calc(){
+    const a=+area.value, f=F[type];
+    out.textContent=fmt(a)+' m²';
+    const drone=Math.max(1,Math.ceil(a/1200*f.drone));
+    const rapel=Math.max(3,Math.ceil(a/300*1.2*f.rapel));
+    const mont=Math.ceil(a/600*f.and)+2;
+    const andClean=Math.ceil(a/400*f.and);
+    const and=mont+andClean+Math.ceil(mont*.5);
+    const maxD=and;
+    const set=(id,v,max)=>{document.getElementById(id).style.width=Math.max(6,(v/max)*100)+'%';};
+    set('bDroneDays',drone,maxD);set('bRapelDays',rapel,maxD);set('bAndDays',and,maxD);
+    set('bDronePeople',0,6);set('bRapelPeople',4,6);set('bAndPeople',6,6);
+    set('bDroneStruct',0,maxD);set('bRapelStruct',rapel,maxD);set('bAndStruct',and,maxD);
+    tDroneDays.textContent=days(drone);tRapelDays.textContent=days(rapel);tAndDays.textContent=days(and);
+    tRapelStruct.textContent=days(rapel);tAndStruct.textContent=days(and);
+    simHead.innerHTML=`O drone entrega em <strong>${days(drone)}</strong> o que o andaime leva <strong>${days(and)}</strong> — e sem ninguém em altura.`;
+  }
+  area.addEventListener('input',calc);
+  typeBtns.forEach(b=>b.addEventListener('click',()=>{type=b.dataset.t;typeBtns.forEach(x=>x.setAttribute('aria-pressed',x===b));calc();}));
+  calc();
+})();
+</script>
+</body>
+</html>
