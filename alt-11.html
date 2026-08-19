@@ -1364,6 +1364,7 @@
     /* ---- estado ---- */
     var cx = 0, cy = 0, cyT = null, vx = 0, tilt = 0;     /* drone (cyT = altura-alvo, usada no modo auto) */
     var tx = 0, ty = 0;                        /* alvo do jato */
+    var pointerX = null;                       /* x do ponteiro (modo manual): o drone segue o ponteiro, o jato mira o texto */
     var spraying = false, interacted = false, pointerIn = false, down = false;
     var anchor = {x:0, y:0};
     var running = false, visible = false, lastT = 0, rafId = null, ready = false, idleT = 0;
@@ -1536,12 +1537,13 @@
     }
     function render(dt){
       /* drone segue o alvo em x com inércia */
-      var desired = tx;
+      var desired = (mode === "manual" && pointerX !== null) ? pointerX : tx;
       var ax = (desired - cx) * 16;
       vx += ax * dt; vx *= Math.exp(-6 * dt);
       cx += vx * dt;
       var lim = Math.min(66, W / 2);
-      if (cx < lim){ cx = lim; vx = Math.max(0, vx); } else if (cx > W - lim){ cx = W - lim; vx = Math.min(0, vx); }
+      var maxX = (mode === "manual" && opts.maxX) ? opts.maxX(W) : W - lim;
+      if (cx < lim){ cx = lim; vx = Math.max(0, vx); } else if (cx > maxX){ cx = maxX; vx = Math.min(0, vx); }
       if (cyT !== null) cy += (cyT - cy) * Math.min(1, 5 * dt);
       var bob = Math.sin(performance.now() / 520) * 3;
       tilt = Math.max(-14, Math.min(14, vx * 0.05));
@@ -1660,11 +1662,26 @@
       var x = e.clientX - rr.left, y = e.clientY - rr.top;
       tx = Math.max(box.l - 24, Math.min(box.r + 24, x));
       ty = Math.max(box.t + 6, Math.min(box.b - 4, y));
+      var maxX = opts.maxX ? opts.maxX(W) : W - 66;
+      pointerX = Math.max(Math.min(66, W / 2), Math.min(maxX, x));
     }
     if (mode === "manual"){
-      root.addEventListener("pointerenter", function(e){ pointerIn = true; if (e.pointerType === "mouse"){ interacted = true; intro = null; spraying = true; targetFromEvent(e); start(); } });
-      root.addEventListener("pointerleave", function(){ pointerIn = false; if (!down) spraying = false; });
-      root.addEventListener("pointermove", function(e){ if (e.pointerType === "mouse" || down){ targetFromEvent(e); spraying = true; start(); } });
+      /* mouse: escuta numa área maior (opts.track, ex.: o hero inteiro) para o drone poder ir além do texto;
+         só está "dentro" quando o ponteiro está na faixa vertical do título */
+      var track = opts.track || root;
+      function inBand(e){
+        var rr = root.getBoundingClientRect();
+        return e.clientY >= rr.top - 24 && e.clientY <= rr.bottom + 24 && e.clientX >= rr.left - 40;
+      }
+      track.addEventListener("pointermove", function(e){
+        if (e.pointerType !== "mouse") return;
+        if (inBand(e)){
+          if (!pointerIn){ pointerIn = true; interacted = true; intro = null; }
+          targetFromEvent(e); spraying = true; start();
+        } else if (pointerIn){ pointerIn = false; if (!down) spraying = false; }
+      });
+      track.addEventListener("pointerleave", function(e){ if (e.pointerType !== "mouse") return; pointerIn = false; if (!down) spraying = false; });
+      root.addEventListener("pointermove", function(e){ if (down){ targetFromEvent(e); spraying = true; start(); } });
       root.addEventListener("pointerdown", function(e){
         interacted = true; intro = null; down = true; spraying = true; targetFromEvent(e); start();
         try { root.setPointerCapture(e.pointerId); } catch(_){}
@@ -1677,7 +1694,7 @@
         var dx = e.key === "ArrowRight" ? 18 : e.key === "ArrowLeft" ? -18 : 0;
         var dl = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
         if (!dx && !dl) return;
-        e.preventDefault(); interacted = true; intro = null; start();
+        e.preventDefault(); interacted = true; intro = null; pointerX = null; start();
         keyLine = Math.max(0, Math.min(lines.length - 1, keyLine + dl));
         if (!lines.length) return;
         tx = Math.max(lines[keyLine].x0, Math.min(lines[keyLine].x1, (dx ? tx : lines[keyLine].x0 + 10) + dx)); ty = lines[keyLine].cy;
@@ -1724,6 +1741,8 @@
   if (lavHero){
     DW_INSTANCES.push(DroneWash(lavHero, {
       mode:"manual", status: document.getElementById("lavHeroStatus"),
+      track: document.querySelector(".hero-in"),
+      maxX: function(W){ return window.innerWidth > 960 ? W + 44 : W - 66; },
       anchor: function(rr, W, H){
         var hero = document.querySelector(".hero").getBoundingClientRect();
         if (window.innerWidth > 960) return {x: W + 52, y: hero.bottom - rr.top - 24};
