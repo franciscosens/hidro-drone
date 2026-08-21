@@ -172,7 +172,7 @@
   }
   .hero-in{
     position:relative;max-width:var(--wrap);margin:0 auto;padding:72px 20px 84px;
-    display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr);gap:44px;align-items:center;
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:center;
   }
   .hero-copy{position:relative;padding-right:28px}
   .hero-badge{
@@ -273,13 +273,12 @@
 
   /* ---------- Numbers strip ---------- */
   .numbers{background:var(--navy);color:#fff}
-  .numbers-in{max-width:var(--wrap);margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:repeat(5,1fr);gap:24px;text-align:center}
+  .numbers-in{max-width:var(--wrap);margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
   .num .val{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.2rem, 4vw, 3.2rem);line-height:1;color:#fff}
   .num .val small{font-size:.55em;font-weight:700;color:#93B4F5}
   .num .lbl{font-size:.85rem;color:#B9CBF0;margin-top:6px;line-height:1.4}
   @media (max-width: 860px){
     .numbers-in{grid-template-columns:repeat(2,1fr);gap:28px 12px;padding:34px 20px}
-    .num:last-child{grid-column:1 / -1}
   }
 
   /* ---------- Sections base ---------- */
@@ -292,19 +291,45 @@
   .section-head .sub{margin-bottom:0}
   @media (max-width:700px){.section{padding:56px 0}.section .sub{margin-bottom:30px}}
 
-  /* ---------- Compare ---------- */
-  .compare{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
-  @media (max-width: 900px){.compare{grid-template-columns:1fr;max-width:520px}}
-  .c-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 6px 18px rgba(15,27,51,.06)}
-  .c-card.featured{border:2px solid var(--blue);box-shadow:0 16px 40px rgba(29,78,216,.18);position:relative}
-  .c-card.featured .flag{position:absolute;top:-13px;left:24px;background:var(--blue);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 14px}
-  .c-card h3{font-size:1.2rem;font-weight:800;margin-bottom:14px;padding-top:4px}
-  .c-card .row{border-top:1px solid var(--line);padding:11px 0}
-  .c-card dt{font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
-  .c-card dd{font-size:.95rem;font-weight:600;margin-top:2px}
-  .c-card .good{color:var(--wa-deep)}
-  .c-card .bad{color:#B4231F}
-  .c-card .meh{color:#8A6A12}
+  /* ---------- Compare (fachada viva) ---------- */
+  .fv{display:grid;grid-template-columns:1.25fr .9fr;gap:32px;align-items:stretch}
+  @media (max-width:900px){.fv{grid-template-columns:1fr}}
+  .fv-stage{background:linear-gradient(180deg,#EAF2FF 0%,#F5F8FC 100%);border:1px solid var(--line);border-radius:20px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+  .fv-tabs{display:flex;gap:6px;padding:14px 14px 0}
+  .fv-tab{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 8px;font:inherit;font-weight:800;font-size:.92rem;color:var(--ink-2);display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s;cursor:pointer}
+  .fv-tab svg{width:22px;height:22px;flex:none}
+  .fv-tab[aria-selected="true"]{background:var(--navy-ink);color:#fff;border-color:var(--navy-ink);box-shadow:0 8px 18px rgba(13,26,64,.25)}
+  .fv-tab[aria-selected="true"].is-drone{background:var(--blue);border-color:var(--blue)}
+  .fv-svg{display:block;width:100%;height:auto}
+  .fv-scene{opacity:0;transition:opacity .35s}
+  .fv-scene.on{opacity:1}
+  .fv-time{padding:0 18px 18px}
+  .fv-time .lbl{display:flex;justify-content:space-between;align-items:baseline;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+  .fv-time .lbl strong{color:var(--ink);font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;letter-spacing:.02em;text-transform:none}
+  .fv-bar{position:relative;height:10px;border-radius:999px;background:#DCE5F2;overflow:hidden}
+  .fv-bar i{position:absolute;inset:0 auto 0 0;width:0;background:var(--blue);border-radius:999px}
+  .fv-bar i.rapel{background:#8A6A12}
+  .fv-bar i.andaime{background:#B4231F}
+  .fv-ticks{display:flex;justify-content:space-between;font-size:.7rem;color:var(--ink-2);margin-top:4px;font-weight:600}
+  .fv-facts{display:flex;flex-direction:column;gap:12px}
+  .fv-fact{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+  .fv-fact .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--blue-soft);color:var(--blue)}
+  .fv-fact .ic svg{width:24px;height:24px}
+  .fv-fact dt{font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  .fv-fact dd{font-weight:700;font-size:1rem;margin-top:2px}
+  .fv-fact.good .ic{background:#E6F7EC;color:var(--wa-deep)}
+  .fv-fact.meh .ic{background:#FFF6DB;color:#8A6A12}
+  .fv-fact.bad .ic{background:#FDECEC;color:#B4231F}
+  .fv-fact.good dd{color:var(--wa-deep)}
+  .fv-fact.meh dd{color:#8A6A12}
+  .fv-fact.bad dd{color:#B4231F}
+  .fv-verdict{margin-top:auto;background:var(--navy-ink);color:#fff;border-radius:var(--radius);padding:18px 20px}
+  .fv-verdict p{font-size:.95rem;color:#B9CBF0}
+  .fv-verdict p strong{color:#fff}
+  .fv-verdict .tag{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8FB5FF;margin-bottom:6px}
+  .fv-fact.swap{animation:fvswap .35s ease}
+  @keyframes fvswap{from{opacity:.3;transform:translateX(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){.fv-fact.swap{animation:none}}
 
   /* ---------- Quem somos (ficha técnica) ---------- */
   .plate{
@@ -337,24 +362,6 @@
     .plate{grid-template-columns:1fr}
     .plate-media{min-height:280px;order:-1}
   }
-
-  /* valores */
-  .values{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;margin-top:56px;align-items:start}
-  .values-list{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .value{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 6px 18px rgba(15,27,51,.05)}
-  .value .ico{width:40px;height:40px;border-radius:10px;background:var(--blue-soft);color:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
-  .value .ico svg{width:22px;height:22px}
-  .value h4{font-size:1rem;font-weight:800;margin-bottom:6px}
-  .value p{font-size:.9rem;color:var(--ink-2)}
-  .values-media{position:sticky;top:92px;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;background:var(--navy-deep)}
-  .values-media video{width:100%;height:100%;object-fit:cover}
-  .values-media .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;color:#fff;font-size:.85rem;font-weight:600;background:linear-gradient(to top, rgba(13,26,64,.75), transparent)}
-  .values-media{position:relative}
-  @media (max-width: 960px){
-    .values{grid-template-columns:1fr}
-    .values-media{aspect-ratio:16/10;max-width:560px}
-  }
-  @media (max-width: 620px){.values-list{grid-template-columns:1fr}}
 
   /* ---------- Services ---------- */
   .cards-services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -395,6 +402,9 @@
   }
 
   /* ---------- Trabalhos carousel ---------- */
+  .work-more{margin-top:18px}
+  .work-more a{font-weight:700;color:var(--blue);text-decoration:none}
+  .work-more a:hover{text-decoration:underline}
   .car-wrap{position:relative}
   .carousel{
     display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
@@ -546,6 +556,12 @@
   <symbol id="i-doc" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline fill="none" stroke="currentColor" stroke-width="2" points="14 2 14 8 20 8"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9 15l2 2 4-4"/></symbol>
   <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 21v-1a7 7 0 0 1 14 0v1"/></symbol>
   <symbol id="i-folder" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 13h8M8 16h5"/></symbol>
+  <symbol id="i-cmp-rope" viewBox="0 0 24 24"><path d="M12 2v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><circle cx="12" cy="11.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 22l1.5-6h3L15 22M8.5 15.5l3.5 1 3.5-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-cmp-scaf" viewBox="0 0 24 24"><path d="M4 2v20M20 2v20M4 8h16M4 15h16M4 22h16M4 8l16 7M20 8L4 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-cmp-people" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="8" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 14.2c2.8.2 5 2.6 5 5.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-cmp-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-cmp-struct" viewBox="0 0 24 24"><path d="M5 3v18M19 3v18M5 7h14M5 13h14M5 19h14M5 7l14 6M5 13l14 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-cmp-routine" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 2v4M16 2v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
   <symbol id="i-drone" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h10M30 12h10M13 12l7 10M35 12l-7 10M20 22h8v6h-8zM24 28v6M20 34h8"/><circle cx="13" cy="12" r="2.4"/><circle cx="35" cy="12" r="2.4"/></g></symbol>
 </svg>
@@ -624,7 +640,7 @@
         <svg class="lav-rig" aria-hidden="true" focusable="false"></svg>
       </div>
       <p class="lav-status" id="lavHeroStatus" aria-live="polite"><span class="bar"><i></i></span><span class="txt" data-i18n="hero.status">Mova o drone sobre o título para lavar</span></p>
-      <p class="lead" data-i18n="hero.lead">Especialistas em limpeza de prédios e estruturas industriais com drone de jato de alta pressão: até 250&nbsp;bar de pressão e mais de 100&nbsp;m de alcance. Sem obra, sem estrutura montada na sua fachada, sem parada de produção e sem trabalho em altura.</p>
+      <p class="lead" data-i18n="hero.lead">Especialistas em limpeza de prédios e estruturas industriais com drone de jato de alta pressão. Sem obra, sem estrutura montada na sua fachada, sem parada de produção e sem trabalho em altura.</p>
       <div class="hero-ctas">
         <a class="btn btn-wa" href="https://wa.me/5541996620072?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20limpeza%20com%20drone." data-wa="orcamento" target="_blank" rel="noopener">
           <svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>
@@ -635,7 +651,8 @@
       <p class="hero-note" data-i18n="hero.note">Entre em contato e realize um orçamento para a fachada da sua indústria agora mesmo.</p>
     </div>
 
-    <!-- TODO: substituir pelo vídeo institucional do marketing (sugestão: 16:10, 20–30 s, loop, sem áudio, ≤ 8 MB) -->
+    <!-- TODO: substituir pelo vídeo institucional do marketing com diversos projetos.
+         Especificação p/ marketing: 1920×1200 (16:10) — ou 1920×1080 (16:9) —, MP4 H.264, 20–30 s, loop, sem áudio, ≤ 10 MB -->
     <div class="hero-video reveal">
       <video id="hero-video" autoplay muted loop playsinline preload="metadata"
         poster="assets/instagram/Da1C3tSPVmT_video.jpg"
@@ -661,15 +678,9 @@
 <!-- ============ NUMBERS ============ -->
 <section class="numbers" aria-label="Números da operação">
   <div class="numbers-in">
-    <!-- TODO: confirmar +100.000 m² com o Lucian -->
     <div class="num reveal">
       <div class="val display" data-i18n="num.1v">+100<small>&nbsp;mil m²</small></div>
       <div class="lbl" data-i18n="num.1">lavados — muitos clientes atendidos e satisfeitos</div>
-    </div>
-    <!-- TODO: confirmar +100 m com o Lucian -->
-    <div class="num reveal">
-      <div class="val display">+100<small>&nbsp;m</small></div>
-      <div class="lbl" data-i18n="num.2">de alcance vertical — chega ao topo de qualquer torre</div>
     </div>
     <div class="num reveal">
       <div class="val display">5<small>×</small></div>
@@ -686,44 +697,109 @@
   </div>
 </section>
 
-<!-- ============ COMPARATIVO ============ -->
+<!-- ============ COMPARATIVO (fachada viva) ============ -->
 <section class="section" id="comparativo">
   <div class="wrap">
     <span class="eyebrow" data-i18n="cmp.eyebrow">Comparativo</span>
     <h2 data-i18n="cmp.h2">Drone, rapel ou andaime?</h2>
-    <p class="sub" data-i18n="cmp.sub">Comparação honesta entre os três métodos para a mesma fachada. Decida com números, não com promessa.</p>
-    <div class="compare">
-      <article class="c-card featured reveal">
-        <span class="flag">Hidro Drone</span>
-        <h3 data-i18n="cmp.drone">Drone de alta pressão</h3>
-        <dl>
-          <div class="row"><dt data-i18n="cmp.dt1">Pessoas em altura</dt><dd class="good" data-i18n="cmp.d1">Nenhuma</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt2">Prazo típico</dt><dd class="good" data-i18n="cmp.d2">Dias — até 5× mais rápido</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt3">Estrutura montada</dt><dd class="good" data-i18n="cmp.d3">Nenhuma — só a área de pouso isolada</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt4">Impacto na rotina</dt><dd class="good" data-i18n="cmp.d4">Mínimo, sem obra e sem parada de produção</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt5">Registro do serviço</dt><dd class="good" data-i18n="cmp.d5">Fotos e vídeos com termo de aceite ao final da entrega</dd></div>
-        </dl>
-      </article>
-      <article class="c-card reveal">
-        <h3 data-i18n="cmp.rapel">Rapel</h3>
-        <dl>
-          <div class="row"><dt data-i18n="cmp.dt1">Pessoas em altura</dt><dd class="bad" data-i18n="cmp.r1">Equipe pendurada na fachada</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt2">Prazo típico</dt><dd class="meh" data-i18n="cmp.r2">Semanas, dependente do clima</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt3">Estrutura montada</dt><dd class="meh" data-i18n="cmp.r3">Ancoragens e linhas de vida</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt4">Impacto na rotina</dt><dd class="meh" data-i18n="cmp.r4">Pessoas passando nas janelas</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt5">Registro do serviço</dt><dd class="bad" data-i18n="cmp.r5">Raramente incluso</dd></div>
-        </dl>
-      </article>
-      <article class="c-card reveal">
-        <h3 data-i18n="cmp.andaime">Andaime / balancim</h3>
-        <dl>
-          <div class="row"><dt data-i18n="cmp.dt1">Pessoas em altura</dt><dd class="bad" data-i18n="cmp.a1">Equipe sobre estrutura suspensa</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt2">Prazo típico</dt><dd class="bad" data-i18n="cmp.a2">Semanas a meses, com montagem</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt3">Estrutura montada</dt><dd class="bad" data-i18n="cmp.a3">Andaime na fachada por todo o período</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt4">Impacto na rotina</dt><dd class="bad" data-i18n="cmp.a4">Obra visível, janelas bloqueadas</dd></div>
-          <div class="row"><dt data-i18n="cmp.dt5">Registro do serviço</dt><dd class="bad" data-i18n="cmp.r5">Raramente incluso</dd></div>
-        </dl>
-      </article>
+    <p class="sub" data-i18n="cmp.sub">A mesma fachada, três jeitos de lavar. Troque o método e veja o que acontece no prédio — e quanto tempo leva.</p>
+
+    <div class="fv reveal">
+      <div class="fv-stage">
+        <div class="fv-tabs" role="tablist" aria-label="Método de limpeza" data-i18n-aria="cmp.tabs">
+          <button class="fv-tab is-drone" type="button" role="tab" aria-selected="true" data-m="drone"><svg aria-hidden="true"><use href="#i-drone"/></svg><span data-i18n="cmp.tDrone">Drone</span></button>
+          <button class="fv-tab" type="button" role="tab" aria-selected="false" data-m="rapel"><svg aria-hidden="true"><use href="#i-cmp-rope"/></svg><span data-i18n="cmp.rapel">Rapel</span></button>
+          <button class="fv-tab" type="button" role="tab" aria-selected="false" data-m="andaime"><svg aria-hidden="true"><use href="#i-cmp-scaf"/></svg><span data-i18n="cmp.tAnd">Andaime</span></button>
+        </div>
+
+        <svg class="fv-svg" id="fvSvg" viewBox="0 0 560 380" aria-label="Animação da mesma fachada sendo lavada pelo método selecionado" data-i18n-aria="cmp.stage">
+          <defs>
+            <linearGradient id="fvSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EAF2FF"/><stop offset="1" stop-color="#F5F8FC"/></linearGradient>
+            <linearGradient id="fvGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9EC5FF"/><stop offset="1" stop-color="#5B8DEF"/></linearGradient>
+            <clipPath id="fvCleanClip"><rect id="fvCleanRect" x="0" y="0" width="560" height="0"/></clipPath>
+            <clipPath id="fvCleanClipCols"><rect id="fvCol1" x="0" y="0" width="0" height="0"/><rect id="fvCol2" x="0" y="0" width="0" height="0"/></clipPath>
+            <clipPath id="fvCleanClipAnd"><rect id="fvCleanAnd" x="0" y="0" width="560" height="0"/></clipPath>
+            <clipPath id="fvScafClip"><rect id="fvScafRect" x="130" y="340" width="300" height="0"/></clipPath>
+            <pattern id="fvDirt" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.1" fill="#6B5A3E" opacity=".22"/><circle cx="4.5" cy="4" r=".8" fill="#6B5A3E" opacity=".18"/></pattern>
+            <filter id="fvSoft"><feGaussianBlur stdDeviation="1.2"/></filter>
+          </defs>
+          <rect width="560" height="380" fill="url(#fvSky)"/>
+          <rect x="0" y="340" width="560" height="40" fill="#D7E1EE"/>
+          <rect x="0" y="340" width="560" height="3" fill="#B9C8DC"/>
+          <g id="fvBuilding">
+            <rect x="150" y="50" width="260" height="290" fill="#8E9AAB"/>
+            <rect x="150" y="50" width="260" height="290" fill="url(#fvDirt)"/>
+            <g id="fvWinDirty" fill="#5E6E87"></g>
+            <g clip-path="url(#fvCleanClip)"><rect x="150" y="50" width="260" height="290" fill="#DCE6F5"/><g id="fvWinClean1" fill="url(#fvGlass)"></g></g>
+            <g clip-path="url(#fvCleanClipCols)"><rect x="150" y="50" width="260" height="290" fill="#DCE6F5"/><g id="fvWinClean2" fill="url(#fvGlass)"></g></g>
+            <g clip-path="url(#fvCleanClipAnd)"><rect x="150" y="50" width="260" height="290" fill="#DCE6F5"/><g id="fvWinClean3" fill="url(#fvGlass)"></g></g>
+            <rect x="150" y="50" width="260" height="290" fill="none" stroke="#5E6E87" stroke-width="2"/>
+            <rect x="144" y="44" width="272" height="8" fill="#5E6E87"/>
+          </g>
+
+          <g class="fv-scene on" id="fvSceneDrone">
+            <g transform="translate(40,300)">
+              <rect x="0" y="10" width="70" height="30" rx="4" fill="#1D4ED8"/>
+              <rect x="6" y="0" width="30" height="14" rx="3" fill="#16295E"/>
+              <circle cx="16" cy="42" r="6" fill="#0D1A40"/><circle cx="56" cy="42" r="6" fill="#0D1A40"/>
+              <text x="35" y="30" font-family="Barlow Condensed" font-weight="800" font-size="10" fill="#fff" text-anchor="middle">HIDRO DRONE</text>
+            </g>
+            <g stroke="#F59E0B" stroke-width="2" stroke-dasharray="6 4" fill="none"><rect x="22" y="290" width="106" height="50" rx="4"/></g>
+            <path id="fvHose" d="" fill="none" stroke="#1D4ED8" stroke-width="3" stroke-linecap="round"/>
+            <g id="fvDroneG">
+              <g id="fvJet" filter="url(#fvSoft)"><polygon points="0,0 46,-12 46,12" fill="#BFE0FF" opacity=".85"/></g>
+              <g>
+                <rect x="-16" y="-6" width="32" height="12" rx="5" fill="#0D1A40"/>
+                <path d="M-16 0h-12M16 0h12" stroke="#0D1A40" stroke-width="3"/>
+                <ellipse id="fvR1" cx="-28" cy="0" rx="12" ry="2.5" fill="#1D4ED8" opacity=".8"/>
+                <ellipse id="fvR2" cx="28" cy="0" rx="12" ry="2.5" fill="#1D4ED8" opacity=".8"/>
+                <rect x="-3" y="6" width="6" height="8" fill="#0D1A40"/>
+              </g>
+            </g>
+            <text id="fvCapD" x="280" y="372" font-size="11" font-weight="700" fill="#46566F" text-anchor="middle">Ninguém na fachada · só a área de pouso isolada</text>
+          </g>
+
+          <g class="fv-scene" id="fvSceneRapel">
+            <rect x="190" y="36" width="14" height="8" fill="#B4231F"/><rect x="330" y="36" width="14" height="8" fill="#B4231F"/>
+            <line id="fvRope1" x1="197" y1="44" x2="197" y2="140" stroke="#F59E0B" stroke-width="2"/>
+            <line id="fvRope2" x1="337" y1="44" x2="337" y2="170" stroke="#F59E0B" stroke-width="2"/>
+            <g id="fvWorker1"><circle r="6" fill="#F2C9A0"/><rect x="-6" y="6" width="12" height="18" rx="3" fill="#F59E0B"/><path d="M-6 24l-3 12M6 24l3 12" stroke="#0D1A40" stroke-width="3" stroke-linecap="round"/><rect x="-9" y="10" width="18" height="6" fill="#B4231F"/></g>
+            <g id="fvWorker2"><circle r="6" fill="#E0A97E"/><rect x="-6" y="6" width="12" height="18" rx="3" fill="#F59E0B"/><path d="M-6 24l-3 12M6 24l3 12" stroke="#0D1A40" stroke-width="3" stroke-linecap="round"/><rect x="-9" y="10" width="18" height="6" fill="#B4231F"/></g>
+            <g id="fvPeep" font-size="14" text-anchor="middle"><text x="0" y="0">👀</text></g>
+            <text id="fvCapR" x="280" y="372" font-size="11" font-weight="700" fill="#46566F" text-anchor="middle">Equipe pendurada · depende do clima e de linhas de vida</text>
+            <g id="fvRain" opacity="0"><g stroke="#5B8DEF" stroke-width="1.5" stroke-linecap="round">
+              <line x1="40" y1="60" x2="34" y2="74"/><line x1="80" y1="120" x2="74" y2="134"/><line x1="60" y1="200" x2="54" y2="214"/><line x1="480" y1="90" x2="474" y2="104"/><line x1="520" y1="180" x2="514" y2="194"/><line x1="450" y1="260" x2="444" y2="274"/><line x1="100" y1="260" x2="94" y2="274"/>
+            </g><text x="60" y="40" font-size="22">🌧️</text></g>
+          </g>
+
+          <g class="fv-scene" id="fvSceneAndaime">
+            <g clip-path="url(#fvScafClip)">
+              <g stroke="#7C8799" stroke-width="3" fill="none" id="fvScafLines"></g>
+              <g id="fvScafPlat" fill="#A8B2C2"></g>
+            </g>
+            <g id="fvWA"><circle r="6" fill="#F2C9A0"/><rect x="-6" y="6" width="12" height="18" rx="3" fill="#F59E0B"/><rect x="-9" y="10" width="18" height="6" fill="#B4231F"/></g>
+            <g id="fvWB"><circle r="6" fill="#E0A97E"/><rect x="-6" y="6" width="12" height="18" rx="3" fill="#F59E0B"/><rect x="-9" y="10" width="18" height="6" fill="#B4231F"/></g>
+            <g id="fvWC"><circle r="6" fill="#F2C9A0"/><rect x="-6" y="6" width="12" height="18" rx="3" fill="#F59E0B"/><rect x="-9" y="10" width="18" height="6" fill="#B4231F"/></g>
+            <g><rect x="120" y="318" width="320" height="22" fill="#F59E0B"/><path d="M120 340l20-22M160 340l20-22M200 340l20-22M240 340l20-22M280 340l20-22M320 340l20-22M360 340l20-22M400 340l20-22" stroke="#0D1A40" stroke-width="4"/></g>
+            <text id="fvAndPhase" x="280" y="372" font-size="11" font-weight="700" fill="#46566F" text-anchor="middle">Montagem do andaime…</text>
+          </g>
+        </svg>
+
+        <div class="fv-time">
+          <div class="lbl"><span data-i18n="cmp.dt2">Prazo típico</span><strong id="fvDay">Dia 1 de 3</strong></div>
+          <div class="fv-bar"><i id="fvProg"></i></div>
+          <div class="fv-ticks"><span data-i18n="cmp.tick0">início</span><span id="fvScale">3 dias</span></div>
+        </div>
+      </div>
+
+      <dl class="fv-facts" id="fvFacts">
+        <div class="fv-fact good"><span class="ic"><svg aria-hidden="true"><use href="#i-cmp-people"/></svg></span><div><dt data-i18n="cmp.dt1">Pessoas em altura</dt><dd data-i18n="cmp.d1">Nenhuma</dd></div></div>
+        <div class="fv-fact good"><span class="ic"><svg aria-hidden="true"><use href="#i-cmp-clock"/></svg></span><div><dt data-i18n="cmp.dt2">Prazo típico</dt><dd data-i18n="cmp.d2">Dias — até 5× mais rápido</dd></div></div>
+        <div class="fv-fact good"><span class="ic"><svg aria-hidden="true"><use href="#i-cmp-struct"/></svg></span><div><dt data-i18n="cmp.dt3">Estrutura montada</dt><dd data-i18n="cmp.d3">Nenhuma — só a área de pouso isolada</dd></div></div>
+        <div class="fv-fact good"><span class="ic"><svg aria-hidden="true"><use href="#i-cmp-routine"/></svg></span><div><dt data-i18n="cmp.dt4">Impacto na rotina</dt><dd data-i18n="cmp.d4">Mínimo, sem obra e sem parada de produção</dd></div></div>
+        <div class="fv-fact good"><span class="ic"><svg aria-hidden="true"><use href="#i-doc"/></svg></span><div><dt data-i18n="cmp.dt5">Registro do serviço</dt><dd data-i18n="cmp.d5">Fotos e vídeos com termo de aceite ao final da entrega</dd></div></div>
+        <div class="fv-verdict"><span class="tag" data-i18n="cmp.sumTag">Em resumo</span><p id="fvVerdict" data-i18n="cmp.vD"><strong>O drone lava a fachada inteira enquanto o prédio continua funcionando.</strong> Sem ninguém pendurado, sem estrutura, com tudo registrado.</p></div>
+      </dl>
     </div>
   </div>
 </section>
@@ -741,8 +817,8 @@
         </div>
         <p class="sub" data-i18n="about.sub">A HidroDrone chegou para fazer uma revolução no mercado de limpeza industrial com alta tecnologia, reconhecida pela excelência, inovação contínua e compromisso com a preservação ambiental e a segurança do trabalho.</p>
         <div class="counters">
-          <div class="counter"><div class="cnum"><sup>+</sup><span data-count="100">0</span><sup>m</sup></div><div class="clbl" data-i18n="about.c1">Alcance vertical</div></div>
-          <div class="counter"><div class="cnum"><span data-count="250">0</span><sup>bar</sup></div><div class="clbl" data-i18n="about.c2">Pressão de trabalho</div></div>
+          <div class="counter"><div class="cnum"><sup>+</sup><span data-count="100">0</span><sup data-i18n="about.c1u">mil&nbsp;m²</sup></div><div class="clbl" data-i18n="about.c1">lavados — muitos clientes atendidos e satisfeitos</div></div>
+          <div class="counter"><div class="cnum" data-i18n="about.c2v">Menos<sup>água</sup></div><div class="clbl" data-i18n="about.c2">jato de precisão consome menos que a lavagem convencional</div></div>
           <div class="counter"><div class="cnum"><span data-count="5">0</span><sup>×</sup></div><div class="clbl" data-i18n="about.c3">Mais rápido que o método tradicional</div></div>
           <div class="counter"><div class="cnum"><span data-count="0">0</span></div><div class="clbl" data-i18n="about.c4">Pessoas penduradas</div></div>
         </div>
@@ -762,53 +838,6 @@
       </div>
     </div>
 
-    <!-- valores -->
-    <div class="values">
-      <div>
-        <span class="eyebrow" data-i18n="val.eyebrow">Nossos valores</span>
-        <h2 style="margin-bottom:26px" data-i18n="val.h2">O que guia cada voo</h2>
-        <div class="values-list">
-          <article class="value reveal">
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg></div>
-            <h4 data-i18n="val.1h">Inovação com propósito</h4>
-            <p data-i18n="val.1p">Não buscamos apenas o novo — buscamos o melhor! Cada tecnologia que adotamos tem como objetivo transformar realidades e resolver problemas com inteligência.</p>
-          </article>
-          <article class="value reveal">
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg></div>
-            <h4 data-i18n="val.2h">Segurança em primeiro lugar</h4>
-            <p data-i18n="val.2p">Eliminamos riscos para que pessoas possam trabalhar com tranquilidade. A vida está no centro de tudo o que fazemos.</p>
-          </article>
-          <article class="value reveal">
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17l-6.1 3.5 1.5-6.8L2.2 9l6.9-.7z"/></svg></div>
-            <h4 data-i18n="val.3h">Qualidade</h4>
-            <p data-i18n="val.3p">Comprometemo-nos com a excelência, garantindo resultados com precisão e limpeza excepcional.</p>
-          </article>
-          <article class="value reveal">
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4-4 8-7.6 8-12a8 8 0 1 0-16 0c0 4.4 4 8 8 12z"/><path d="M12 6v8M8 10c2 0 4 2 4 4 0-2 2-4 4-4"/></svg></div>
-            <h4 data-i18n="val.4h">Sustentabilidade que gera impacto</h4>
-            <p data-i18n="val.4p">Nossas soluções respeitam o planeta e reduzem o uso de recursos naturais, sem comprometer a qualidade.</p>
-          </article>
-          <article class="value reveal">
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
-            <h4 data-i18n="val.5h">Eficiência que impulsiona</h4>
-            <p data-i18n="val.5p">Entregamos resultados rápidos, precisos e duradouros, ajudando nossos clientes a crescer com mais agilidade e menos interrupções.</p>
-          </article>
-          <article class="value reveal">
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 21v-1a7 7 0 0 1 14 0v1M15 15.5a5 5 0 0 1 7 4.5v1"/></svg></div>
-            <h4 data-i18n="val.6h">Respeito e responsabilidade social</h4>
-            <p data-i18n="val.6p">Atuamos com ética, transparência e compromisso para gerar impacto positivo na sociedade, criando um ambiente de trabalho seguro e impulsionando o desenvolvimento tecnológico responsável.</p>
-          </article>
-        </div>
-      </div>
-      <!-- TODO: confirmar qual vídeo o Lucas quer aqui ("vídeo que consta no link") — usando o mais limpo por enquanto -->
-      <div class="values-media reveal">
-        <video muted loop playsinline preload="none" autoplay
-          poster="assets/instagram/DbEhre-PV6M_video.jpg"
-          src="assets/instagram/videos/DbEhre-PV6M.mp4"
-          aria-label="Vídeo: drone lavando painéis solares em planta industrial"></video>
-        <span class="cap" data-i18n="val.cap">Operação real — limpeza de painéis solares</span>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -831,16 +860,17 @@
     <div class="cards-services">
       <article class="s-card reveal">
         <div class="s-media">
-          <video preload="none" muted loop playsinline poster="assets/instagram/DMGvmAMvFcD_video.jpg" src="assets/instagram/videos/DMGvmAMvFcD.mp4" aria-label="Vídeo: drone lavando fachada metálica de galpão industrial"></video>
+          <!-- TODO: trocar pelas fotos da apresentação comercial (marketing) -->
+          <img src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="Drone lavando fachada metálica de galpão industrial" loading="lazy">
         </div>
         <div class="s-body">
           <h3 data-i18n="svc1.h">Limpeza de fachadas industriais com drone</h3>
-          <p data-i18n="svc1.p">Galpões e barracões industriais de chapas metálicas e alvenaria, silos, caixas d'água e painéis solares. Limpeza técnica sem parada de produção e sem trabalho em altura.</p>
+          <p data-i18n="svc1.p">Galpões e barracões industriais de chapas metálicas e alvenaria e caixas d'água. Limpeza técnica sem parada de produção e sem trabalho em altura.</p>
         </div>
       </article>
       <article class="s-card reveal">
         <div class="s-media">
-          <video preload="none" muted loop playsinline poster="assets/instagram/DbMNEuIvHS7_video.jpg" src="assets/instagram/videos/DbMNEuIvHS7.mp4" aria-label="Vídeo: drone lavando fachada de vidro espelhado"></video>
+          <img src="assets/instagram/DbMNEuIvHS7_video.jpg" alt="Drone lavando fachada de vidro espelhado" loading="lazy">
         </div>
         <div class="s-body">
           <h3 data-i18n="svc2.h">Limpeza de vidro</h3>
@@ -849,7 +879,7 @@
       </article>
       <article class="s-card reveal">
         <div class="s-media">
-          <video preload="none" muted loop playsinline poster="assets/instagram/DbWgHEkveuL_video.jpg" src="assets/instagram/videos/DbWgHEkveuL.mp4" aria-label="Vídeo: drone lavando construção histórica de difícil acesso"></video>
+          <img src="assets/instagram/DbWgHEkveuL_video.jpg" alt="Drone lavando construção histórica de difícil acesso" loading="lazy">
         </div>
         <div class="s-body">
           <h3 data-i18n="svc3.h">Estruturas de difícil acesso</h3>
@@ -953,18 +983,9 @@
           <span class="g-tmp" data-i18n="work.tmp">vídeo provisório</span>
           <figcaption class="g-cap"><b>Volkswagen</b><span data-i18n="work.c4">Planta industrial</span></figcaption>
         </figure>
-        <figure class="g-item reveal">
-          <video preload="none" muted loop playsinline poster="assets/instagram/DbZDqLLviPU_video.jpg" src="assets/instagram/videos/DbZDqLLviPU.mp4"></video>
-          <button class="g-play" type="button" aria-label="Reproduzir vídeo: Igreja — telhado e fachada" data-i18n-aria="wa.play5"></button>
-          <figcaption class="g-cap"><b data-i18n="work.igreja">Igreja</b><span data-i18n="work.c5">Telhado e fachada histórica</span></figcaption>
-        </figure>
-        <figure class="g-item reveal">
-          <video preload="none" muted loop playsinline poster="assets/instagram/DbeXVsYvZUr_video.jpg" src="assets/instagram/videos/DbeXVsYvZUr.mp4"></video>
-          <button class="g-play" type="button" aria-label="Reproduzir vídeo: Paraná Clube — lonas e cobertura tensionada" data-i18n-aria="wa.play6"></button>
-          <figcaption class="g-cap"><b>Paraná Clube</b><span data-i18n="work.c6">Lonas — cobertura tensionada</span></figcaption>
-        </figure>
       </div>
     </div>
+    <p class="work-more"><a href="trabalhos.html" target="_blank" rel="noopener" data-i18n="work.all">Ver todos os vídeos →</a></p>
   </div>
 </section>
 
@@ -1043,8 +1064,8 @@
         <div class="a" data-i18n="faq.a3">Não voamos com chuva ou vento forte — é regra de segurança. Se o tempo virar, reagendamos. Como a execução é rápida, uma janela de poucos dias de tempo bom costuma ser suficiente para concluir o serviço.</div>
       </details>
       <details>
-        <summary data-i18n="faq.q4">Preciso de autorização do condomínio ou de algum órgão?</summary>
-        <div class="a" data-i18n="faq.a4">Da parte aérea, cuidamos de tudo: a operação é homologada junto à ANAC e ao DECEA, com pilotos certificados e seguro aeronáutico. Do lado do condomínio, basta a aprovação interna conforme o regimento (síndico ou assembleia) — e fornecemos toda a documentação para facilitar.</div>
+        <summary data-i18n="faq.q4">Preciso de autorização de algum órgão?</summary>
+        <div class="a" data-i18n="faq.a4">Da parte aérea, cuidamos de tudo: a operação é homologada junto à ANAC e ao DECEA, com pilotos certificados e seguro aeronáutico. Do lado da empresa, basta a aprovação do orçamento e apoio para a execução do serviço.</div>
       </details>
     </div>
   </div>
@@ -1112,8 +1133,8 @@
 
   /* ===================== i18n (PT / EN / DE) ===================== */
   var I18N = {
-    text: { en: {"nav.quem": "About us", "nav.servicos": "Services", "nav.como": "How it works", "nav.trabalhos": "Projects", "nav.ba": "Before &amp; after", "nav.clientes": "Clients", "nav.faq": "FAQ", "hdr.cta": "Contact us", "menu.phone": "Call: +55 41 99662-0072", "menu.wa": "Contact us on WhatsApp", "hero.badge": "Real operation — unedited footage", "hero.l1": "Cleaning at height", "hero.l2": "with our feet on the ground!", "hero.status": "Move the drone over the headline to wash it", "hero.lead": "Specialists in cleaning buildings and industrial structures with high-pressure jet drones: up to 250&nbsp;bar of pressure and more than 100&nbsp;m of reach. No construction work, no scaffolding on your façade, no production downtime and no work at height.", "hero.cta1": "Get a quote", "hero.cta2": "See real projects", "hero.note": "Get in touch and request a quote for your plant’s façade right now.", "hero.vtag": "Corporate video · placeholder", "trust.1": "Operation approved by ANAC / DECEA", "trust.2": "Aviation and civil liability insurance", "trust.3": "Certified pilots and staff", "trust.4": "Full documentation required by DECEA", "num.1v": "+100<small>&nbsp;k m²</small>", "num.1": "washed — many clients served and satisfied", "num.2": "of vertical reach — up to the top of any tower", "num.3": "faster than rope access on the same façade", "num.4": "people hanging from your façade", "num.5v": "Less<small>&nbsp;water</small>", "num.5": "the precision jet uses less than conventional washing", "cmp.eyebrow": "Comparison", "cmp.h2": "Drone, rope access or scaffolding?", "cmp.sub": "An honest comparison of the three methods for the same façade. Decide with numbers, not promises.", "cmp.drone": "High-pressure drone", "cmp.dt1": "People at height", "cmp.dt2": "Typical lead time", "cmp.dt3": "Structure installed", "cmp.dt4": "Impact on routine", "cmp.dt5": "Service record", "cmp.d1": "None", "cmp.d2": "Days — up to 5× faster", "cmp.d3": "None — only the landing area is cordoned off", "cmp.d4": "Minimal — no construction work and no production downtime", "cmp.d5": "Photos and videos with an acceptance report on delivery", "cmp.rapel": "Rope access", "cmp.r1": "Crew hanging from the façade", "cmp.r2": "Weeks, weather-dependent", "cmp.r3": "Anchors and lifelines", "cmp.r4": "People passing by the windows", "cmp.r5": "Rarely included", "cmp.andaime": "Scaffolding / cradle", "cmp.a1": "Crew on a suspended structure", "cmp.a2": "Weeks to months, plus assembly", "cmp.a3": "Scaffolding on the façade the whole time", "cmp.a4": "Visible works, blocked windows", "about.h2": "The industrial cleaning revolution has arrived — by air.", "about.pill1": "Pioneer in the state of Paraná with high-pressure drone technology", "about.pill2": "The second company in Brazil with high-pressure drone technology", "about.sub": "HidroDrone is here to revolutionise the industrial cleaning market with high technology — recognised for excellence, continuous innovation and a commitment to environmental protection and workplace safety.", "about.c1": "Vertical reach", "about.c2": "Working pressure", "about.c3": "Faster than the traditional method", "about.c4": "People hanging", "about.dt1": "Certification", "about.dt2": "Pilots", "about.dd2": "Certified", "about.dt3": "Coverage", "about.dt4": "Delivery", "about.dd4": "Photos, videos and acceptance report", "about.tag": "Unit M2 — Hidro Drone fleet", "val.eyebrow": "Our values", "val.h2": "What guides every flight", "val.1h": "Purposeful innovation", "val.1p": "We don’t just chase the new — we chase the best! Every technology we adopt aims to transform realities and solve problems intelligently.", "val.2h": "Safety first", "val.2p": "We eliminate risks so people can work with peace of mind. Life is at the centre of everything we do.", "val.3h": "Quality", "val.3p": "We are committed to excellence, delivering precise results and exceptional cleanliness.", "val.4h": "Sustainability with impact", "val.4p": "Our solutions respect the planet and reduce the use of natural resources without compromising quality.", "val.5h": "Efficiency that drives growth", "val.5p": "We deliver fast, precise and lasting results, helping our clients grow with more agility and fewer interruptions.", "val.6h": "Respect and social responsibility", "val.6p": "We act with ethics, transparency and commitment to create a positive impact on society, building a safe workplace and driving responsible technological development.", "val.cap": "Real operation — solar panel cleaning", "svc.l1": "Where the drone reaches,", "svc.l2": "the dirt comes off!", "svc.status": "Automatic demo · the drone washes by itself, line by line", "svc.sub": "<strong>Our purpose is to innovate!</strong> The same high-pressure drone serves different structures and materials — and where it can’t go, our certified team goes.", "svc1.h": "Industrial façade cleaning with drone", "svc1.p": "Industrial sheds and warehouses in metal sheeting and masonry, silos, water tanks and solar panels. Technical cleaning with no production downtime and no work at height.", "svc2.h": "Glass cleaning", "svc2.p": "Glass façades and offices, with no disruption to your company’s office routine and no work at height.", "svc3.h": "Hard-to-reach structures", "svc3.p": "Churches, monuments, towers, tensile roofs and everything scaffolding can’t reach — or shouldn’t touch. The drone gets where nothing else does.", "svc4.h": "Technical and industrial cleaning", "svc4.p": "Cleaning of internal industrial walls using aerial work platforms and a specialised, certified team. Technical cleaning of hard-to-reach areas.", "svc5.ph": "Photo of the laser equipment", "svc5.ph2": "(to be added)", "svc5.h": "Laser paint and rust removal", "svc5.p": "With laser equipment we remove paint and rust from parts, structures and walls. No waste generated and no impact on operations.", "how.h2": "From site visit to report in 4 steps", "how.sub": "Simple to hire and easy to account for. You follow everything, from the site survey to delivery.", "how.1h": "1. Site survey <span class=\"free\">Free in Curitiba and region</span>", "how.1p": "We assess the surface, type of soiling, surroundings and take-off points. Fixed proposal, no surprises.", "how.2h": "2. Execution with flight plan", "how.2p": "Planned flight and cordoned-off area. Certified pilots, ANAC/DECEA-approved operation and aviation insurance.", "how.3h": "3. Quality inspection with the client", "how.3p": "Once cleaning is complete, a final inspection is carried out together with the client.", "how.4h": "4. Report with photos and videos", "how.4p": "Before and after documented, acceptance report sent to the client.", "work.h2": "Real videos, straight from the job", "work.sub": "No stock footage: every video is from a job carried out by our team. Swipe sideways and tap to watch.", "work.tmp": "placeholder video", "work.c1": "Metal façade — industrial shed", "work.c2": "Commercial building — façade and signage", "work.c3": "Industrial structure — cleaning at height", "work.c4": "Industrial plant", "work.c5": "Roof and historic façade", "work.c6": "Canvas — tensile roof", "work.igreja": "Church", "ba.h2": "The line between dirty and clean, drawn by water", "ba.sub": "Metal shed mid-wash: on one side, years of grime; on the other, the result of the 250 bar jet. Drag the line and compare.", "ba.hint": "Drag to compare", "ba.more": "See more before &amp; after photos →", "ba.antes": "Before", "ba.depois": "After", "ba.note": "Real photo from an operation · “before” effect simulated on the same image for comparison.", "cli.h2": "Who has already flown with us", "cli.note": "Industries, carmakers, clubs and heritage sites — the same technology, the same standard of delivery.", "faq.eyebrow": "Frequently asked questions", "faq.h2": "What every manager asks before signing", "faq.sub": "Straight answers to the most common objections. Missing one? Message us on WhatsApp.", "faq.q1": "Is the drone very noisy?", "faq.a1": "The noise is comparable to an ordinary pressure washer — noticeable near the operation, but brief and only during working hours.", "faq.q2": "Does the area need to be cordoned off?", "faq.a2": "Usually not. We only cordon off the take-off and landing point and the safety strip under the flight path, generally within the company’s own grounds.", "faq.q3": "Does it work in the rain?", "faq.a3": "We don’t fly in rain or strong wind — it’s a safety rule. If the weather turns, we reschedule. Since execution is fast, a window of a few days of good weather is usually enough to finish the job.", "faq.q4": "Do I need authorisation from the building management or any authority?", "faq.a4": "On the aviation side, we handle everything: the operation is approved by ANAC and DECEA, with certified pilots and aviation insurance. On the building side, internal approval under the bylaws (manager or assembly) is enough — and we provide all the documentation to make it easy.", "final.eyebrow": "Quote", "final.h2": "How much does it cost to make your façade <b>clean again?</b>", "final.p": "Message us on WhatsApp right now and book a site survey. The survey is free for Curitiba and the metropolitan region. We serve all of Brazil.", "chip.pilotos": "Certified pilots", "chip.rc": "Aviation &amp; liability insurance", "chip.visita": "Free site survey", "final.h3": "Talk to us", "final.btn": "Message on WhatsApp", "final.loc": "Curitiba – PR · we serve all of Brazil", "foot.seal1": "ANAC / DECEA approved", "foot.copy": "Hidro Drone — Façade and industrial structure cleaning with drones. Based in Curitiba – PR, serving all of Brazil."}, de: {"nav.quem": "Über uns", "nav.servicos": "Leistungen", "nav.como": "So funktioniert es", "nav.trabalhos": "Projekte", "nav.ba": "Vorher &amp; Nachher", "nav.clientes": "Kunden", "nav.faq": "FAQ", "hdr.cta": "Kontakt", "menu.phone": "Anrufen: +55 41 99662-0072", "menu.wa": "Kontakt per WhatsApp", "hero.badge": "Echter Einsatz — unbearbeitetes Video", "hero.l1": "Reinigung in der Höhe", "hero.l2": "mit den Füßen am Boden!", "hero.status": "Bewegen Sie die Drohne über die Überschrift", "hero.lead": "Spezialisten für die Reinigung von Gebäuden und Industrieanlagen mit Hochdruck-Drohnen: bis zu 250&nbsp;bar Druck und über 100&nbsp;m Reichweite. Keine Baustelle, kein Gerüst an Ihrer Fassade, kein Produktionsstillstand und keine Arbeit in der Höhe.", "hero.cta1": "Angebot anfordern", "hero.cta2": "Echte Projekte ansehen", "hero.note": "Kontaktieren Sie uns und fordern Sie jetzt ein Angebot für die Fassade Ihres Werks an.", "hero.vtag": "Imagefilm · Platzhalter", "trust.1": "Von ANAC / DECEA zugelassener Betrieb", "trust.2": "Luftfahrt- und Haftpflichtversicherung", "trust.3": "Zertifizierte Piloten und Mitarbeiter", "trust.4": "Vollständige, vom DECEA geforderte Dokumentation", "num.1v": "+100<small>&nbsp;Tsd. m²</small>", "num.1": "gereinigt — viele zufriedene Kunden", "num.2": "vertikale Reichweite — bis zur Spitze jedes Turms", "num.3": "schneller als Seilzugang an derselben Fassade", "num.4": "Personen, die an Ihrer Fassade hängen", "num.5v": "Weniger<small>&nbsp;Wasser</small>", "num.5": "der Präzisionsstrahl verbraucht weniger als herkömmliche Reinigung", "cmp.eyebrow": "Vergleich", "cmp.h2": "Drohne, Seilzugang oder Gerüst?", "cmp.sub": "Ein ehrlicher Vergleich der drei Methoden für dieselbe Fassade. Entscheiden Sie mit Zahlen, nicht mit Versprechen.", "cmp.drone": "Hochdruck-Drohne", "cmp.dt1": "Personen in der Höhe", "cmp.dt2": "Typische Dauer", "cmp.dt3": "Aufgebaute Struktur", "cmp.dt4": "Auswirkung auf den Betrieb", "cmp.dt5": "Dokumentation", "cmp.d1": "Keine", "cmp.d2": "Tage — bis zu 5× schneller", "cmp.d3": "Keine — nur der Landeplatz wird abgesperrt", "cmp.d4": "Minimal — keine Baustelle und kein Produktionsstillstand", "cmp.d5": "Fotos und Videos mit Abnahmeprotokoll bei Übergabe", "cmp.rapel": "Seilzugang", "cmp.r1": "Team hängt an der Fassade", "cmp.r2": "Wochen, wetterabhängig", "cmp.r3": "Anker und Sicherungsseile", "cmp.r4": "Personen vor den Fenstern", "cmp.r5": "Selten enthalten", "cmp.andaime": "Gerüst / Hängebühne", "cmp.a1": "Team auf hängender Struktur", "cmp.a2": "Wochen bis Monate, plus Aufbau", "cmp.a3": "Gerüst während der gesamten Zeit an der Fassade", "cmp.a4": "Sichtbare Baustelle, blockierte Fenster", "about.h2": "Die Revolution der Industriereinigung ist eingeflogen.", "about.pill1": "Pionier im Bundesstaat Paraná mit Hochdruck-Drohnentechnologie", "about.pill2": "Das zweite Unternehmen in Brasilien mit Hochdruck-Drohnentechnologie", "about.sub": "HidroDrone ist angetreten, den Markt der Industriereinigung mit Hochtechnologie zu revolutionieren — anerkannt für Exzellenz, kontinuierliche Innovation und das Engagement für Umweltschutz und Arbeitssicherheit.", "about.c1": "Vertikale Reichweite", "about.c2": "Arbeitsdruck", "about.c3": "Schneller als die herkömmliche Methode", "about.c4": "Hängende Personen", "about.dt1": "Zulassung", "about.dt2": "Piloten", "about.dd2": "Zertifiziert", "about.dt3": "Versicherung", "about.dt4": "Übergabe", "about.dd4": "Fotos, Videos und Abnahmeprotokoll", "about.tag": "Einheit M2 — Hidro-Drone-Flotte", "val.eyebrow": "Unsere Werte", "val.h2": "Was jeden Flug leitet", "val.1h": "Innovation mit Sinn", "val.1p": "Wir suchen nicht nur das Neue — wir suchen das Beste! Jede Technologie, die wir einsetzen, soll Realitäten verändern und Probleme intelligent lösen.", "val.2h": "Sicherheit zuerst", "val.2p": "Wir beseitigen Risiken, damit Menschen unbesorgt arbeiten können. Das Leben steht im Mittelpunkt all unseres Handelns.", "val.3h": "Qualität", "val.3p": "Wir verpflichten uns zu Exzellenz und garantieren präzise Ergebnisse und außergewöhnliche Sauberkeit.", "val.4h": "Nachhaltigkeit mit Wirkung", "val.4p": "Unsere Lösungen schonen den Planeten und reduzieren den Verbrauch natürlicher Ressourcen — ohne Kompromisse bei der Qualität.", "val.5h": "Effizienz, die antreibt", "val.5p": "Wir liefern schnelle, präzise und dauerhafte Ergebnisse und helfen unseren Kunden, agiler und mit weniger Unterbrechungen zu wachsen.", "val.6h": "Respekt und soziale Verantwortung", "val.6p": "Wir handeln ethisch, transparent und engagiert, um die Gesellschaft positiv zu beeinflussen, ein sicheres Arbeitsumfeld zu schaffen und verantwortungsvolle technologische Entwicklung voranzutreiben.", "val.cap": "Echter Einsatz — Reinigung von Solarmodulen", "svc.l1": "Wo die Drohne hinkommt,", "svc.l2": "geht der Schmutz weg!", "svc.status": "Automatische Demo · die Drohne reinigt selbstständig, Zeile für Zeile", "svc.sub": "<strong>Unser Ziel ist Innovation!</strong> Dieselbe Hochdruck-Drohne bedient verschiedene Strukturen und Materialien — und wo sie nicht hinkommt, kommt unser zertifiziertes Team.", "svc1.h": "Industrie-Fassadenreinigung mit Drohne", "svc1.p": "Industrie- und Lagerhallen aus Metallblech und Mauerwerk, Silos, Wassertanks und Solarmodule. Technische Reinigung ohne Produktionsstillstand und ohne Arbeit in der Höhe.", "svc2.h": "Glasreinigung", "svc2.p": "Glasfassaden und Bürogebäude, ohne Störung des Büroalltags Ihres Unternehmens und ohne Arbeit in der Höhe.", "svc3.h": "Schwer zugängliche Strukturen", "svc3.p": "Kirchen, Denkmäler, Türme, Membrandächer und alles, was ein Gerüst nicht erreicht — oder nicht berühren sollte. Die Drohne kommt dahin, wo sonst nichts hinkommt.", "svc4.h": "Technische und industrielle Reinigung", "svc4.p": "Reinigung von Innenwänden in Industriegebäuden mit Hubarbeitsbühne und spezialisiertem, zertifiziertem Team. Technische Reinigung schwer zugänglicher Bereiche.", "svc5.ph": "Foto der Laseranlage", "svc5.ph2": "(wird ergänzt)", "svc5.h": "Farb- und Rostentfernung mit Laser", "svc5.p": "Mit Laseranlagen entfernen wir Farbe und Rost von Bauteilen, Strukturen und Wänden. Ohne Abfall und ohne Auswirkungen auf den Betrieb.", "how.h2": "Von der Besichtigung zum Bericht in 4 Schritten", "how.sub": "Einfach zu beauftragen und leicht nachzuweisen. Sie verfolgen alles — von der Besichtigung bis zur Übergabe.", "how.1h": "1. Besichtigung <span class=\"free\">Kostenlos in Curitiba und Umgebung</span>", "how.1p": "Wir bewerten Oberfläche, Verschmutzungsart, Umgebung und Startplätze. Festpreisangebot, ohne Überraschungen.", "how.2h": "2. Durchführung mit Flugplan", "how.2p": "Geplanter Flug und abgesperrter Bereich. Zertifizierte Piloten, von ANAC/DECEA zugelassener Betrieb und Luftfahrtversicherung.", "how.3h": "3. Qualitätsabnahme mit dem Kunden", "how.3p": "Nach Abschluss der Reinigung erfolgt eine Endabnahme gemeinsam mit dem Kunden.", "how.4h": "4. Bericht mit Fotos und Videos", "how.4p": "Vorher und Nachher dokumentiert, Abnahmeprotokoll an den Kunden gesendet.", "work.h2": "Echte Videos, direkt vom Einsatz", "work.sub": "Keine Stockvideos: Jedes Video stammt von einem Einsatz unseres Teams. Seitlich wischen und antippen zum Ansehen.", "work.tmp": "Platzhalter-Video", "work.c1": "Metallfassade — Industriehalle", "work.c2": "Geschäftsgebäude — Fassade und Schriftzug", "work.c3": "Industrieanlage — Reinigung in der Höhe", "work.c4": "Industriewerk", "work.c5": "Dach und historische Fassade", "work.c6": "Planen — Membrandach", "work.igreja": "Kirche", "ba.h2": "Die Grenze zwischen schmutzig und sauber — vom Wasser gezogen", "ba.sub": "Metallhalle mitten in der Reinigung: auf der einen Seite jahrelanger Schmutz, auf der anderen das Ergebnis des 250-bar-Strahls. Ziehen Sie die Linie und vergleichen Sie.", "ba.hint": "Zum Vergleichen ziehen", "ba.more": "Mehr Vorher-Nachher-Fotos ansehen →", "ba.antes": "Vorher", "ba.depois": "Nachher", "ba.note": "Echtes Einsatzfoto · „Vorher“-Effekt zum Vergleich auf demselben Bild simuliert.", "cli.h2": "Wer schon mit uns geflogen ist", "cli.note": "Industrie, Automobilhersteller, Vereine und Denkmäler — dieselbe Technologie, derselbe Lieferstandard.", "faq.eyebrow": "Häufige Fragen", "faq.h2": "Was jeder Entscheider vor dem Abschluss fragt", "faq.sub": "Klare Antworten auf die häufigsten Einwände. Fehlt eine? Schreiben Sie uns auf WhatsApp.", "faq.q1": "Ist die Drohne sehr laut?", "faq.a1": "Der Lärm ist mit einem gewöhnlichen Hochdruckreiniger vergleichbar — in der Nähe des Einsatzes wahrnehmbar, aber punktuell und nur während der Arbeitszeit.", "faq.q2": "Muss der Bereich abgesperrt werden?", "faq.a2": "Normalerweise nicht. Wir sperren nur Start- und Landeplatz sowie den Sicherheitsstreifen unter der Flugroute ab — in der Regel auf dem Firmengelände.", "faq.q3": "Funktioniert es bei Regen?", "faq.a3": "Bei Regen oder starkem Wind fliegen wir nicht — das ist eine Sicherheitsregel. Schlägt das Wetter um, verschieben wir. Da die Ausführung schnell ist, reicht meist ein Fenster von wenigen Schönwettertagen für den Abschluss.", "faq.q4": "Brauche ich eine Genehmigung der Hausverwaltung oder einer Behörde?", "faq.a4": "Die Luftfahrtseite übernehmen wir komplett: Der Betrieb ist von ANAC und DECEA zugelassen, mit zertifizierten Piloten und Luftfahrtversicherung. Auf Gebäudeseite genügt die interne Genehmigung gemäß Hausordnung (Verwalter oder Eigentümerversammlung) — und wir stellen alle Unterlagen bereit.", "final.eyebrow": "Angebot", "final.h2": "Was kostet es, Ihre Fassade <b>wieder sauber zu machen?</b>", "final.p": "Schreiben Sie uns jetzt auf WhatsApp und vereinbaren Sie eine Besichtigung. Die Besichtigung ist für Curitiba und die Metropolregion kostenlos. Wir sind in ganz Brasilien tätig.", "chip.pilotos": "Zertifizierte Piloten", "chip.rc": "Luftfahrt- &amp; Haftpflichtversicherung", "chip.visita": "Kostenlose Besichtigung", "final.h3": "Sprechen Sie mit uns", "final.btn": "Auf WhatsApp schreiben", "final.loc": "Curitiba – PR · tätig in ganz Brasilien", "foot.seal1": "ANAC / DECEA zugelassen", "foot.copy": "Hidro Drone — Reinigung von Fassaden und Industrieanlagen mit Drohnen. Sitz in Curitiba – PR, tätig in ganz Brasilien."}, es: {"nav.quem": "Quiénes somos", "nav.servicos": "Servicios", "nav.como": "Cómo funciona", "nav.trabalhos": "Trabajos", "nav.ba": "Antes y después", "nav.clientes": "Clientes", "nav.faq": "Preguntas", "hdr.cta": "Contáctanos", "menu.phone": "Llamar: +55 41 99662-0072", "menu.wa": "Contáctanos por WhatsApp", "hero.badge": "Operación real — vídeo sin edición", "hero.l1": "Limpieza en las alturas", "hero.l2": "¡con los pies en el suelo!", "hero.status": "Mueve el dron sobre el título para lavarlo", "hero.lead": "Especialistas en limpieza de edificios y estructuras industriales con dron de chorro de alta presión: hasta 250&nbsp;bar de presión y más de 100&nbsp;m de alcance. Sin obra, sin andamios en tu fachada, sin parada de producción y sin trabajo en altura.", "hero.cta1": "Pide un presupuesto", "hero.cta2": "Ver trabajos reales", "hero.note": "Contáctanos y solicita ahora mismo un presupuesto para la fachada de tu planta.", "hero.vtag": "Vídeo institucional · provisional", "trust.1": "Operación homologada ANAC / DECEA", "trust.2": "Seguro aeronáutico y de responsabilidad civil", "trust.3": "Pilotos y personal certificados", "trust.4": "Documentación completa exigida por el DECEA", "num.1v": "+100<small>&nbsp;mil m²</small>", "num.1": "lavados — muchos clientes atendidos y satisfechos", "num.2": "de alcance vertical — llega a lo alto de cualquier torre", "num.3": "más rápido que el rápel en la misma fachada", "num.4": "personas colgadas de tu fachada", "num.5v": "Menos<small>&nbsp;agua</small>", "num.5": "el chorro de precisión consume menos que el lavado convencional", "cmp.eyebrow": "Comparativa", "cmp.h2": "¿Dron, rápel o andamio?", "cmp.sub": "Comparación honesta entre los tres métodos para la misma fachada. Decide con números, no con promesas.", "cmp.drone": "Dron de alta presión", "cmp.dt1": "Personas en altura", "cmp.dt2": "Plazo típico", "cmp.dt3": "Estructura montada", "cmp.dt4": "Impacto en la rutina", "cmp.dt5": "Registro del servicio", "cmp.d1": "Ninguna", "cmp.d2": "Días — hasta 5× más rápido", "cmp.d3": "Ninguna — solo se aísla la zona de aterrizaje", "cmp.d4": "Mínimo, sin obra y sin parada de producción", "cmp.d5": "Fotos y vídeos con acta de aceptación al final de la entrega", "cmp.rapel": "Rápel", "cmp.r1": "Equipo colgado de la fachada", "cmp.r2": "Semanas, según el clima", "cmp.r3": "Anclajes y líneas de vida", "cmp.r4": "Personas pasando por las ventanas", "cmp.r5": "Rara vez incluido", "cmp.andaime": "Andamio / góndola", "cmp.a1": "Equipo sobre estructura suspendida", "cmp.a2": "Semanas a meses, con montaje", "cmp.a3": "Andamio en la fachada durante todo el periodo", "cmp.a4": "Obra visible, ventanas bloqueadas", "about.h2": "La revolución de la limpieza industrial llegó volando.", "about.pill1": "Pionera en el estado de Paraná con la tecnología de drones de alta presión", "about.pill2": "La segunda empresa de Brasil con la tecnología de drones de alta presión", "about.sub": "HidroDrone llegó para revolucionar el mercado de la limpieza industrial con alta tecnología, reconocida por la excelencia, la innovación continua y el compromiso con la preservación ambiental y la seguridad laboral.", "about.c1": "Alcance vertical", "about.c2": "Presión de trabajo", "about.c3": "Más rápido que el método tradicional", "about.c4": "Personas colgadas", "about.dt1": "Homologación", "about.dt2": "Pilotos", "about.dd2": "Certificados", "about.dt3": "Cobertura", "about.dt4": "Entrega", "about.dd4": "Fotos, vídeos y acta de aceptación", "about.tag": "Unidad M2 — Flota Hidro Drone", "val.eyebrow": "Nuestros valores", "val.h2": "Lo que guía cada vuelo", "val.1h": "Innovación con propósito", "val.1p": "No buscamos solo lo nuevo — ¡buscamos lo mejor! Cada tecnología que adoptamos tiene como objetivo transformar realidades y resolver problemas con inteligencia.", "val.2h": "La seguridad primero", "val.2p": "Eliminamos riesgos para que las personas puedan trabajar con tranquilidad. La vida está en el centro de todo lo que hacemos.", "val.3h": "Calidad", "val.3p": "Nos comprometemos con la excelencia, garantizando resultados precisos y una limpieza excepcional.", "val.4h": "Sostenibilidad que genera impacto", "val.4p": "Nuestras soluciones respetan el planeta y reducen el uso de recursos naturales, sin comprometer la calidad.", "val.5h": "Eficiencia que impulsa", "val.5p": "Entregamos resultados rápidos, precisos y duraderos, ayudando a nuestros clientes a crecer con más agilidad y menos interrupciones.", "val.6h": "Respeto y responsabilidad social", "val.6p": "Actuamos con ética, transparencia y compromiso para generar un impacto positivo en la sociedad, creando un entorno de trabajo seguro e impulsando el desarrollo tecnológico responsable.", "val.cap": "Operación real — limpieza de paneles solares", "svc.l1": "Donde llega el dron,", "svc.l2": "¡la suciedad se va!", "svc.status": "Demostración automática · el dron lava solo, línea por línea", "svc.sub": "<strong>¡Nuestro propósito es innovar!</strong> El mismo dron de alta presión atiende distintas estructuras y materiales — y, donde él no entra, entra un equipo certificado.", "svc1.h": "Limpieza de fachadas industriales con dron", "svc1.p": "Naves y galpones industriales de chapa metálica y mampostería, silos, depósitos de agua y paneles solares. Limpieza técnica sin parada de producción y sin trabajo en altura.", "svc2.h": "Limpieza de vidrio", "svc2.p": "Fachadas y oficinas de vidrio, sin interferir en la rutina administrativa de tu empresa y sin trabajo en altura.", "svc3.h": "Estructuras de difícil acceso", "svc3.p": "Iglesias, monumentos, torres, cubiertas tensadas y todo lo que el andamio no alcanza — o no debería tocar. El dron llega donde nada más llega.", "svc4.h": "Limpieza técnica e industrial", "svc4.p": "Limpieza de paredes interiores industriales con ayuda de plataforma elevadora y equipo especializado y certificado. Limpieza técnica de zonas de difícil acceso.", "svc5.ph": "Foto del equipo láser", "svc5.ph2": "(por añadir)", "svc5.h": "Eliminación de pintura y óxido con láser", "svc5.p": "Con equipos láser eliminamos pintura y óxido de piezas, estructuras y paredes. Sin generar residuos y sin impacto en la rutina operativa.", "how.h2": "De la visita al informe en 4 pasos", "how.sub": "Proceso sencillo de contratar y fácil de justificar. Lo sigues todo, desde la visita técnica hasta la entrega.", "how.1h": "1. Visita técnica <span class=\"free\">Gratuita en Curitiba y región</span>", "how.1p": "Evaluamos la superficie, el tipo de suciedad, el entorno y los puntos de despegue. Propuesta cerrada, sin sorpresas.", "how.2h": "2. Ejecución con plan de vuelo", "how.2p": "Vuelo planificado y zona aislada. Pilotos certificados, operación homologada ANAC/DECEA y seguro aeronáutico.", "how.3h": "3. Inspección de calidad con el cliente", "how.3p": "Concluido el proceso de limpieza, se realiza una inspección final junto con el cliente.", "how.4h": "4. Informe con fotos y vídeos", "how.4p": "Antes y después registrados y acta de aceptación enviada al cliente.", "work.h2": "Vídeos reales, directo de la operación", "work.sub": "Nada de banco de imágenes: cada vídeo es de un servicio ejecutado por nuestro equipo. Desliza hacia el lado y toca para ver.", "work.tmp": "vídeo provisional", "work.c1": "Fachada metálica — nave industrial", "work.c2": "Edificio comercial — fachada y rótulo", "work.c3": "Estructura industrial — limpieza en altura", "work.c4": "Planta industrial", "work.c5": "Tejado y fachada histórica", "work.c6": "Lonas — cubierta tensada", "work.igreja": "Iglesia", "ba.h2": "La línea entre lo sucio y lo limpio, dibujada por el agua", "ba.sub": "Nave metálica en pleno lavado: de un lado, años de suciedad; del otro, el resultado del chorro de 250 bar. Arrastra la línea y compara.", "ba.hint": "Arrastra para comparar", "ba.more": "Ver más fotos de antes y después →", "ba.antes": "Antes", "ba.depois": "Después", "ba.note": "Foto real de operación · efecto “antes” simulado sobre la misma imagen para comparar.", "cli.h2": "Quiénes ya volaron con nosotros", "cli.note": "Industrias, fabricantes de automóviles, clubes y patrimonio histórico — la misma tecnología, el mismo estándar de entrega.", "faq.eyebrow": "Preguntas frecuentes", "faq.h2": "Lo que todo gestor pregunta antes de cerrar", "faq.sub": "Respuestas directas a las objeciones más comunes. ¿Falta alguna? Escríbenos por WhatsApp.", "faq.q1": "¿El dron hace mucho ruido?", "faq.a1": "El ruido es comparable al de una hidrolavadora común — perceptible cerca de la operación, pero puntual y solo en horario laboral.", "faq.q2": "¿Hay que aislar la zona?", "faq.a2": "Normalmente no. Solo aislamos el punto de despegue y aterrizaje y la franja de seguridad bajo el vuelo, por lo general dentro del propio terreno de la empresa.", "faq.q3": "¿Funciona con lluvia?", "faq.a3": "No volamos con lluvia ni viento fuerte — es una regla de seguridad. Si el tiempo cambia, reprogramamos. Como la ejecución es rápida, una ventana de pocos días de buen tiempo suele bastar para concluir el servicio.", "faq.q4": "¿Necesito autorización de la comunidad o de algún organismo?", "faq.a4": "De la parte aérea nos encargamos de todo: la operación está homologada ante la ANAC y el DECEA, con pilotos certificados y seguro aeronáutico. Del lado de la comunidad, basta la aprobación interna según el reglamento (administrador o asamblea) — y facilitamos toda la documentación.", "final.eyebrow": "Presupuesto", "final.h2": "¿Cuánto cuesta dejar tu fachada <b>limpia de nuevo?</b>", "final.p": "Escríbenos por WhatsApp ahora mismo y agenda una visita técnica. La visita técnica es gratuita para Curitiba y su región metropolitana. Atendemos en todo Brasil.", "chip.pilotos": "Pilotos certificados", "chip.rc": "Seguro aeronáutico y RC", "chip.visita": "Visita técnica gratuita", "final.h3": "Habla con nosotros", "final.btn": "Escribir por WhatsApp", "final.loc": "Curitiba – PR · atendemos en todo Brasil", "foot.seal1": "Homologado ANAC / DECEA", "foot.copy": "Hidro Drone — Limpieza de fachadas y estructuras industriales con drones. Sede en Curitiba – PR, atendemos en todo Brasil."} },
-    aria: { en: {"car.prev": "Previous", "car.next": "Next", "lav.hero": "Headline covered in dirt: move the mouse or drag your finger over it so the drone washes the text. Use the arrow keys to move the jet.", "lav.auto": "Automatic demo: the drone washes the text “Where the drone reaches, the dirt comes off!” by itself", "ba.range": "Compare before and after cleaning", "fab": "Contact us on WhatsApp", "burger": "Open menu", "wa.play1": "Play video: Valmet — industrial metal façade", "wa.play2": "Play video: GRASP — façade and signage", "wa.play3": "Play video: GRASP Sertãozinho — industrial structure", "wa.play4": "Play video: Volkswagen — industrial plant", "wa.play5": "Play video: Church — roof and façade", "wa.play6": "Play video: Paraná Clube — canvas and tensile roof"}, de: {"car.prev": "Zurück", "car.next": "Weiter", "lav.hero": "Verschmutzte Überschrift: Bewegen Sie die Maus oder ziehen Sie den Finger darüber, damit die Drohne den Text reinigt. Mit den Pfeiltasten bewegen Sie den Strahl.", "lav.auto": "Automatische Demo: Die Drohne reinigt selbstständig den Text „Wo die Drohne hinkommt, geht der Schmutz weg!“", "ba.range": "Vorher und Nachher der Reinigung vergleichen", "fab": "Kontakt per WhatsApp", "burger": "Menü öffnen", "wa.play1": "Video abspielen: Valmet — industrielle Metallfassade", "wa.play2": "Video abspielen: GRASP — Fassade und Schriftzug", "wa.play3": "Video abspielen: GRASP Sertãozinho — Industrieanlage", "wa.play4": "Video abspielen: Volkswagen — Industriewerk", "wa.play5": "Video abspielen: Kirche — Dach und Fassade", "wa.play6": "Video abspielen: Paraná Clube — Planen und Membrandach"}, es: {"car.prev": "Anterior", "car.next": "Siguiente", "lav.hero": "Título cubierto de suciedad: mueve el ratón o arrastra el dedo sobre el título para que el dron lave el texto. Usa las flechas del teclado para mover el chorro.", "lav.auto": "Demostración automática: el dron lava solo el texto “Donde llega el dron, ¡la suciedad se va!”", "ba.range": "Comparar antes y después de la limpieza", "fab": "Contáctanos por WhatsApp", "burger": "Abrir menú", "wa.play1": "Reproducir vídeo: Valmet — fachada metálica industrial", "wa.play2": "Reproducir vídeo: GRASP — fachada y rótulo", "wa.play3": "Reproducir vídeo: GRASP Sertãozinho — estructura industrial", "wa.play4": "Reproducir vídeo: Volkswagen — planta industrial", "wa.play5": "Reproducir vídeo: Iglesia — tejado y fachada", "wa.play6": "Reproducir vídeo: Paraná Clube — lonas y cubierta tensada"} },
+    text: { en: {"nav.quem": "About us", "nav.servicos": "Services", "nav.como": "How it works", "nav.trabalhos": "Projects", "nav.ba": "Before &amp; after", "nav.clientes": "Clients", "nav.faq": "FAQ", "hdr.cta": "Contact us", "menu.phone": "Call: +55 41 99662-0072", "menu.wa": "Contact us on WhatsApp", "hero.badge": "Real operation — unedited footage", "hero.l1": "Cleaning at height", "hero.l2": "with our feet on the ground!", "hero.status": "Move the drone over the headline to wash it", "hero.lead": "Specialists in cleaning buildings and industrial structures with high-pressure jet drones. No construction work, no scaffolding on your façade, no production downtime and no work at height.", "hero.cta1": "Get a quote", "hero.cta2": "See real projects", "hero.note": "Get in touch and request a quote for your plant’s façade right now.", "hero.vtag": "Corporate video · placeholder", "trust.1": "Operation approved by ANAC / DECEA", "trust.2": "Aviation and civil liability insurance", "trust.3": "Certified pilots and staff", "trust.4": "Full documentation required by DECEA", "num.1v": "+100<small>&nbsp;k m²</small>", "num.1": "washed — many clients served and satisfied", "num.3": "faster than rope access on the same façade", "num.4": "people hanging from your façade", "num.5v": "Less<small>&nbsp;water</small>", "num.5": "the precision jet uses less than conventional washing", "cmp.eyebrow": "Comparison", "cmp.h2": "Drone, rope access or scaffolding?", "cmp.sub": "The same façade, three ways to wash it. Switch methods and see what happens to the building — and how long it takes.", "cmp.drone": "High-pressure drone", "cmp.dt1": "People at height", "cmp.dt2": "Typical lead time", "cmp.dt3": "Structure installed", "cmp.dt4": "Impact on routine", "cmp.dt5": "Service record", "cmp.d1": "None", "cmp.d2": "Days — up to 5× faster", "cmp.d3": "None — only the landing area is cordoned off", "cmp.d4": "Minimal — no construction work and no production downtime", "cmp.d5": "Photos and videos with an acceptance report on delivery", "cmp.rapel": "Rope access", "cmp.r1": "Crew hanging from the façade", "cmp.r2": "Weeks, weather-dependent", "cmp.r3": "Anchors and lifelines", "cmp.r4": "People passing by the windows", "cmp.r5": "Rarely included", "cmp.andaime": "Scaffolding / cradle", "cmp.a1": "Crew on a suspended structure", "cmp.a2": "Weeks to months, plus assembly", "cmp.a3": "Scaffolding on the façade the whole time", "cmp.a4": "Visible works, blocked windows", "cmp.tDrone": "Drone", "cmp.tAnd": "Scaffolding", "cmp.sumTag": "In short", "cmp.vD": "<strong>The drone washes the entire façade while the building keeps running.</strong> No one hanging, no structure, everything documented.", "cmp.vR": "<strong>It works, but it depends on people hanging and on good weather.</strong> Every rainy day is one more day with the crew on the façade.", "cmp.vA": "<strong>The façade becomes a construction site.</strong> Assembly, weeks of visible structure, blocked windows — and disassembly at the end.", "cmp.day": "Day {d} of {n}", "cmp.tick0": "start", "cmp.uD": "3 days", "cmp.uR": "2–3 weeks", "cmp.uA": "a month or more", "cmp.capD": "No one on the façade · only the landing area cordoned off", "cmp.capR": "Crew hanging · depends on weather and lifelines", "cmp.aA": "Scaffolding assembly… the façade is already blocked", "cmp.aB": "Cleaning with the structure covering the façade", "cmp.aC": "Disassembly — and the windows still aren’t free", "work.all": "See all videos →", "about.c1u": "k&nbsp;m²", "about.c2v": "Less<sup>water</sup>", "about.h2": "The industrial cleaning revolution has arrived — by air.", "about.pill1": "Pioneer in the state of Paraná with high-pressure drone technology", "about.pill2": "The second company in Brazil with high-pressure drone technology", "about.sub": "HidroDrone is here to revolutionise the industrial cleaning market with high technology — recognised for excellence, continuous innovation and a commitment to environmental protection and workplace safety.", "about.c1": "washed — many clients served and satisfied", "about.c2": "the precision jet uses less than conventional washing", "about.c3": "Faster than the traditional method", "about.c4": "People hanging", "about.dt1": "Certification", "about.dt2": "Pilots", "about.dd2": "Certified", "about.dt3": "Coverage", "about.dt4": "Delivery", "about.dd4": "Photos, videos and acceptance report", "about.tag": "Unit M2 — Hidro Drone fleet", "svc.l1": "Where the drone reaches,", "svc.l2": "the dirt comes off!", "svc.status": "Automatic demo · the drone washes by itself, line by line", "svc.sub": "<strong>Our purpose is to innovate!</strong> The same high-pressure drone serves different structures and materials — and where it can’t go, our certified team goes.", "svc1.h": "Industrial façade cleaning with drone", "svc1.p": "Industrial sheds and warehouses in metal sheeting and masonry, and water tanks. Technical cleaning with no production downtime and no work at height.", "svc2.h": "Glass cleaning", "svc2.p": "Glass façades and offices, with no disruption to your company’s office routine and no work at height.", "svc3.h": "Hard-to-reach structures", "svc3.p": "Churches, monuments, towers, tensile roofs and everything scaffolding can’t reach — or shouldn’t touch. The drone gets where nothing else does.", "svc4.h": "Technical and industrial cleaning", "svc4.p": "Cleaning of internal industrial walls using aerial work platforms and a specialised, certified team. Technical cleaning of hard-to-reach areas.", "svc5.ph": "Photo of the laser equipment", "svc5.ph2": "(to be added)", "svc5.h": "Laser paint and rust removal", "svc5.p": "With laser equipment we remove paint and rust from parts, structures and walls. No waste generated and no impact on operations.", "how.h2": "From site visit to report in 4 steps", "how.sub": "Simple to hire and easy to account for. You follow everything, from the site survey to delivery.", "how.1h": "1. Site survey <span class=\"free\">Free in Curitiba and region</span>", "how.1p": "We assess the surface, type of soiling, surroundings and take-off points. Fixed proposal, no surprises.", "how.2h": "2. Execution with flight plan", "how.2p": "Planned flight and cordoned-off area. Certified pilots, ANAC/DECEA-approved operation and aviation insurance.", "how.3h": "3. Quality inspection with the client", "how.3p": "Once cleaning is complete, a final inspection is carried out together with the client.", "how.4h": "4. Report with photos and videos", "how.4p": "Before and after documented, acceptance report sent to the client.", "work.h2": "Real videos, straight from the job", "work.sub": "No stock footage: every video is from a job carried out by our team. Swipe sideways and tap to watch.", "work.tmp": "placeholder video", "work.c1": "Metal façade — industrial shed", "work.c2": "Commercial building — façade and signage", "work.c3": "Industrial structure — cleaning at height", "work.c4": "Industrial plant", "work.c5": "Roof and historic façade", "work.c6": "Canvas — tensile roof", "work.igreja": "Church", "ba.h2": "The line between dirty and clean, drawn by water", "ba.sub": "Metal shed mid-wash: on one side, years of grime; on the other, the result of the 250 bar jet. Drag the line and compare.", "ba.hint": "Drag to compare", "ba.more": "See more before &amp; after photos →", "ba.antes": "Before", "ba.depois": "After", "ba.note": "Real photo from an operation · “before” effect simulated on the same image for comparison.", "cli.h2": "Who has already flown with us", "cli.note": "Industries, carmakers, clubs and heritage sites — the same technology, the same standard of delivery.", "faq.eyebrow": "Frequently asked questions", "faq.h2": "What every manager asks before signing", "faq.sub": "Straight answers to the most common objections. Missing one? Message us on WhatsApp.", "faq.q1": "Is the drone very noisy?", "faq.a1": "The noise is comparable to an ordinary pressure washer — noticeable near the operation, but brief and only during working hours.", "faq.q2": "Does the area need to be cordoned off?", "faq.a2": "Usually not. We only cordon off the take-off and landing point and the safety strip under the flight path, generally within the company’s own grounds.", "faq.q3": "Does it work in the rain?", "faq.a3": "We don’t fly in rain or strong wind — it’s a safety rule. If the weather turns, we reschedule. Since execution is fast, a window of a few days of good weather is usually enough to finish the job.", "faq.q4": "Do I need authorisation from any authority?", "faq.a4": "On the aviation side, we handle everything: the operation is approved by ANAC and DECEA, with certified pilots and aviation insurance. On the company’s side, all it takes is approving the quote and supporting the execution of the service.", "final.eyebrow": "Quote", "final.h2": "How much does it cost to make your façade <b>clean again?</b>", "final.p": "Message us on WhatsApp right now and book a site survey. The survey is free for Curitiba and the metropolitan region. We serve all of Brazil.", "chip.pilotos": "Certified pilots", "chip.rc": "Aviation &amp; liability insurance", "chip.visita": "Free site survey", "final.h3": "Talk to us", "final.btn": "Message on WhatsApp", "final.loc": "Curitiba – PR · we serve all of Brazil", "foot.seal1": "ANAC / DECEA approved", "foot.copy": "Hidro Drone — Façade and industrial structure cleaning with drones. Based in Curitiba – PR, serving all of Brazil."}, de: {"nav.quem": "Über uns", "nav.servicos": "Leistungen", "nav.como": "So funktioniert es", "nav.trabalhos": "Projekte", "nav.ba": "Vorher &amp; Nachher", "nav.clientes": "Kunden", "nav.faq": "FAQ", "hdr.cta": "Kontakt", "menu.phone": "Anrufen: +55 41 99662-0072", "menu.wa": "Kontakt per WhatsApp", "hero.badge": "Echter Einsatz — unbearbeitetes Video", "hero.l1": "Reinigung in der Höhe", "hero.l2": "mit den Füßen am Boden!", "hero.status": "Bewegen Sie die Drohne über die Überschrift", "hero.lead": "Spezialisten für die Reinigung von Gebäuden und Industrieanlagen mit Hochdruck-Drohnen. Keine Baustelle, kein Gerüst an Ihrer Fassade, kein Produktionsstillstand und keine Arbeit in der Höhe.", "hero.cta1": "Angebot anfordern", "hero.cta2": "Echte Projekte ansehen", "hero.note": "Kontaktieren Sie uns und fordern Sie jetzt ein Angebot für die Fassade Ihres Werks an.", "hero.vtag": "Imagefilm · Platzhalter", "trust.1": "Von ANAC / DECEA zugelassener Betrieb", "trust.2": "Luftfahrt- und Haftpflichtversicherung", "trust.3": "Zertifizierte Piloten und Mitarbeiter", "trust.4": "Vollständige, vom DECEA geforderte Dokumentation", "num.1v": "+100<small>&nbsp;Tsd. m²</small>", "num.1": "gereinigt — viele zufriedene Kunden", "num.3": "schneller als Seilzugang an derselben Fassade", "num.4": "Personen, die an Ihrer Fassade hängen", "num.5v": "Weniger<small>&nbsp;Wasser</small>", "num.5": "der Präzisionsstrahl verbraucht weniger als herkömmliche Reinigung", "cmp.eyebrow": "Vergleich", "cmp.h2": "Drohne, Seilzugang oder Gerüst?", "cmp.sub": "Dieselbe Fassade, drei Arten zu reinigen. Wechseln Sie die Methode und sehen Sie, was am Gebäude passiert — und wie lange es dauert.", "cmp.drone": "Hochdruck-Drohne", "cmp.dt1": "Personen in der Höhe", "cmp.dt2": "Typische Dauer", "cmp.dt3": "Aufgebaute Struktur", "cmp.dt4": "Auswirkung auf den Betrieb", "cmp.dt5": "Dokumentation", "cmp.d1": "Keine", "cmp.d2": "Tage — bis zu 5× schneller", "cmp.d3": "Keine — nur der Landeplatz wird abgesperrt", "cmp.d4": "Minimal — keine Baustelle und kein Produktionsstillstand", "cmp.d5": "Fotos und Videos mit Abnahmeprotokoll bei Übergabe", "cmp.rapel": "Seilzugang", "cmp.r1": "Team hängt an der Fassade", "cmp.r2": "Wochen, wetterabhängig", "cmp.r3": "Anker und Sicherungsseile", "cmp.r4": "Personen vor den Fenstern", "cmp.r5": "Selten enthalten", "cmp.andaime": "Gerüst / Hängebühne", "cmp.a1": "Team auf hängender Struktur", "cmp.a2": "Wochen bis Monate, plus Aufbau", "cmp.a3": "Gerüst während der gesamten Zeit an der Fassade", "cmp.a4": "Sichtbare Baustelle, blockierte Fenster", "cmp.tDrone": "Drohne", "cmp.tAnd": "Gerüst", "cmp.sumTag": "Kurz gesagt", "cmp.vD": "<strong>Die Drohne reinigt die gesamte Fassade, während das Gebäude weiterläuft.</strong> Niemand hängt, keine Struktur, alles dokumentiert.", "cmp.vR": "<strong>Es funktioniert, hängt aber von hängenden Personen und gutem Wetter ab.</strong> Jeder Regentag ist ein Tag mehr mit dem Team an der Fassade.", "cmp.vA": "<strong>Die Fassade wird zur Baustelle.</strong> Aufbau, wochenlang sichtbares Gerüst, blockierte Fenster — und Abbau am Ende.", "cmp.day": "Tag {d} von {n}", "cmp.tick0": "Start", "cmp.uD": "3 Tage", "cmp.uR": "2–3 Wochen", "cmp.uA": "ein Monat oder mehr", "cmp.capD": "Niemand an der Fassade · nur der Landeplatz abgesperrt", "cmp.capR": "Team hängt · abhängig von Wetter und Sicherungsseilen", "cmp.aA": "Gerüstaufbau… die Fassade ist bereits blockiert", "cmp.aB": "Reinigung, während das Gerüst die Fassade einnimmt", "cmp.aC": "Abbau — und die Fenster sind noch immer nicht frei", "work.all": "Alle Videos ansehen →", "about.c1u": "Tsd.&nbsp;m²", "about.c2v": "Weniger<sup>Wasser</sup>", "about.h2": "Die Revolution der Industriereinigung ist eingeflogen.", "about.pill1": "Pionier im Bundesstaat Paraná mit Hochdruck-Drohnentechnologie", "about.pill2": "Das zweite Unternehmen in Brasilien mit Hochdruck-Drohnentechnologie", "about.sub": "HidroDrone ist angetreten, den Markt der Industriereinigung mit Hochtechnologie zu revolutionieren — anerkannt für Exzellenz, kontinuierliche Innovation und das Engagement für Umweltschutz und Arbeitssicherheit.", "about.c1": "gereinigt — viele zufriedene Kunden", "about.c2": "der Präzisionsstrahl verbraucht weniger als herkömmliche Reinigung", "about.c3": "Schneller als die herkömmliche Methode", "about.c4": "Hängende Personen", "about.dt1": "Zulassung", "about.dt2": "Piloten", "about.dd2": "Zertifiziert", "about.dt3": "Versicherung", "about.dt4": "Übergabe", "about.dd4": "Fotos, Videos und Abnahmeprotokoll", "about.tag": "Einheit M2 — Hidro-Drone-Flotte", "svc.l1": "Wo die Drohne hinkommt,", "svc.l2": "geht der Schmutz weg!", "svc.status": "Automatische Demo · die Drohne reinigt selbstständig, Zeile für Zeile", "svc.sub": "<strong>Unser Ziel ist Innovation!</strong> Dieselbe Hochdruck-Drohne bedient verschiedene Strukturen und Materialien — und wo sie nicht hinkommt, kommt unser zertifiziertes Team.", "svc1.h": "Industrie-Fassadenreinigung mit Drohne", "svc1.p": "Industrie- und Lagerhallen aus Metallblech und Mauerwerk sowie Wassertanks. Technische Reinigung ohne Produktionsstillstand und ohne Arbeit in der Höhe.", "svc2.h": "Glasreinigung", "svc2.p": "Glasfassaden und Bürogebäude, ohne Störung des Büroalltags Ihres Unternehmens und ohne Arbeit in der Höhe.", "svc3.h": "Schwer zugängliche Strukturen", "svc3.p": "Kirchen, Denkmäler, Türme, Membrandächer und alles, was ein Gerüst nicht erreicht — oder nicht berühren sollte. Die Drohne kommt dahin, wo sonst nichts hinkommt.", "svc4.h": "Technische und industrielle Reinigung", "svc4.p": "Reinigung von Innenwänden in Industriegebäuden mit Hubarbeitsbühne und spezialisiertem, zertifiziertem Team. Technische Reinigung schwer zugänglicher Bereiche.", "svc5.ph": "Foto der Laseranlage", "svc5.ph2": "(wird ergänzt)", "svc5.h": "Farb- und Rostentfernung mit Laser", "svc5.p": "Mit Laseranlagen entfernen wir Farbe und Rost von Bauteilen, Strukturen und Wänden. Ohne Abfall und ohne Auswirkungen auf den Betrieb.", "how.h2": "Von der Besichtigung zum Bericht in 4 Schritten", "how.sub": "Einfach zu beauftragen und leicht nachzuweisen. Sie verfolgen alles — von der Besichtigung bis zur Übergabe.", "how.1h": "1. Besichtigung <span class=\"free\">Kostenlos in Curitiba und Umgebung</span>", "how.1p": "Wir bewerten Oberfläche, Verschmutzungsart, Umgebung und Startplätze. Festpreisangebot, ohne Überraschungen.", "how.2h": "2. Durchführung mit Flugplan", "how.2p": "Geplanter Flug und abgesperrter Bereich. Zertifizierte Piloten, von ANAC/DECEA zugelassener Betrieb und Luftfahrtversicherung.", "how.3h": "3. Qualitätsabnahme mit dem Kunden", "how.3p": "Nach Abschluss der Reinigung erfolgt eine Endabnahme gemeinsam mit dem Kunden.", "how.4h": "4. Bericht mit Fotos und Videos", "how.4p": "Vorher und Nachher dokumentiert, Abnahmeprotokoll an den Kunden gesendet.", "work.h2": "Echte Videos, direkt vom Einsatz", "work.sub": "Keine Stockvideos: Jedes Video stammt von einem Einsatz unseres Teams. Seitlich wischen und antippen zum Ansehen.", "work.tmp": "Platzhalter-Video", "work.c1": "Metallfassade — Industriehalle", "work.c2": "Geschäftsgebäude — Fassade und Schriftzug", "work.c3": "Industrieanlage — Reinigung in der Höhe", "work.c4": "Industriewerk", "work.c5": "Dach und historische Fassade", "work.c6": "Planen — Membrandach", "work.igreja": "Kirche", "ba.h2": "Die Grenze zwischen schmutzig und sauber — vom Wasser gezogen", "ba.sub": "Metallhalle mitten in der Reinigung: auf der einen Seite jahrelanger Schmutz, auf der anderen das Ergebnis des 250-bar-Strahls. Ziehen Sie die Linie und vergleichen Sie.", "ba.hint": "Zum Vergleichen ziehen", "ba.more": "Mehr Vorher-Nachher-Fotos ansehen →", "ba.antes": "Vorher", "ba.depois": "Nachher", "ba.note": "Echtes Einsatzfoto · „Vorher“-Effekt zum Vergleich auf demselben Bild simuliert.", "cli.h2": "Wer schon mit uns geflogen ist", "cli.note": "Industrie, Automobilhersteller, Vereine und Denkmäler — dieselbe Technologie, derselbe Lieferstandard.", "faq.eyebrow": "Häufige Fragen", "faq.h2": "Was jeder Entscheider vor dem Abschluss fragt", "faq.sub": "Klare Antworten auf die häufigsten Einwände. Fehlt eine? Schreiben Sie uns auf WhatsApp.", "faq.q1": "Ist die Drohne sehr laut?", "faq.a1": "Der Lärm ist mit einem gewöhnlichen Hochdruckreiniger vergleichbar — in der Nähe des Einsatzes wahrnehmbar, aber punktuell und nur während der Arbeitszeit.", "faq.q2": "Muss der Bereich abgesperrt werden?", "faq.a2": "Normalerweise nicht. Wir sperren nur Start- und Landeplatz sowie den Sicherheitsstreifen unter der Flugroute ab — in der Regel auf dem Firmengelände.", "faq.q3": "Funktioniert es bei Regen?", "faq.a3": "Bei Regen oder starkem Wind fliegen wir nicht — das ist eine Sicherheitsregel. Schlägt das Wetter um, verschieben wir. Da die Ausführung schnell ist, reicht meist ein Fenster von wenigen Schönwettertagen für den Abschluss.", "faq.q4": "Brauche ich eine Genehmigung einer Behörde?", "faq.a4": "Die Luftfahrtseite übernehmen wir komplett: Der Betrieb ist von ANAC und DECEA zugelassen, mit zertifizierten Piloten und Luftfahrtversicherung. Auf Unternehmensseite genügen die Freigabe des Angebots und die Unterstützung bei der Durchführung.", "final.eyebrow": "Angebot", "final.h2": "Was kostet es, Ihre Fassade <b>wieder sauber zu machen?</b>", "final.p": "Schreiben Sie uns jetzt auf WhatsApp und vereinbaren Sie eine Besichtigung. Die Besichtigung ist für Curitiba und die Metropolregion kostenlos. Wir sind in ganz Brasilien tätig.", "chip.pilotos": "Zertifizierte Piloten", "chip.rc": "Luftfahrt- &amp; Haftpflichtversicherung", "chip.visita": "Kostenlose Besichtigung", "final.h3": "Sprechen Sie mit uns", "final.btn": "Auf WhatsApp schreiben", "final.loc": "Curitiba – PR · tätig in ganz Brasilien", "foot.seal1": "ANAC / DECEA zugelassen", "foot.copy": "Hidro Drone — Reinigung von Fassaden und Industrieanlagen mit Drohnen. Sitz in Curitiba – PR, tätig in ganz Brasilien."}, es: {"nav.quem": "Quiénes somos", "nav.servicos": "Servicios", "nav.como": "Cómo funciona", "nav.trabalhos": "Trabajos", "nav.ba": "Antes y después", "nav.clientes": "Clientes", "nav.faq": "Preguntas", "hdr.cta": "Contáctanos", "menu.phone": "Llamar: +55 41 99662-0072", "menu.wa": "Contáctanos por WhatsApp", "hero.badge": "Operación real — vídeo sin edición", "hero.l1": "Limpieza en las alturas", "hero.l2": "¡con los pies en el suelo!", "hero.status": "Mueve el dron sobre el título para lavarlo", "hero.lead": "Especialistas en limpieza de edificios y estructuras industriales con dron de chorro de alta presión. Sin obra, sin andamios en tu fachada, sin parada de producción y sin trabajo en altura.", "hero.cta1": "Pide un presupuesto", "hero.cta2": "Ver trabajos reales", "hero.note": "Contáctanos y solicita ahora mismo un presupuesto para la fachada de tu planta.", "hero.vtag": "Vídeo institucional · provisional", "trust.1": "Operación homologada ANAC / DECEA", "trust.2": "Seguro aeronáutico y de responsabilidad civil", "trust.3": "Pilotos y personal certificados", "trust.4": "Documentación completa exigida por el DECEA", "num.1v": "+100<small>&nbsp;mil m²</small>", "num.1": "lavados — muchos clientes atendidos y satisfechos", "num.3": "más rápido que el rápel en la misma fachada", "num.4": "personas colgadas de tu fachada", "num.5v": "Menos<small>&nbsp;agua</small>", "num.5": "el chorro de precisión consume menos que el lavado convencional", "cmp.eyebrow": "Comparativa", "cmp.h2": "¿Dron, rápel o andamio?", "cmp.sub": "La misma fachada, tres formas de lavarla. Cambia el método y mira qué pasa en el edificio — y cuánto tarda.", "cmp.drone": "Dron de alta presión", "cmp.dt1": "Personas en altura", "cmp.dt2": "Plazo típico", "cmp.dt3": "Estructura montada", "cmp.dt4": "Impacto en la rutina", "cmp.dt5": "Registro del servicio", "cmp.d1": "Ninguna", "cmp.d2": "Días — hasta 5× más rápido", "cmp.d3": "Ninguna — solo se aísla la zona de aterrizaje", "cmp.d4": "Mínimo, sin obra y sin parada de producción", "cmp.d5": "Fotos y vídeos con acta de aceptación al final de la entrega", "cmp.rapel": "Rápel", "cmp.r1": "Equipo colgado de la fachada", "cmp.r2": "Semanas, según el clima", "cmp.r3": "Anclajes y líneas de vida", "cmp.r4": "Personas pasando por las ventanas", "cmp.r5": "Rara vez incluido", "cmp.andaime": "Andamio / góndola", "cmp.a1": "Equipo sobre estructura suspendida", "cmp.a2": "Semanas a meses, con montaje", "cmp.a3": "Andamio en la fachada durante todo el periodo", "cmp.a4": "Obra visible, ventanas bloqueadas", "cmp.tDrone": "Dron", "cmp.tAnd": "Andamio", "cmp.sumTag": "En resumen", "cmp.vD": "<strong>El dron lava toda la fachada mientras el edificio sigue funcionando.</strong> Sin nadie colgado, sin estructura, con todo registrado.", "cmp.vR": "<strong>Funciona, pero depende de gente colgada y de buen tiempo.</strong> Cada día de lluvia es un día más con el equipo en la fachada.", "cmp.vA": "<strong>La fachada se convierte en obra.</strong> Montaje, semanas de estructura a la vista, ventanas bloqueadas — y desmontaje al final.", "cmp.day": "Día {d} de {n}", "cmp.tick0": "inicio", "cmp.uD": "3 días", "cmp.uR": "2–3 semanas", "cmp.uA": "un mes o más", "cmp.capD": "Nadie en la fachada · solo la zona de aterrizaje aislada", "cmp.capR": "Equipo colgado · depende del clima y de líneas de vida", "cmp.aA": "Montaje del andamio… la fachada ya está bloqueada", "cmp.aB": "Limpieza con la estructura ocupando la fachada", "cmp.aC": "Desmontaje — y las ventanas aún no están libres", "work.all": "Ver todos los vídeos →", "about.c1u": "mil&nbsp;m²", "about.c2v": "Menos<sup>agua</sup>", "about.h2": "La revolución de la limpieza industrial llegó volando.", "about.pill1": "Pionera en el estado de Paraná con la tecnología de drones de alta presión", "about.pill2": "La segunda empresa de Brasil con la tecnología de drones de alta presión", "about.sub": "HidroDrone llegó para revolucionar el mercado de la limpieza industrial con alta tecnología, reconocida por la excelencia, la innovación continua y el compromiso con la preservación ambiental y la seguridad laboral.", "about.c1": "lavados — muchos clientes atendidos y satisfechos", "about.c2": "el chorro de precisión consume menos que el lavado convencional", "about.c3": "Más rápido que el método tradicional", "about.c4": "Personas colgadas", "about.dt1": "Homologación", "about.dt2": "Pilotos", "about.dd2": "Certificados", "about.dt3": "Cobertura", "about.dt4": "Entrega", "about.dd4": "Fotos, vídeos y acta de aceptación", "about.tag": "Unidad M2 — Flota Hidro Drone", "svc.l1": "Donde llega el dron,", "svc.l2": "¡la suciedad se va!", "svc.status": "Demostración automática · el dron lava solo, línea por línea", "svc.sub": "<strong>¡Nuestro propósito es innovar!</strong> El mismo dron de alta presión atiende distintas estructuras y materiales — y, donde él no entra, entra un equipo certificado.", "svc1.h": "Limpieza de fachadas industriales con dron", "svc1.p": "Naves y galpones industriales de chapa metálica y mampostería y depósitos de agua. Limpieza técnica sin parada de producción y sin trabajo en altura.", "svc2.h": "Limpieza de vidrio", "svc2.p": "Fachadas y oficinas de vidrio, sin interferir en la rutina administrativa de tu empresa y sin trabajo en altura.", "svc3.h": "Estructuras de difícil acceso", "svc3.p": "Iglesias, monumentos, torres, cubiertas tensadas y todo lo que el andamio no alcanza — o no debería tocar. El dron llega donde nada más llega.", "svc4.h": "Limpieza técnica e industrial", "svc4.p": "Limpieza de paredes interiores industriales con ayuda de plataforma elevadora y equipo especializado y certificado. Limpieza técnica de zonas de difícil acceso.", "svc5.ph": "Foto del equipo láser", "svc5.ph2": "(por añadir)", "svc5.h": "Eliminación de pintura y óxido con láser", "svc5.p": "Con equipos láser eliminamos pintura y óxido de piezas, estructuras y paredes. Sin generar residuos y sin impacto en la rutina operativa.", "how.h2": "De la visita al informe en 4 pasos", "how.sub": "Proceso sencillo de contratar y fácil de justificar. Lo sigues todo, desde la visita técnica hasta la entrega.", "how.1h": "1. Visita técnica <span class=\"free\">Gratuita en Curitiba y región</span>", "how.1p": "Evaluamos la superficie, el tipo de suciedad, el entorno y los puntos de despegue. Propuesta cerrada, sin sorpresas.", "how.2h": "2. Ejecución con plan de vuelo", "how.2p": "Vuelo planificado y zona aislada. Pilotos certificados, operación homologada ANAC/DECEA y seguro aeronáutico.", "how.3h": "3. Inspección de calidad con el cliente", "how.3p": "Concluido el proceso de limpieza, se realiza una inspección final junto con el cliente.", "how.4h": "4. Informe con fotos y vídeos", "how.4p": "Antes y después registrados y acta de aceptación enviada al cliente.", "work.h2": "Vídeos reales, directo de la operación", "work.sub": "Nada de banco de imágenes: cada vídeo es de un servicio ejecutado por nuestro equipo. Desliza hacia el lado y toca para ver.", "work.tmp": "vídeo provisional", "work.c1": "Fachada metálica — nave industrial", "work.c2": "Edificio comercial — fachada y rótulo", "work.c3": "Estructura industrial — limpieza en altura", "work.c4": "Planta industrial", "work.c5": "Tejado y fachada histórica", "work.c6": "Lonas — cubierta tensada", "work.igreja": "Iglesia", "ba.h2": "La línea entre lo sucio y lo limpio, dibujada por el agua", "ba.sub": "Nave metálica en pleno lavado: de un lado, años de suciedad; del otro, el resultado del chorro de 250 bar. Arrastra la línea y compara.", "ba.hint": "Arrastra para comparar", "ba.more": "Ver más fotos de antes y después →", "ba.antes": "Antes", "ba.depois": "Después", "ba.note": "Foto real de operación · efecto “antes” simulado sobre la misma imagen para comparar.", "cli.h2": "Quiénes ya volaron con nosotros", "cli.note": "Industrias, fabricantes de automóviles, clubes y patrimonio histórico — la misma tecnología, el mismo estándar de entrega.", "faq.eyebrow": "Preguntas frecuentes", "faq.h2": "Lo que todo gestor pregunta antes de cerrar", "faq.sub": "Respuestas directas a las objeciones más comunes. ¿Falta alguna? Escríbenos por WhatsApp.", "faq.q1": "¿El dron hace mucho ruido?", "faq.a1": "El ruido es comparable al de una hidrolavadora común — perceptible cerca de la operación, pero puntual y solo en horario laboral.", "faq.q2": "¿Hay que aislar la zona?", "faq.a2": "Normalmente no. Solo aislamos el punto de despegue y aterrizaje y la franja de seguridad bajo el vuelo, por lo general dentro del propio terreno de la empresa.", "faq.q3": "¿Funciona con lluvia?", "faq.a3": "No volamos con lluvia ni viento fuerte — es una regla de seguridad. Si el tiempo cambia, reprogramamos. Como la ejecución es rápida, una ventana de pocos días de buen tiempo suele bastar para concluir el servicio.", "faq.q4": "¿Necesito autorización de algún organismo?", "faq.a4": "De la parte aérea nos encargamos de todo: la operación está homologada ante la ANAC y el DECEA, con pilotos certificados y seguro aeronáutico. Del lado de la empresa, basta con aprobar el presupuesto y apoyar la ejecución del servicio.", "final.eyebrow": "Presupuesto", "final.h2": "¿Cuánto cuesta dejar tu fachada <b>limpia de nuevo?</b>", "final.p": "Escríbenos por WhatsApp ahora mismo y agenda una visita técnica. La visita técnica es gratuita para Curitiba y su región metropolitana. Atendemos en todo Brasil.", "chip.pilotos": "Pilotos certificados", "chip.rc": "Seguro aeronáutico y RC", "chip.visita": "Visita técnica gratuita", "final.h3": "Habla con nosotros", "final.btn": "Escribir por WhatsApp", "final.loc": "Curitiba – PR · atendemos en todo Brasil", "foot.seal1": "Homologado ANAC / DECEA", "foot.copy": "Hidro Drone — Limpieza de fachadas y estructuras industriales con drones. Sede en Curitiba – PR, atendemos en todo Brasil."} },
+    aria: { en: {"car.prev": "Previous", "car.next": "Next", "lav.hero": "Headline covered in dirt: move the mouse or drag your finger over it so the drone washes the text. Use the arrow keys to move the jet.", "lav.auto": "Automatic demo: the drone washes the text “Where the drone reaches, the dirt comes off!” by itself", "ba.range": "Compare before and after cleaning", "fab": "Contact us on WhatsApp", "burger": "Open menu", "cmp.tabs": "Cleaning method", "cmp.stage": "Animation of the same façade being washed by the selected method", "wa.play1": "Play video: Valmet — industrial metal façade", "wa.play2": "Play video: GRASP — façade and signage", "wa.play3": "Play video: GRASP Sertãozinho — industrial structure", "wa.play4": "Play video: Volkswagen — industrial plant", "wa.play5": "Play video: Church — roof and façade", "wa.play6": "Play video: Paraná Clube — canvas and tensile roof"}, de: {"car.prev": "Zurück", "car.next": "Weiter", "lav.hero": "Verschmutzte Überschrift: Bewegen Sie die Maus oder ziehen Sie den Finger darüber, damit die Drohne den Text reinigt. Mit den Pfeiltasten bewegen Sie den Strahl.", "lav.auto": "Automatische Demo: Die Drohne reinigt selbstständig den Text „Wo die Drohne hinkommt, geht der Schmutz weg!“", "ba.range": "Vorher und Nachher der Reinigung vergleichen", "fab": "Kontakt per WhatsApp", "burger": "Menü öffnen", "cmp.tabs": "Reinigungsmethode", "cmp.stage": "Animation derselben Fassade, gereinigt mit der gewählten Methode", "wa.play1": "Video abspielen: Valmet — industrielle Metallfassade", "wa.play2": "Video abspielen: GRASP — Fassade und Schriftzug", "wa.play3": "Video abspielen: GRASP Sertãozinho — Industrieanlage", "wa.play4": "Video abspielen: Volkswagen — Industriewerk", "wa.play5": "Video abspielen: Kirche — Dach und Fassade", "wa.play6": "Video abspielen: Paraná Clube — Planen und Membrandach"}, es: {"car.prev": "Anterior", "car.next": "Siguiente", "lav.hero": "Título cubierto de suciedad: mueve el ratón o arrastra el dedo sobre el título para que el dron lave el texto. Usa las flechas del teclado para mover el chorro.", "lav.auto": "Demostración automática: el dron lava solo el texto “Donde llega el dron, ¡la suciedad se va!”", "ba.range": "Comparar antes y después de la limpieza", "fab": "Contáctanos por WhatsApp", "burger": "Abrir menú", "cmp.tabs": "Método de limpieza", "cmp.stage": "Animación de la misma fachada lavada con el método seleccionado", "wa.play1": "Reproducir vídeo: Valmet — fachada metálica industrial", "wa.play2": "Reproducir vídeo: GRASP — fachada y rótulo", "wa.play3": "Reproducir vídeo: GRASP Sertãozinho — estructura industrial", "wa.play4": "Reproducir vídeo: Volkswagen — planta industrial", "wa.play5": "Reproducir vídeo: Iglesia — tejado y fachada", "wa.play6": "Reproducir vídeo: Paraná Clube — lonas y cubierta tensada"} },
     dw: {"pt": {"pump": "UNIDADE DE ALTA PRESSÃO", "hint.mouse": "Mova o mouse sobre o título para lavar", "hint.touch": "Arraste o dedo sobre o título para lavar", "prog": "Título {p}% limpo — continue lavando", "done": "Título limpo ✓ — agora imagine a sua fachada", "auto.prog": "Demonstração automática · {p}% limpo, linha por linha", "auto.done": "Limpo ✓ — o drone pousa, a sujeira volta e ele recomeça"}, "en": {"pump": "HIGH-PRESSURE UNIT", "hint.mouse": "Move the mouse over the headline to wash it", "hint.touch": "Drag your finger over the headline to wash it", "prog": "Headline {p}% clean — keep washing", "done": "Headline clean ✓ — now picture your façade", "auto.prog": "Automatic demo · {p}% clean, line by line", "auto.done": "Clean ✓ — the drone lands, the dirt returns and it starts again"}, "de": {"pump": "HOCHDRUCKEINHEIT", "hint.mouse": "Bewegen Sie die Maus über die Überschrift, um sie zu reinigen", "hint.touch": "Ziehen Sie den Finger über die Überschrift, um sie zu reinigen", "prog": "Überschrift {p}% sauber — weiter so", "done": "Überschrift sauber ✓ — stellen Sie sich jetzt Ihre Fassade vor", "auto.prog": "Automatische Demo · {p}% sauber, Zeile für Zeile", "auto.done": "Sauber ✓ — die Drohne landet, der Schmutz kehrt zurück und es geht von vorn los"}, "es": {"pump": "UNIDAD DE ALTA PRESIÓN", "hint.mouse": "Mueve el ratón sobre el título para lavarlo", "hint.touch": "Arrastra el dedo sobre el título para lavarlo", "prog": "Título {p}% limpio — sigue lavando", "done": "Título limpio ✓ — ahora imagina tu fachada", "auto.prog": "Demostración automática · {p}% limpio, línea por línea", "auto.done": "Limpio ✓ — el dron aterriza, la suciedad vuelve y empieza de nuevo"}},
     meta: {"pt": {"title": "Hidro Drone — Limpeza industrial com drone de alta pressão | Curitiba, atendemos todo o Brasil", "desc": "Especialistas em limpeza de prédios e estruturas industriais com drone de jato de alta pressão: 250 bar, +100 m de alcance. Sem obra, sem parada de produção e sem trabalho em altura. Base em Curitiba, atendemos todo o Brasil.", "lang": "pt-BR", "wa": {"orcamento": "Olá! Quero um orçamento de limpeza com drone.", "visita": "Olá! Quero agendar uma visita técnica para orçamento."}}, "en": {"title": "Hidro Drone — Industrial cleaning with high-pressure drones | Curitiba, serving all of Brazil", "desc": "Specialists in cleaning buildings and industrial structures with high-pressure jet drones: 250 bar, 100 m+ reach. No construction work, no production downtime, no work at height. Based in Curitiba, serving all of Brazil.", "lang": "en", "wa": {"orcamento": "Hello! I would like a quote for drone cleaning.", "visita": "Hello! I would like to book a site survey for a quote."}}, "de": {"title": "Hidro Drone — Industriereinigung mit Hochdruck-Drohnen | Curitiba, tätig in ganz Brasilien", "desc": "Spezialisten für die Reinigung von Gebäuden und Industrieanlagen mit Hochdruck-Drohnen: 250 bar, über 100 m Reichweite. Keine Baustelle, kein Produktionsstillstand, keine Arbeit in der Höhe. Sitz in Curitiba, tätig in ganz Brasilien.", "lang": "de", "wa": {"orcamento": "Hallo! Ich hätte gern ein Angebot für eine Drohnenreinigung.", "visita": "Hallo! Ich möchte eine Besichtigung für ein Angebot vereinbaren."}}, "es": {"title": "Hidro Drone — Limpieza industrial con dron de alta presión | Curitiba, atendemos en todo Brasil", "desc": "Especialistas en limpieza de edificios y estructuras industriales con dron de chorro de alta presión: 250 bar, +100 m de alcance. Sin obra, sin parada de producción y sin trabajo en altura. Sede en Curitiba, atendemos en todo Brasil.", "lang": "es", "wa": {"orcamento": "¡Hola! Quiero un presupuesto de limpieza con dron.", "visita": "¡Hola! Quiero agendar una visita técnica para presupuesto."}}}
   };
@@ -1156,8 +1177,8 @@
     card.addEventListener("mouseleave", function(){ v.pause(); });
   });
 
-  /* Ambient videos (quem somos / valores): play only when visible */
-  var ambient = document.querySelectorAll(".plate-media video, .values-media video");
+  /* Ambient videos (quem somos): play only when visible */
+  var ambient = document.querySelectorAll(".plate-media video");
   if (!reduceMotion && "IntersectionObserver" in window){
     var aio = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
@@ -1232,6 +1253,214 @@
       carousel.scrollBy({left: dir * stepW, behavior: reduceMotion ? "auto" : "smooth"});
     });
   });
+
+  /* ===================================================================
+     Comparativo "fachada viva": mesma fachada, três cenas (drone/rapel/andaime)
+     =================================================================== */
+  (function(){
+    var svg = document.getElementById("fvSvg");
+    if (!svg) return;
+    var NS = "http://www.w3.org/2000/svg";
+    var cols = 6, rows = 7, bx = 150, by = 50, bw = 260, bh = 290;
+    var cw = bw/cols, ch = bh/rows;
+    var wins = [];
+    for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++)
+      wins.push({x: bx + c*cw + 8, y: by + r*ch + 8, w: cw - 16, h: ch - 16});
+    function fillWins(id){
+      var g = document.getElementById(id);
+      wins.forEach(function(w){
+        var e = document.createElementNS(NS, "rect");
+        e.setAttribute("x", w.x); e.setAttribute("y", w.y);
+        e.setAttribute("width", w.w); e.setAttribute("height", w.h);
+        e.setAttribute("rx", 2); g.appendChild(e);
+      });
+    }
+    fillWins("fvWinDirty"); fillWins("fvWinClean1"); fillWins("fvWinClean2"); fillWins("fvWinClean3");
+
+    (function buildScaffold(){
+      var L = document.getElementById("fvScafLines"), P = document.getElementById("fvScafPlat");
+      var x0 = 132, x1 = 428, levels = 6, i, x;
+      for (i = 0; i <= levels; i++){
+        var y = 340 - i*48;
+        var h = document.createElementNS(NS, "line");
+        h.setAttribute("x1", x0); h.setAttribute("y1", y); h.setAttribute("x2", x1); h.setAttribute("y2", y); L.appendChild(h);
+        if (i > 0){
+          var p = document.createElementNS(NS, "rect");
+          p.setAttribute("x", x0); p.setAttribute("y", y - 5); p.setAttribute("width", x1 - x0); p.setAttribute("height", 5); P.appendChild(p);
+        }
+      }
+      for (x = x0; x <= x1; x += 74){
+        var v = document.createElementNS(NS, "line");
+        v.setAttribute("x1", x); v.setAttribute("y1", 52); v.setAttribute("x2", x); v.setAttribute("y2", 340); L.appendChild(v);
+      }
+      for (i = 0; i < levels; i++) for (x = x0; x < x1; x += 148){
+        var d = document.createElementNS(NS, "line");
+        d.setAttribute("x1", x); d.setAttribute("y1", 340 - i*48); d.setAttribute("x2", x + 74); d.setAttribute("y2", 340 - (i+1)*48);
+        d.setAttribute("stroke-width", 1.5); L.appendChild(d);
+      }
+    })();
+
+    function cmpT(key, pt){
+      if (LANG === "pt") return pt;
+      return (I18N.text[LANG] || {})[key] || pt;
+    }
+
+    var FACTS = {
+      drone: {
+        cls: ["good","good","good","good","good"],
+        keys: ["cmp.d1","cmp.d2","cmp.d3","cmp.d4","cmp.d5"],
+        pt: ["Nenhuma","Dias — até 5× mais rápido","Nenhuma — só a área de pouso isolada","Mínimo, sem obra e sem parada de produção","Fotos e vídeos com termo de aceite ao final da entrega"],
+        vKey: "cmp.vD",
+        vPt: "<strong>O drone lava a fachada inteira enquanto o prédio continua funcionando.</strong> Sem ninguém pendurado, sem estrutura, com tudo registrado.",
+        uKey: "cmp.uD", uPt: "3 dias", days: 3, dur: 7000
+      },
+      rapel: {
+        cls: ["bad","meh","meh","meh","bad"],
+        keys: ["cmp.r1","cmp.r2","cmp.r3","cmp.r4","cmp.r5"],
+        pt: ["Equipe pendurada na fachada","Semanas, dependente do clima","Ancoragens e linhas de vida","Pessoas passando nas janelas","Raramente incluso"],
+        vKey: "cmp.vR",
+        vPt: "<strong>Funciona, mas depende de gente pendurada e de tempo bom.</strong> Cada dia de chuva é um dia a mais com a equipe na fachada.",
+        uKey: "cmp.uR", uPt: "2–3 semanas", days: 15, dur: 11000
+      },
+      andaime: {
+        cls: ["bad","bad","bad","bad","bad"],
+        keys: ["cmp.a1","cmp.a2","cmp.a3","cmp.a4","cmp.r5"],
+        pt: ["Equipe sobre estrutura suspensa","Semanas a meses, com montagem","Andaime na fachada por todo o período","Obra visível, janelas bloqueadas","Raramente incluso"],
+        vKey: "cmp.vA",
+        vPt: "<strong>A fachada vira canteiro de obras.</strong> Montagem, semanas de estrutura à vista, janelas bloqueadas — e desmontagem no fim.",
+        uKey: "cmp.uA", uPt: "1 mês ou mais", days: 30, dur: 14000
+      }
+    };
+    var CAPS = {
+      drone: {key: "cmp.capD", pt: "Ninguém na fachada · só a área de pouso isolada"},
+      rapel: {key: "cmp.capR", pt: "Equipe pendurada · depende do clima e de linhas de vida"}
+    };
+    var AND_PHASES = [
+      {key: "cmp.aA", pt: "Montagem do andaime… a fachada já está bloqueada"},
+      {key: "cmp.aB", pt: "Limpeza com a estrutura tomando a fachada"},
+      {key: "cmp.aC", pt: "Desmontagem — e as janelas ainda não estão livres"}
+    ];
+
+    var facts = Array.prototype.slice.call(document.querySelectorAll("#fvFacts .fv-fact"));
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".fv-tab"));
+    var scenes = {
+      drone: document.getElementById("fvSceneDrone"),
+      rapel: document.getElementById("fvSceneRapel"),
+      andaime: document.getElementById("fvSceneAndaime")
+    };
+    var prog = document.getElementById("fvProg"), dayEl = document.getElementById("fvDay"),
+        scaleEl = document.getElementById("fvScale"), verdict = document.getElementById("fvVerdict");
+    var cleanRect = document.getElementById("fvCleanRect"), col1 = document.getElementById("fvCol1"),
+        col2 = document.getElementById("fvCol2"), cleanAnd = document.getElementById("fvCleanAnd"),
+        scafRect = document.getElementById("fvScafRect");
+    var droneG = document.getElementById("fvDroneG"), hose = document.getElementById("fvHose"),
+        jet = document.getElementById("fvJet"), r1 = document.getElementById("fvR1"), r2 = document.getElementById("fvR2");
+    var w1 = document.getElementById("fvWorker1"), w2 = document.getElementById("fvWorker2"),
+        rope1 = document.getElementById("fvRope1"), rope2 = document.getElementById("fvRope2"),
+        peep = document.getElementById("fvPeep"), rain = document.getElementById("fvRain");
+    var wA = document.getElementById("fvWA"), wB = document.getElementById("fvWB"), wC = document.getElementById("fvWC"),
+        andPhase = document.getElementById("fvAndPhase"),
+        capD = document.getElementById("fvCapD"), capR = document.getElementById("fvCapR");
+    var mode = "drone", t0 = performance.now();
+
+    function setMode(m){
+      mode = m; t0 = performance.now();
+      tabs.forEach(function(b){ b.setAttribute("aria-selected", b.getAttribute("data-m") === m ? "true" : "false"); });
+      Object.keys(scenes).forEach(function(k){ scenes[k].classList.toggle("on", k === m); });
+      var f = FACTS[m];
+      facts.forEach(function(el, idx){
+        el.className = "fv-fact " + f.cls[idx] + " swap";
+        var dd = el.querySelector("dd");
+        dd.setAttribute("data-i18n", f.keys[idx]);
+        dd.setAttribute("data-pt", f.pt[idx]);
+        dd.innerHTML = cmpT(f.keys[idx], f.pt[idx]);
+        el.addEventListener("animationend", function(){ el.classList.remove("swap"); }, {once: true});
+      });
+      verdict.setAttribute("data-i18n", f.vKey);
+      verdict.setAttribute("data-pt", f.vPt);
+      verdict.innerHTML = cmpT(f.vKey, f.vPt);
+      prog.className = m;
+      cleanRect.setAttribute("height", 0); col1.setAttribute("height", 0); col2.setAttribute("height", 0);
+      cleanAnd.setAttribute("height", 0); scafRect.setAttribute("height", 0); scafRect.setAttribute("y", 340);
+    }
+    tabs.forEach(function(b){ b.addEventListener("click", function(){ setMode(b.getAttribute("data-m")); }); });
+
+    var fvVisible = true;
+    if ("IntersectionObserver" in window){
+      fvVisible = false;
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ fvVisible = en.isIntersecting; });
+      }, {threshold: .05}).observe(svg);
+    }
+
+    function setText(el, str){ if (el.textContent !== str) el.textContent = str; }
+
+    function frame(now){
+      requestAnimationFrame(frame);
+      if (!fvVisible) return;
+      var f = FACTS[mode];
+      var p = ((now - t0) % f.dur) / f.dur;
+      if (reduceMotion) p = 0.65;
+      prog.style.width = (p * 100) + "%";
+      setText(dayEl, cmpT("cmp.day", "Dia {d} de {n}")
+        .replace("{d}", Math.min(f.days, Math.floor(p * f.days) + 1)).replace("{n}", f.days));
+      setText(scaleEl, cmpT(f.uKey, f.uPt));
+
+      if (mode === "drone"){
+        setText(capD, cmpT(CAPS.drone.key, CAPS.drone.pt));
+        var lanes = rows, lp = p * lanes, li = Math.min(lanes - 1, Math.floor(lp)), lf = lp - li;
+        var y = by + li*ch + ch/2;
+        var dir = li % 2 === 0 ? 1 : -1;
+        var x = dir > 0 ? bx - 40 + lf*(bw + 80) : bx + bw + 40 - lf*(bw + 80);
+        var bob = Math.sin(now/180) * 2;
+        droneG.setAttribute("transform", "translate(" + x + "," + (y + bob) + ")");
+        jet.setAttribute("transform", "translate(" + (dir > 0 ? 18 : -18) + ",0) scale(" + (dir > 0 ? 1 : -1) + ",1)");
+        var sp = 1 + Math.sin(now/40) * .25;
+        r1.setAttribute("rx", 12*sp); r2.setAttribute("rx", 12/sp);
+        hose.setAttribute("d", "M" + x + "," + (y + 14) + " C " + (x - 60) + "," + (y + 120) + " 60,260 75,310");
+        var cleanedH = li*ch + (dir > 0 ? Math.max(0, Math.min(1, (x - bx)/bw)) : Math.max(0, Math.min(1, (bx + bw - x)/bw))) * ch;
+        cleanRect.setAttribute("x", bx); cleanRect.setAttribute("width", bw);
+        cleanRect.setAttribute("y", by); cleanRect.setAttribute("height", Math.max(0, Math.min(bh, cleanedH)));
+      } else if (mode === "rapel"){
+        setText(capR, cmpT(CAPS.rapel.key, CAPS.rapel.pt));
+        var rainOn = p > 0.42 && p < 0.58;
+        rain.setAttribute("opacity", rainOn ? 1 : 0);
+        var q = p < 0.42 ? p/0.84 : p < 0.58 ? 0.5 : 0.5 + (p - 0.58)/0.84;
+        var y1 = by + 10 + q*(bh - 40), y2 = by + 30 + Math.min(1, q*1.05)*(bh - 60);
+        var s1 = Math.sin(now/400)*3, s2 = Math.cos(now/460)*3;
+        w1.setAttribute("transform", "translate(" + (197 + s1) + "," + y1 + ")");
+        rope1.setAttribute("x2", 197 + s1); rope1.setAttribute("y2", y1);
+        w2.setAttribute("transform", "translate(" + (337 + s2) + "," + y2 + ")");
+        rope2.setAttribute("x2", 337 + s2); rope2.setAttribute("y2", y2);
+        col1.setAttribute("x", 197 - cw/2); col1.setAttribute("y", by); col1.setAttribute("width", cw);
+        col1.setAttribute("height", Math.max(0, y1 - by + 20));
+        col2.setAttribute("x", 337 - cw/2); col2.setAttribute("y", by); col2.setAttribute("width", cw);
+        col2.setAttribute("height", Math.max(0, y2 - by + 20));
+        var row = Math.min(rows - 1, Math.floor(((y1 - by)/bh) * rows));
+        peep.setAttribute("transform", "translate(" + (bx + 2*cw + cw/2) + "," + (by + row*ch + ch/2 + 5) + ")");
+        peep.setAttribute("opacity", p > 0.05 ? 1 : 0);
+      } else {
+        var sh, phase;
+        if (p < 0.25){ sh = (p/0.25)*290; phase = AND_PHASES[0]; }
+        else if (p < 0.8){ sh = 290; phase = AND_PHASES[1]; }
+        else { sh = (1 - (p - 0.8)/0.2)*290; phase = AND_PHASES[2]; }
+        scafRect.setAttribute("y", 340 - sh); scafRect.setAttribute("height", sh);
+        setText(andPhase, cmpT(phase.key, phase.pt));
+        var showW = p >= 0.25 && p < 0.8;
+        var cq = Math.max(0, Math.min(1, (p - 0.25)/0.55));
+        [wA, wB, wC].forEach(function(w, idx){
+          var lvl = Math.max(0, 5 - Math.floor(cq*6)), wy = 340 - lvl*48 - 34;
+          var wx = 170 + idx*90 + Math.sin(now/500 + idx)*14;
+          w.setAttribute("transform", "translate(" + wx + "," + wy + ")");
+          w.setAttribute("opacity", showW ? 1 : 0);
+        });
+        cleanAnd.setAttribute("x", bx); cleanAnd.setAttribute("width", bw);
+        cleanAnd.setAttribute("y", by); cleanAnd.setAttribute("height", cq*bh);
+      }
+    }
+    setMode("drone");
+    requestAnimationFrame(frame);
+  })();
 
   /* Before / after slider */
   var baCard = document.getElementById("baCard");
