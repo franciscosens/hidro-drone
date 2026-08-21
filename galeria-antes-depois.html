@@ -25,44 +25,100 @@
   .sub{color:var(--ink-2);max-width:60ch;margin-bottom:36px}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
   .pair{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(15,27,51,.08)}
-  .pair .imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
-  .pair .imgs figure{position:relative;margin:0;aspect-ratio:4/3;background:var(--navy-deep)}
-  .pair .imgs img{width:100%;height:100%;object-fit:cover}
-  .pair .imgs figcaption{position:absolute;top:10px;left:10px;background:rgba(13,26,64,.7);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:5px 10px}
-  .pair .imgs .before img{filter:sepia(.45) saturate(.5) brightness(.7) contrast(1.05)}
   .pair .body{padding:16px 18px}
   .pair h3{font-size:1rem;font-weight:800}
   .pair p{font-size:.88rem;color:var(--ink-2)}
+  .pair .client{margin-top:8px;font-size:.85rem;font-weight:700;color:var(--ink)}
+  .pair .client a{color:var(--blue);text-decoration:none}
+  .pair .client a:hover{text-decoration:underline}
   .placeholder{border:2px dashed #B7C8E8;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;color:var(--ink-2);font-weight:600;min-height:260px;background:#fff}
   .cta{margin-top:48px;text-align:center}
   .btn{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;font-weight:700;text-decoration:none;padding:14px 26px;border-radius:999px}
+
+  /* ---------- Slider antes/depois ---------- */
+  .ba{position:relative;overflow:hidden;aspect-ratio:4/3;--pos:55%;touch-action:pan-y;background:var(--navy-deep)}
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-drag:none;pointer-events:none}
+  .ba img.before{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+  .ba img.before.sim{filter:sepia(.45) saturate(.5) brightness(.68) contrast(1.05)}
+  .ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:0;z-index:2;border-left:2px solid rgba(255,255,255,.95);box-shadow:0 0 24px rgba(6,42,60,.5);pointer-events:none}
+  .ba-knob{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1.5px solid rgba(255,255,255,.9);display:grid;place-items:center;color:var(--navy);box-shadow:0 10px 28px rgba(6,42,60,.35)}
+  .ba-knob svg{width:20px;height:20px}
+  .ba-label{position:absolute;top:12px;z-index:2;background:rgba(13,26,64,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:5px 12px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;pointer-events:none}
+  .ba-label.antes{left:12px}
+  .ba-label.depois{right:12px}
+  .ba-range{position:absolute;inset:0;z-index:3;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;-webkit-appearance:none;appearance:none}
+  .ba:has(.ba-range:focus-visible) .ba-knob{outline:3px solid var(--blue);outline-offset:3px}
+  .ba-zoom{
+    position:absolute;right:12px;bottom:12px;z-index:4;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.4);
+    background:rgba(13,26,64,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;cursor:pointer;
+    display:grid;place-items:center;transition:background .2s;
+  }
+  .ba-zoom:hover{background:var(--blue)}
+  .ba-zoom svg{width:20px;height:20px}
+
+  /* ---------- Modal ---------- */
+  .modal{margin:auto;border:0;padding:0;border-radius:18px;background:#fff;box-shadow:0 40px 90px rgba(6,20,50,.5);width:min(94vw,1100px);max-height:92vh;overflow:hidden}
+  .modal::backdrop{background:rgba(7,14,36,.72);backdrop-filter:blur(4px)}
+  .m-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 12px 14px 20px}
+  .m-head h2{font-size:1.05rem;font-weight:800}
+  .m-close{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink-2);font-size:1.15rem;font-weight:700;cursor:pointer;display:grid;place-items:center}
+  .m-close:hover{background:var(--paper-2);color:var(--ink)}
+  .modal .ba{aspect-ratio:16/10;max-height:calc(92vh - 120px)}
+  .modal .ba-knob{width:56px;height:56px}
+  .modal .ba-knob svg{width:26px;height:26px}
+  .modal .ba-label{top:16px;font-size:.74rem;padding:7px 16px}
+  .modal .ba-label.antes{left:16px}
+  .modal .ba-label.depois{right:16px}
+  .m-note{padding:12px 20px;font-size:.82rem;color:var(--ink-2)}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-drag" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><path d="M9 3H3v6M3 3l7 7M15 21h6v-6M21 21l-7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
 <header class="header">
   <div class="header-in">
-    <a href="alt-10.html"><img src="assets/logo.png" alt="Hidro Drone"></a>
-    <a class="back" href="alt-10.html#antes-depois">← Voltar ao site</a>
+    <a href="alt-11.html"><img src="assets/logo.png" alt="Hidro Drone"></a>
+    <a class="back" href="alt-11.html#antes-depois">← Voltar ao site</a>
   </div>
 </header>
 <main class="wrap">
   <span class="eyebrow">Antes e depois</span>
   <h1>Resultados reais, registrados pelo próprio drone</h1>
-  <p class="sub">Cada par abaixo é de um serviço executado pela nossa equipe. <!-- TODO: substituir pelos pares de fotos do Drive enviados pelo Lucas --></p>
+  <p class="sub">Cada par abaixo é de um serviço executado pela nossa equipe. Arraste a linha para comparar — ou amplie para ver em tela cheia. <!-- TODO: substituir pelos pares de fotos do Drive enviados pelo Lucas --></p>
   <div class="grid">
     <article class="pair">
-      <div class="imgs">
-        <figure class="before"><img src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="Galpão metálico antes da lavagem"><figcaption>Antes</figcaption></figure>
-        <figure><img src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="Galpão metálico depois da lavagem"><figcaption>Depois</figcaption></figure>
+      <div class="ba" data-title="Galpão industrial — fachada metálica">
+        <img class="after" src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="Galpão metálico depois da lavagem">
+        <img class="before sim" src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="" aria-hidden="true">
+        <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+        <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+        <input class="ba-range" type="range" min="0" max="100" value="55" aria-label="Comparar antes e depois — galpão industrial">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: galpão industrial"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
       </div>
-      <div class="body"><h3>Galpão industrial — fachada metálica</h3><p>Efeito “antes” simulado sobre a mesma imagem (provisório).</p></div>
+      <div class="body">
+        <h3>Galpão industrial — fachada metálica</h3>
+        <p>Efeito “antes” simulado sobre a mesma imagem (provisório).</p>
+        <p class="client">Cliente: <a href="https://www.valmet.com/pt/" target="_blank" rel="noopener">Valmet ↗</a></p>
+      </div>
     </article>
     <article class="pair">
-      <div class="imgs">
-        <figure><img src="assets/fotos/igreja-antes.jpg" alt="Telhado de igreja antes da lavagem"><figcaption>Antes</figcaption></figure>
-        <figure><img src="assets/fotos/igreja-depois.jpg" alt="Telhado de igreja depois da lavagem"><figcaption>Depois</figcaption></figure>
+      <div class="ba" data-title="Igreja — telhado cerâmico">
+        <img class="after" src="assets/fotos/igreja-depois.jpg" alt="Telhado de igreja depois da lavagem">
+        <img class="before" src="assets/fotos/igreja-antes.jpg" alt="" aria-hidden="true">
+        <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+        <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+        <input class="ba-range" type="range" min="0" max="100" value="55" aria-label="Comparar antes e depois — telhado da igreja">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: telhado da igreja"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
       </div>
-      <div class="body"><h3>Igreja — telhado cerâmico</h3><p>Frames reais da operação.</p></div>
+      <div class="body">
+        <h3>Igreja — telhado cerâmico</h3>
+        <p>Frames reais da operação.</p>
+        <!-- TODO: nome e link do cliente quando as fotos definitivas chegarem (fotos e ordem serão trocadas) -->
+        <p class="client">Cliente: Igreja</p>
+      </div>
     </article>
     <div class="placeholder">Mais pares de fotos<br>(fotos do Drive — a inserir)</div>
     <div class="placeholder">Mais pares de fotos<br>(fotos do Drive — a inserir)</div>
@@ -71,5 +127,88 @@
     <a class="btn" href="https://wa.me/5541996620072?text=Ol%C3%A1!%20Quero%20agendar%20uma%20visita%20t%C3%A9cnica%20para%20or%C3%A7amento." target="_blank" rel="noopener">Quero um orçamento pelo WhatsApp</a>
   </div>
 </main>
+
+<dialog class="modal" id="baModal" aria-label="Comparação ampliada de antes e depois">
+  <div class="m-head">
+    <h2 id="mTitle"></h2>
+    <button class="m-close" type="button" aria-label="Fechar">✕</button>
+  </div>
+  <div class="ba" id="mBa">
+    <img class="after" src="" alt="Foto depois da lavagem">
+    <img class="before" src="" alt="" aria-hidden="true">
+    <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+    <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+    <input class="ba-range" type="range" min="0" max="100" value="55" aria-label="Comparar antes e depois em tela cheia">
+  </div>
+  <p class="m-note">Arraste a linha (ou use as setas do teclado) para comparar. Esc fecha.</p>
+</dialog>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Um slider = a linha segue o range invisível que cobre o card */
+  function wire(ba){
+    var range = ba.querySelector(".ba-range");
+    function setPos(v){
+      v = Math.max(0, Math.min(100, v));
+      ba.style.setProperty("--pos", v + "%");
+    }
+    setPos(parseFloat(range.value));
+    range.addEventListener("input", function(){ setPos(parseFloat(range.value)); });
+    /* arrasto direto com o ponteiro (além do comportamento nativo do range) */
+    var dragging = false;
+    function fromEvent(e){
+      var r = ba.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width * 100;
+      range.value = Math.round(Math.max(0, Math.min(100, x)));
+      setPos(x);
+    }
+    ba.addEventListener("pointerdown", function(e){
+      if (e.target.closest(".ba-zoom")) return;
+      dragging = true;
+      if (ba.setPointerCapture) try { ba.setPointerCapture(e.pointerId); } catch(_){}
+      fromEvent(e);
+    });
+    ba.addEventListener("pointermove", function(e){ if (dragging) fromEvent(e); });
+    ba.addEventListener("pointerup", function(){ dragging = false; });
+    ba.addEventListener("pointercancel", function(){ dragging = false; });
+    return {setPos: setPos, range: range};
+  }
+
+  document.querySelectorAll(".grid .ba").forEach(wire);
+
+  /* Modal com imagens maiores */
+  var modal = document.getElementById("baModal");
+  var mBa = document.getElementById("mBa");
+  var mTitle = document.getElementById("mTitle");
+  var mAfter = mBa.querySelector("img.after");
+  var mBefore = mBa.querySelector("img.before");
+  var mCtl = wire(mBa);
+
+  document.querySelectorAll(".ba-zoom").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var src = btn.closest(".ba");
+      var after = src.querySelector("img.after");
+      var before = src.querySelector("img.before");
+      mAfter.src = after.src;
+      mAfter.alt = after.alt;
+      mBefore.src = before.src;
+      mBefore.classList.toggle("sim", before.classList.contains("sim"));
+      mTitle.textContent = src.getAttribute("data-title") || "";
+      mCtl.range.value = 55;
+      mCtl.setPos(55);
+      modal.showModal();
+      mCtl.range.focus();
+    });
+  });
+
+  modal.querySelector(".m-close").addEventListener("click", function(){ modal.close(); });
+  /* clique no backdrop fecha */
+  modal.addEventListener("click", function(e){
+    if (e.target === modal) modal.close();
+  });
+})();
+</script>
 </body>
 </html>

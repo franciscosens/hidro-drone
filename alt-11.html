@@ -477,7 +477,10 @@
     filter:grayscale(1);transition:filter .2s ease,color .2s ease;
   }
   .client-logo:hover{filter:none;color:var(--navy)}
-  .client-logo img{height:44px;width:auto}
+  .client-logo img{height:38px;width:auto}
+  .client-logo img.mark{height:44px;margin-right:12px}
+  .client-logo img.tall{height:52px}
+  .client-logo.txt{font-size:1.15rem;letter-spacing:.05em;max-width:300px;text-align:center;line-height:1.2}
   .clients .note{text-align:center;font-size:.8rem;color:var(--ink-2);margin-top:18px}
 
   /* ---------- FAQ ---------- */
@@ -1027,17 +1030,17 @@
   <div class="wrap">
     <span class="eyebrow" data-i18n="nav.clientes">Clientes</span>
     <h2 data-i18n="cli.h2">Quem já voou com a gente</h2>
-    <!-- TODO: substituir wordmarks por logos oficiais (PNG/SVG) quando recebidos; confirmar autorização de uso -->
+    <!-- Logos: Wikimedia Commons (Valmet, VW, JBS, Renault), site da GRASP e Wikipédia PT (Paraná Clube) — confirmar autorização de uso com cada cliente -->
     <div class="marquee">
       <div class="marquee-track" id="marquee-track">
-        <div class="client-logo">Valmet</div>
-        <div class="client-logo">GRASP</div>
-        <div class="client-logo">GRASP Sertãozinho</div>
-        <div class="client-logo">Volkswagen</div>
-        <div class="client-logo">JBS</div>
-        <div class="client-logo">Renault</div>
-        <div class="client-logo">Paraná Clube</div>
-        <div class="client-logo" data-i18n="work.igreja">Igreja</div>
+        <div class="client-logo"><img src="assets/logos/valmet.svg" alt="Valmet" loading="lazy"></div>
+        <div class="client-logo"><img src="assets/logos/grasp.png" alt="GRASP" loading="lazy"></div>
+        <div class="client-logo"><img class="mark" src="assets/logos/volkswagen.svg" alt="" loading="lazy"> Volkswagen</div>
+        <div class="client-logo"><img src="assets/logos/jbs.svg" alt="JBS" loading="lazy"></div>
+        <div class="client-logo"><img class="tall" src="assets/logos/renault.svg" alt="Renault" loading="lazy"></div>
+        <div class="client-logo"><img class="mark" src="assets/logos/parana-clube.png" alt="" loading="lazy"> Paraná Clube</div>
+        <div class="client-logo txt">Igreja Senhor Bom Jesus do Cabral</div>
+        <div class="client-logo txt">Paróquia Imaculada Conceição</div>
       </div>
     </div>
     <p class="note" data-i18n="cli.note">Indústrias, montadoras, clubes e patrimônio histórico — a mesma tecnologia, o mesmo padrão de entrega.</p>
