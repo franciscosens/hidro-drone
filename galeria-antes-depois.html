@@ -23,30 +23,29 @@
   .eyebrow{display:inline-block;font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
   h1{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;line-height:1.15;margin-bottom:10px}
   .sub{color:var(--ink-2);max-width:60ch;margin-bottom:36px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px;align-items:start}
   .pair{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(15,27,51,.08)}
   .pair .body{padding:16px 18px}
-  .pair h3{font-size:1rem;font-weight:800}
+  .pair h2{font-size:1rem;font-weight:800;line-height:1.3;margin-bottom:4px}
   .pair p{font-size:.88rem;color:var(--ink-2)}
   .pair .client{margin-top:8px;font-size:.85rem;font-weight:700;color:var(--ink)}
   .pair .client a{color:var(--blue);text-decoration:none}
   .pair .client a:hover{text-decoration:underline}
-  .placeholder{border:2px dashed #B7C8E8;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;color:var(--ink-2);font-weight:600;min-height:260px;background:#fff}
   .cta{margin-top:48px;text-align:center}
   .btn{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;font-weight:700;text-decoration:none;padding:14px 26px;border-radius:999px}
 
   /* ---------- Slider antes/depois ---------- */
-  .ba{position:relative;overflow:hidden;aspect-ratio:4/3;--pos:55%;touch-action:pan-y;background:var(--navy-deep)}
-  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-drag:none;pointer-events:none}
+  .ba{position:relative;overflow:hidden;aspect-ratio:4/3;--pos:50%;--focus:50%;touch-action:pan-y;cursor:ew-resize;background:var(--navy-deep)}
+  .ba.tall{aspect-ratio:3/4}
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center var(--focus);user-select:none;-webkit-user-drag:none;pointer-events:none}
   .ba img.before{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
-  .ba img.before.sim{filter:sepia(.45) saturate(.5) brightness(.68) contrast(1.05)}
   .ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:0;z-index:2;border-left:2px solid rgba(255,255,255,.95);box-shadow:0 0 24px rgba(6,42,60,.5);pointer-events:none}
   .ba-knob{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1.5px solid rgba(255,255,255,.9);display:grid;place-items:center;color:var(--navy);box-shadow:0 10px 28px rgba(6,42,60,.35)}
   .ba-knob svg{width:20px;height:20px}
   .ba-label{position:absolute;top:12px;z-index:2;background:rgba(13,26,64,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:5px 12px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;pointer-events:none}
   .ba-label.antes{left:12px}
   .ba-label.depois{right:12px}
-  .ba-range{position:absolute;inset:0;z-index:3;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;-webkit-appearance:none;appearance:none}
+  .ba-range{position:absolute;inset:0;z-index:3;width:100%;height:100%;opacity:0;margin:0;pointer-events:none;-webkit-appearance:none;appearance:none}
   .ba:has(.ba-range:focus-visible) .ba-knob{outline:3px solid var(--blue);outline-offset:3px}
   .ba-zoom{
     position:absolute;right:12px;bottom:12px;z-index:4;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.4);
@@ -57,13 +56,13 @@
   .ba-zoom svg{width:20px;height:20px}
 
   /* ---------- Modal ---------- */
-  .modal{margin:auto;border:0;padding:0;border-radius:18px;background:#fff;box-shadow:0 40px 90px rgba(6,20,50,.5);width:min(94vw,1100px);max-height:92vh;overflow:hidden}
+  .modal{--ar:1.3333;margin:auto;border:0;padding:0;border-radius:18px;background:#fff;box-shadow:0 40px 90px rgba(6,20,50,.5);width:min(94vw,1100px,calc((92vh - 120px) * var(--ar)));max-height:92vh;overflow:hidden}
   .modal::backdrop{background:rgba(7,14,36,.72);backdrop-filter:blur(4px)}
   .m-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 12px 14px 20px}
-  .m-head h2{font-size:1.05rem;font-weight:800}
+  .m-head h2{font-size:1.05rem;font-weight:800;line-height:1.3}
   .m-close{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink-2);font-size:1.15rem;font-weight:700;cursor:pointer;display:grid;place-items:center}
   .m-close:hover{background:var(--paper-2);color:var(--ink)}
-  .modal .ba{aspect-ratio:16/10;max-height:calc(92vh - 120px)}
+  .modal .ba{aspect-ratio:var(--ar)}
   .modal .ba-knob{width:56px;height:56px}
   .modal .ba-knob svg{width:26px;height:26px}
   .modal .ba-label{top:16px;font-size:.74rem;padding:7px 16px}
@@ -86,49 +85,166 @@
 </header>
 <main class="wrap">
   <span class="eyebrow">Antes e depois</span>
-  <h1>Resultados reais, registrados pelo próprio drone</h1>
-  <p class="sub">Cada par abaixo é de um serviço executado pela nossa equipe. Arraste a linha para comparar — ou amplie para ver em tela cheia. <!-- TODO: substituir pelos pares de fotos do Drive enviados pelo Lucas --></p>
+  <h1>Resultados reais, antes e depois da lavagem</h1>
+  <p class="sub">Cada par abaixo é de um serviço executado pela nossa equipe, fotografado no local antes e depois. Arraste a linha para comparar — ou amplie para ver a foto inteira.</p>
   <div class="grid">
     <article class="pair">
-      <div class="ba" data-title="Galpão industrial — fachada metálica">
-        <img class="after" src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="Galpão metálico depois da lavagem">
-        <img class="before sim" src="assets/instagram/DMGvmAMvFcD_video.jpg" alt="" aria-hidden="true">
+      <div class="ba" data-title="Renault — fachada principal" data-ar="4/3" style="--focus:50%">
+        <img class="after" src="assets/fotos/antes-depois/renault-fachada-depois.jpg" alt="Renault — fachada principal: depois da lavagem">
+        <img class="before" src="assets/fotos/antes-depois/renault-fachada-antes.jpg" alt="" aria-hidden="true">
         <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
         <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
-        <input class="ba-range" type="range" min="0" max="100" value="55" aria-label="Comparar antes e depois — galpão industrial">
-        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: galpão industrial"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — fachada principal da Renault">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: fachada principal da Renault"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
       </div>
       <div class="body">
-        <h3>Galpão industrial — fachada metálica</h3>
-        <p>Efeito “antes” simulado sobre a mesma imagem (provisório).</p>
-        <p class="client">Cliente: <a href="https://www.valmet.com/pt/" target="_blank" rel="noopener">Valmet ↗</a></p>
+        <h2>Renault — fachada principal</h2>
+        <p>Galpão de chapa metálica de grande altura, fotografado do mesmo canto antes e depois da lavagem.</p>
+        <p class="client">Cliente: <a href="https://www.renault.com.br/" target="_blank" rel="noopener">Renault ↗</a></p>
       </div>
     </article>
     <article class="pair">
-      <div class="ba" data-title="Igreja — telhado cerâmico">
-        <img class="after" src="assets/fotos/igreja-depois.jpg" alt="Telhado de igreja depois da lavagem">
-        <img class="before" src="assets/fotos/igreja-antes.jpg" alt="" aria-hidden="true">
+      <div class="ba" data-title="Renault — fachada lateral" data-ar="4/3" style="--focus:50%">
+        <img class="after" src="assets/fotos/antes-depois/renault-lateral-depois.jpg" alt="Renault — fachada lateral: depois da lavagem">
+        <img class="before" src="assets/fotos/antes-depois/renault-lateral-antes.jpg" alt="" aria-hidden="true">
         <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
         <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
-        <input class="ba-range" type="range" min="0" max="100" value="55" aria-label="Comparar antes e depois — telhado da igreja">
-        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: telhado da igreja"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — fachada lateral da Renault">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: fachada lateral da Renault"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
       </div>
       <div class="body">
-        <h3>Igreja — telhado cerâmico</h3>
-        <p>Frames reais da operação.</p>
-        <!-- TODO: nome e link do cliente quando as fotos definitivas chegarem (fotos e ordem serão trocadas) -->
-        <p class="client">Cliente: Igreja</p>
+        <h2>Renault — fachada lateral</h2>
+        <p>A lateral inteira do galpão, lavada sem andaime e sem ninguém em altura.</p>
+        <p class="client">Cliente: <a href="https://www.renault.com.br/" target="_blank" rel="noopener">Renault ↗</a></p>
       </div>
     </article>
-    <div class="placeholder">Mais pares de fotos<br>(fotos do Drive — a inserir)</div>
-    <div class="placeholder">Mais pares de fotos<br>(fotos do Drive — a inserir)</div>
+    <article class="pair">
+      <div class="ba" data-title="GRASP — fachada e letreiro" data-ar="2/1" style="--focus:50%">
+        <img class="after" src="assets/fotos/antes-depois/grasp-depois.jpg" alt="GRASP — fachada e letreiro: depois da lavagem">
+        <img class="before" src="assets/fotos/antes-depois/grasp-antes.jpg" alt="" aria-hidden="true">
+        <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+        <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — fachada da GRASP">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: fachada da GRASP"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </div>
+      <div class="body">
+        <h2>GRASP — fachada e letreiro</h2>
+        <p>Alvenaria com escorridos sob as janelas e faixa metálica do letreiro.</p>
+        <p class="client">Cliente: <a href="https://grasp.ind.br/" target="_blank" rel="noopener">GRASP ↗</a></p>
+      </div>
+    </article>
+    <article class="pair">
+      <div class="ba" data-title="Paraná Clube — cobertura de lona" data-ar="4/3" style="--focus:50%">
+        <img class="after" src="assets/fotos/antes-depois/parana-clube-depois.jpg" loading="lazy" alt="Paraná Clube — cobertura de lona: depois da lavagem">
+        <img class="before" src="assets/fotos/antes-depois/parana-clube-antes.jpg" loading="lazy" alt="" aria-hidden="true">
+        <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+        <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — cobertura do Paraná Clube">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: cobertura do Paraná Clube"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </div>
+      <div class="body">
+        <h2>Paraná Clube — cobertura de lona</h2>
+        <p>A mesma cobertura no mesmo dia: escurecida pela manhã, branca no fim da tarde.</p>
+        <p class="client">Cliente: <a href="https://paranaclube.com.br/" target="_blank" rel="noopener">Paraná Clube ↗</a></p>
+      </div>
+    </article>
+    <article class="pair">
+      <div class="ba" data-title="GRASP Sertãozinho — planta industrial" data-ar="4/3" style="--focus:50%">
+        <img class="after" src="assets/fotos/antes-depois/grasp-sertaozinho-geral-depois.jpg" loading="lazy" alt="GRASP Sertãozinho — planta industrial: depois da lavagem">
+        <img class="before" src="assets/fotos/antes-depois/grasp-sertaozinho-geral-antes.jpg" loading="lazy" alt="" aria-hidden="true">
+        <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+        <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — planta da GRASP Sertãozinho">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: planta da GRASP Sertãozinho"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </div>
+      <div class="body">
+        <h2>GRASP Sertãozinho — planta industrial</h2>
+        <p>Vista geral do galpão e da torre azul da unidade.</p>
+        <p class="client">Cliente: <a href="https://grasp.ind.br/" target="_blank" rel="noopener">GRASP ↗</a></p>
+      </div>
+    </article>
+    <article class="pair">
+      <div class="ba" data-title="Paróquia Imaculada Conceição — igreja nova" data-ar="1/1" style="--focus:35%">
+        <img class="after" src="assets/fotos/antes-depois/igreja-moderna-depois.jpg" loading="lazy" alt="Paróquia Imaculada Conceição — igreja nova: depois da lavagem">
+        <img class="before" src="assets/fotos/antes-depois/igreja-moderna-antes.jpg" loading="lazy" alt="" aria-hidden="true">
+        <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+        <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — igreja nova">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: igreja nova"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </div>
+      <div class="body">
+        <h2>Paróquia Imaculada Conceição — igreja nova</h2>
+        <p>Empenas inclinadas de concreto aparente — acesso difícil para qualquer outro método.</p>
+        <p class="client">Cliente: Paróquia Imaculada Conceição</p>
+      </div>
+    </article>
+    <article class="pair">
+      <div class="ba tall" data-title="Paróquia Imaculada Conceição — igreja histórica" data-ar="3/4">
+        <img class="after" src="assets/fotos/antes-depois/igreja-historica-depois.jpg" loading="lazy" alt="Paróquia Imaculada Conceição — igreja histórica: depois da lavagem">
+        <img class="before" src="assets/fotos/antes-depois/igreja-historica-antes.jpg" loading="lazy" alt="" aria-hidden="true">
+        <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+        <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — igreja histórica">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: igreja histórica"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </div>
+      <div class="body">
+        <h2>Paróquia Imaculada Conceição — igreja histórica</h2>
+        <p>Torre e fachada de patrimônio histórico, lavadas sem encostar estrutura na construção.</p>
+        <p class="client">Cliente: Paróquia Imaculada Conceição</p>
+      </div>
+    </article>
+    <article class="pair">
+      <div class="ba tall" data-title="GRASP Sertãozinho — reservatório elevado" data-ar="3/4">
+        <img class="after" src="assets/fotos/antes-depois/grasp-sertaozinho-torre-depois.jpg" loading="lazy" alt="GRASP Sertãozinho — reservatório elevado: depois da lavagem">
+        <img class="before" src="assets/fotos/antes-depois/grasp-sertaozinho-torre-antes.jpg" loading="lazy" alt="" aria-hidden="true">
+        <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+        <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — reservatório da GRASP Sertãozinho">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: reservatório da GRASP Sertãozinho"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </div>
+      <div class="body">
+        <h2>GRASP Sertãozinho — reservatório elevado</h2>
+        <p>Torre cilíndrica lavada de cima a baixo pelo drone.</p>
+        <p class="client">Cliente: <a href="https://grasp.ind.br/" target="_blank" rel="noopener">GRASP ↗</a></p>
+      </div>
+    </article>
+    <article class="pair">
+      <div class="ba tall" data-title="Renault — empena do galpão" data-ar="3/4">
+        <img class="after" src="assets/fotos/antes-depois/renault-empena-depois.jpg" loading="lazy" alt="Renault — empena do galpão: depois da lavagem">
+        <img class="before" src="assets/fotos/antes-depois/renault-empena-antes.jpg" loading="lazy" alt="" aria-hidden="true">
+        <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+        <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — empena do galpão da Renault">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: empena do galpão da Renault"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </div>
+      <div class="body">
+        <h2>Renault — empena do galpão</h2>
+        <p>Detalhe da chapa: das manchas escuras ao metal uniforme.</p>
+        <p class="client">Cliente: <a href="https://www.renault.com.br/" target="_blank" rel="noopener">Renault ↗</a></p>
+      </div>
+    </article>
+    <article class="pair">
+      <div class="ba tall" data-title="GRASP Sertãozinho — torre azul" data-ar="3/4">
+        <img class="after" src="assets/fotos/antes-depois/grasp-sertaozinho-azul-depois.jpg" loading="lazy" alt="GRASP Sertãozinho — torre azul: depois da lavagem">
+        <img class="before" src="assets/fotos/antes-depois/grasp-sertaozinho-azul-antes.jpg" loading="lazy" alt="" aria-hidden="true">
+        <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
+        <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — torre azul da GRASP Sertãozinho">
+        <button class="ba-zoom" type="button" aria-label="Ampliar comparação: torre azul da GRASP Sertãozinho"><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </div>
+      <div class="body">
+        <h2>GRASP Sertãozinho — torre azul</h2>
+        <p>Revestimento azul e platibanda amarela depois da lavagem.</p>
+        <p class="client">Cliente: <a href="https://grasp.ind.br/" target="_blank" rel="noopener">GRASP ↗</a></p>
+      </div>
+    </article>
   </div>
   <div class="cta">
     <a class="btn" href="https://wa.me/5541996620072?text=Ol%C3%A1!%20Quero%20agendar%20uma%20visita%20t%C3%A9cnica%20para%20or%C3%A7amento." target="_blank" rel="noopener">Quero um orçamento pelo WhatsApp</a>
   </div>
 </main>
 
-<dialog class="modal" id="baModal" aria-label="Comparação ampliada de antes e depois">
+<dialog class="modal" id="baModal" aria-labelledby="mTitle">
   <div class="m-head">
     <h2 id="mTitle"></h2>
     <button class="m-close" type="button" aria-label="Fechar">✕</button>
@@ -138,7 +254,7 @@
     <img class="before" src="" alt="" aria-hidden="true">
     <div class="ba-line"><span class="ba-knob"><svg aria-hidden="true"><use href="#i-drag"/></svg></span></div>
     <span class="ba-label antes">Antes</span><span class="ba-label depois">Depois</span>
-    <input class="ba-range" type="range" min="0" max="100" value="55" aria-label="Comparar antes e depois em tela cheia">
+    <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois em tela cheia">
   </div>
   <p class="m-note">Arraste a linha (ou use as setas do teclado) para comparar. Esc fecha.</p>
 </dialog>
@@ -156,23 +272,35 @@
     }
     setPos(parseFloat(range.value));
     range.addEventListener("input", function(){ setPos(parseFloat(range.value)); });
-    /* arrasto direto com o ponteiro (além do comportamento nativo do range) */
-    var dragging = false;
+    /* arrasto com o ponteiro. No toque só começa depois de um movimento horizontal,
+       para a rolagem vertical da página não deslocar a linha */
+    var dragging = false, pending = null;
     function fromEvent(e){
       var r = ba.getBoundingClientRect();
       var x = (e.clientX - r.left) / r.width * 100;
       range.value = Math.round(Math.max(0, Math.min(100, x)));
       setPos(x);
     }
-    ba.addEventListener("pointerdown", function(e){
-      if (e.target.closest(".ba-zoom")) return;
-      dragging = true;
+    function begin(e){
+      dragging = true; pending = null;
       if (ba.setPointerCapture) try { ba.setPointerCapture(e.pointerId); } catch(_){}
       fromEvent(e);
+    }
+    ba.addEventListener("pointerdown", function(e){
+      if (e.target.closest(".ba-zoom")) return;
+      if (e.pointerType === "mouse"){ if (e.button === 0) begin(e); }
+      else pending = {x: e.clientX, y: e.clientY};
     });
-    ba.addEventListener("pointermove", function(e){ if (dragging) fromEvent(e); });
-    ba.addEventListener("pointerup", function(){ dragging = false; });
-    ba.addEventListener("pointercancel", function(){ dragging = false; });
+    ba.addEventListener("pointermove", function(e){
+      if (dragging){ fromEvent(e); return; }
+      if (!pending) return;
+      var dx = Math.abs(e.clientX - pending.x), dy = Math.abs(e.clientY - pending.y);
+      if (dx > 6 && dx > dy) begin(e);
+      else if (dy > 10) pending = null;
+    });
+    function end(){ dragging = false; pending = null; }
+    ba.addEventListener("pointerup", end);
+    ba.addEventListener("pointercancel", end);
     return {setPos: setPos, range: range};
   }
 
@@ -194,10 +322,12 @@
       mAfter.src = after.src;
       mAfter.alt = after.alt;
       mBefore.src = before.src;
-      mBefore.classList.toggle("sim", before.classList.contains("sim"));
+      /* o modal assume a proporção da foto: ampliar mostra a imagem inteira */
+      var ar = (src.getAttribute("data-ar") || "4/3").split("/");
+      modal.style.setProperty("--ar", (parseFloat(ar[0]) / parseFloat(ar[1])).toFixed(4));
       mTitle.textContent = src.getAttribute("data-title") || "";
-      mCtl.range.value = 55;
-      mCtl.setPos(55);
+      mCtl.range.value = 50;
+      mCtl.setPos(50);
       modal.showModal();
       mCtl.range.focus();
     });
