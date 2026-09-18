@@ -433,11 +433,19 @@
   .step p{font-size:.9rem;color:var(--ink-2)}
   .step .free{display:inline-block;margin-left:6px;background:#DCFCE7;color:var(--wa-deep);font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 8px;vertical-align:middle}
   @media (max-width: 900px){
-    .steps{grid-template-columns:1fr;gap:0;max-width:440px}
-    .steps::before{top:8%;bottom:8%;left:33px;right:auto;height:auto;border-top:0;border-left:3px dashed #B7C8E8}
-    .step{display:grid;grid-template-columns:68px 1fr;gap:18px;text-align:left;align-items:start;padding:16px 0}
-    .step .n{margin:0}
-    .step h3{margin-top:4px}
+    .steps{grid-template-columns:1fr;gap:0;max-width:520px}
+    .steps::before{display:none}
+    /* ícone na coluna 1 (ocupando as duas linhas); título e texto na coluna 2 */
+    .step{display:grid;grid-template-columns:56px 1fr;column-gap:16px;row-gap:4px;text-align:left;align-items:start;padding:0 0 30px}
+    .step:last-child{padding-bottom:0}
+    .step .n{grid-column:1;grid-row:1 / span 2;width:56px;height:56px;margin:0}
+    .step .n svg{width:26px;height:26px}
+    .step h3,.step p{grid-column:2}
+    .step h3{margin:4px 0 0;line-height:1.3}
+    .step p{font-size:.94rem}
+    .step .free{display:table;margin:6px 0 2px;border-radius:8px;line-height:1.35}
+    /* a linha tracejada liga um ícone ao próximo, sem passar por cima do texto */
+    .step:not(:last-child)::after{content:"";position:absolute;left:26px;top:64px;bottom:8px;border-left:3px dashed #B7C8E8}
   }
 
   /* ---------- Trabalhos carousel ---------- */
